@@ -32,10 +32,10 @@ var app = new Vue({
             axios.get("https://elections.cctv.org/elections/index.php?f=results")
             .then(function(response){
                 app.districts = response.data.districts;
-                console.log(response.data.districts)
+                console.log(response.data.districts);
             }).catch(error => { console.log(error); });
           },
-        even: function(arr) {
+        sortVotes: function(arr) {
             // Set slice() to avoid to generate an infinite loop!
             return arr.slice().sort(function(a, b) {
               return b.votes - a.votes;

@@ -1,6 +1,7 @@
 body {
   font: 100% Helvetica, sans-serif;
-  color: #333;
+  color: #444054;
+  background: #B1EDE8;
 }
 
 div.main-content {
@@ -11,24 +12,29 @@ div.main-content {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 50%;
+  width: 900px;
   margin: auto;
-  padding: 1em;
-  background: #f9f;
+  padding: 0em;
+  background: #FFFCF9;
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
+}
+
+div.main-content h1 {
+  margin: auto;
 }
 
 div.election-content {
-  background: #ff9;
-  padding: 1em;
+  background: #B1EDE8;
+  padding: 0em;
 }
 
-div.districts h1 {
-  margin: 1em;
+div.districts h1.districts {
+  margin: 0.5em;
   cursor: pointer;
 }
 
 div.elections {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36,45 +42,65 @@ div.elections {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: #f37;
+  padding: 1em;
+  background: #FFFCF9;
 }
 
 div.results-container {
+  background: #FFFCF9;
+  width: 80%;
+  margin: 1em auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-wrap: no-wrap;
-      flex-wrap: no-wrap;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 1em;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 div.results {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 47%;
-  background: #999;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -ms-flex-line-pack: center;
       align-content: center;
-  border: 1px solid black;
+  margin: -0.5px;
 }
 
 div.results .result-name {
-  border-right: 1px solid black;
   padding: 0.2em;
+  padding-left: 1em;
   width: 50%;
 }
 
 div.results .result-num {
   padding: 0.2em;
   width: 20%;
-  -ms-flex-line-pack: center;
-      align-content: center;
+}
+
+@media screen and (max-width: 900px) {
+  div.main-content {
+    width: 105%;
+    padding: 0;
+    margin: -8px;
+  }
+  div.main-content h1 {
+    margin: 0.2em auto 0.3em auto;
+  }
+  div.results {
+    width: 100%;
+  }
 }
 
 .fade-enter-active, .fade-leave-active {

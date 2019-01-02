@@ -1,4 +1,5 @@
 <html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <head>
         <link rel="stylesheet" href="css/styles.css">
         <link rel="icon" href="favicon.ico" type="image/x-icon"/>
@@ -6,6 +7,8 @@
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <!-- Load Axios -->
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <!-- Load jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <title>CCTV Elections</title>
     </head>
     <body>
@@ -18,7 +21,7 @@
                         <div v-for="y of x.elections" class="elections">
                             <h1>{{ y.title }}</h1>
                             <div class="results-container">
-                                <div v-for="result of even(y.results)" class="results">
+                                <div v-for="result of sortVotes(y.results)" class="results">
                                     <div class="result-name">
                                         <p :style="{'text-decoration': result.decoration}">{{ result.name }}</p>
                                     </div>
