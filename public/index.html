@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+        <!-- Load Vue -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <!-- Load Axios -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <title>CCTV Elections</title>
+    </head>
+    <body>
+        <div class="main-content">
+            <h1>CCTV Elections</h1>
+            <div id="app" class="election-content">
+                <!-- election html structure -->
+                <div v-for="x of districts" class="districts">
+                    <h1 v-on:click="x.show = !x.show" class="districts">{{ x.title }}</h1>
+                        <div v-for="y of x.elections" class="elections">
+                            <h1>{{ y.title }}</h1>
+                            <div class="results-container">
+                                <div v-for="result of even(y.results)" class="results">
+                                    <div class="result-name">
+                                        <p :style="{'text-decoration': result.decoration}">{{ result.name }}</p>
+                                    </div>
+                                    <div class="result-num">
+                                        <p>{{ result.votes }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="js/app.js"></script>
+    </body>
+</html>

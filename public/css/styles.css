@@ -1,0 +1,88 @@
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+}
+
+div.main-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 50%;
+  margin: auto;
+  padding: 1em;
+  background: #f9f;
+}
+
+div.election-content {
+  background: #ff9;
+  padding: 1em;
+}
+
+div.districts h1 {
+  margin: 1em;
+  cursor: pointer;
+}
+
+div.elections {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #f37;
+}
+
+div.results-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: no-wrap;
+      flex-wrap: no-wrap;
+}
+
+div.results {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 47%;
+  background: #999;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  border: 1px solid black;
+}
+
+div.results .result-name {
+  border-right: 1px solid black;
+  padding: 0.2em;
+  width: 50%;
+}
+
+div.results .result-num {
+  padding: 0.2em;
+  width: 20%;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.fade-enter-active, .fade-leave-active {
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+/*# sourceMappingURL=styles.css.map */
