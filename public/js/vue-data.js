@@ -1,4 +1,7 @@
 //
+var apiEndpoint = 'https://elections.cctv.org/elections/index.php?f=results';
+//TODO remove local endpoint
+
 var app = new Vue({
     el: '#app',
     data: {
@@ -51,7 +54,7 @@ var app = new Vue({
       loadResults: function() {
         this.votes = 0;
         app = this;
-        axios.get('./js/election-results.json').then(function (response) {
+        axios.get(apiEndpoint).then(function (response) {
           return response;
         });
       }
