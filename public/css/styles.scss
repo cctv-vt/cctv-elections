@@ -10,18 +10,18 @@ body {
 div.main-content {
   display: flex;
   flex-direction: column;
-  width:900px;
+  width:800px;
   margin: auto;
   padding: 0em;
   background: #FFFCF9;
-  transition: 1s ease-in-out;
+  transition: 0.2s ease-in-out;
   h1 {
-    margin: auto;
+    text-align: center;
   }
 }
 
 div.election-content {
-  background: #B1EDE8;
+  background: #FFFCF9;
   padding: 0em;
 }
 
@@ -73,11 +73,14 @@ div.results {
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px) {
+  body {
+    background: #FFFCF9;
+  }
   div.main-content {
-    width:105%;
+    width:100%;
     padding: 0;
-    margin: -8px;
+    margin: 0;
     h1 {
       margin: 0.2em auto 0.3em auto;
     }

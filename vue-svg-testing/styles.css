@@ -1,13 +1,13 @@
 .township {
   stroke: white;
-  stroke-width: 0px;
+  stroke-width: 1px;
   -webkit-transition: 1s ease;
-  transition:stroke-width 0.2s ease-out;
+  transition: 1s ease;
 }
 
 .township:hover {
-  stroke: grey;
-  stroke-width: 2px;
+  stroke: red;
+  stroke-width: 4px;
 }
 
 #legumeville {
