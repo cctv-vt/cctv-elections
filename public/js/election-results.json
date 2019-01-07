@@ -1,4 +1,99 @@
 {
-    "c3": 50,
-    "c4": 57
+    "districts": [
+      {
+        "title": "Beans Ville",
+        "elections": [
+          {
+            "title":"Mayor of Gable Town",
+            "results": [
+              {
+                "name":"Beans Beansman",
+                "votes": 500
+              },
+              {
+                "name":"Beans McBeans",
+                "votes": 66
+              },
+              {
+                "name":"Beans Von Beans",
+                "votes": 400
+              },
+              {
+                "name":"Beans O'Beans",
+                "votes": 29
+              }
+            ]
+          },
+          {
+            "title":"City Council",
+            "results": [
+              {
+                "name":"Beans Beansman",
+                "votes": 70
+              },
+              {
+                "name":"Beans McBeans",
+                "votes": 66
+              },
+              {
+                "name":"Beans Von Beans",
+                "votes": 400
+              },
+              {
+                "name":"Beans O'Beans",
+                "votes": 2900
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Beans Town",
+        "elections": [
+          {
+            "title":"Mayor of Gable Town",
+            "results": [
+              {
+                "name":"Beans Beasman",
+                "color": "#444054",
+                "votes": 500
+              },
+              {
+                "name":"Beans McBeans",
+                "votes": 66
+              },
+              {
+                "name":"Beans Von Beans",
+                "votes": 400
+              },
+              {
+                "name":"Beans O'Beans",
+                "votes": 29
+              }
+            ]
+          },
+          {
+            "title":"City Council",
+            "results": [
+              {
+                "name":"Beans Beansman",
+                "votes": 70
+              },
+              {
+                "name":"Beans McBeans",
+                "votes": 66
+              },
+              {
+                "name":"Beans Von Beans",
+                "votes": 400
+              },
+              {
+                "name":"Beans O'Beans",
+                "votes": 2900
+              }
+            ]
+          }
+        ]
+      }
+    ]
 }
