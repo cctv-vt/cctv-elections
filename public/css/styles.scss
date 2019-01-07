@@ -58,8 +58,9 @@ div.results {
   justify-content: space-between;
   align-content: center;
   margin: 0px;
-  //border-radius: 2px;
-  transition: 0.5s ease;
+  border-radius: 0px;
+  transition:0.5s ease;
+  transition: border-radius 1s ease;
   .result-indicator {
     width:30px;
     height: 30px;
@@ -81,6 +82,7 @@ div.results {
 
 div.results:hover {
   background-color: #B1EDE8;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 800px) {

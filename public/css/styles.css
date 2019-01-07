@@ -76,8 +76,11 @@ div.results {
   -ms-flex-line-pack: center;
       align-content: center;
   margin: 0px;
+  border-radius: 0px;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
+  -webkit-transition: border-radius 1s ease;
+  transition: border-radius 1s ease;
 }
 
 div.results .result-indicator {
@@ -100,6 +103,7 @@ div.results .result-num {
 
 div.results:hover {
   background-color: #B1EDE8;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 800px) {
