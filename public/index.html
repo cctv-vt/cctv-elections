@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="main-content">
-            <h1>CCTV Elections</h1>
+            <h1 id="pageTitle">CCTV Elections</h1>
             <div id="app" class="election-content">
                 <!-- election html structure -->
                 <div v-for="x of districts" class="districts">
@@ -23,8 +23,9 @@
                             <h1>{{ y.title }}</h1>
                             <div class="results-container">
                                 <div v-for="result of sortVotes(y.results)" class="results">
+                                    <div class="result-indicator" :styles="{ background: result.color }"></div>
                                     <div class="result-name">
-                                        <p :style="{'text-decoration': result.decoration}">{{ result.name }}</p>
+                                        <p>{{ result.name }}</p>
                                     </div>
                                     <div class="result-num">
                                         <p>{{ result.votes }}</p>

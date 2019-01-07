@@ -48,7 +48,7 @@ div.results-container {
   flex-direction: row;
   flex-wrap: wrap;
   padding: 1em;
-  border-radius: 10px;
+  border-radius: 2px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -57,9 +57,15 @@ div.results {
   width: 100%;
   justify-content: space-between;
   align-content: center;
-  //box-shadow: 3px 3px 0px #FF97A1;
-  margin: -0.5px;
+  margin: 0px;
   //border-radius: 2px;
+  transition: 0.5s ease;
+  .result-indicator {
+    width:30px;
+    height: 30px;
+    border-radius: 2px;
+    margin: 0.5em;
+  }
   .result-name {
     padding: 0.2em;
     padding-left: 1em;
@@ -71,6 +77,10 @@ div.results {
     width: 20%;
     
   }
+}
+
+div.results:hover {
+  background-color: #B1EDE8;
 }
 
 @media screen and (max-width: 800px) {
