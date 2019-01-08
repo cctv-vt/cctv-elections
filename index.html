@@ -1,41 +1,53 @@
 <html>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head>
-        <!-- load css compiled from sass -->
-        <link rel="stylesheet" href="css/styles.css">
-        <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-        <!-- Load Vue -->
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <!-- Load Axios -->
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <!-- Load jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <title>CCTV Elections</title>
-    </head>
-    <body>
-        <div class="main-content">
-            <h1 id="pageTitle">CCTV Elections</h1>
-            <div id="app" class="election-content">
-                <!-- election html structure -->
-                <div v-for="x of districts" class="districts">
-                    <h1 v-on:click="x.show = !x.show" class="districts">{{ x.title }}</h1>
-                        <div v-for="y of x.elections" class="elections">
-                            <h1>{{ y.title }}</h1>
-                            <div class="results-container">
-                                <div v-for="result of sortVotes(y.results)" class="results">
-                                    <div class="result-indicator" :styles="{ background: result.color }"></div>
-                                    <div class="result-name">
-                                        <p>{{ result.name }}</p>
-                                    </div>
-                                    <div class="result-num">
-                                        <p>{{ result.votes }}</p>
-                                    </div>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <!-- load css compiled from sass -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <!-- Load Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- Load Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- Load jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>CCTV Elections</title>
+</head>
+
+<body>
+    <div class="main-content">
+        <h1 id="pageTitle">CCTV Elections</h1>
+
+        <div id="app" class="election-content">
+            <!-- election html structure -->
+            <div v-for="(x, i) of districts" :key="i" class="districts">
+                <h1 v-on:click="districtShow[i].show = !districtShow[i].show" class="districts">{{ x.title }}</h1>
+                <div v-if="districtShow[i].show" v-for="y of x.elections" class="elections">
+                    <h1>{{ y.title }}</h1>
+                    <div class="results-container">
+                        <div v-for="result of sortVotes(y.results)" class="results multi">
+                            <div class="result-indicator">
+                                <svg height="100" width="100" xmlns="http://www.w3.org/2000/svg">
+                                    <circle :style="{ fill : result.color }" cx="29" cy="28" r="10" />
+                                </svg>
+                            </div>
+                            <div class="result-name">
+                                <p>{{ result.name }}</p>
+                            </div>
+                            <div class="result-num">
+                                <p>{{ getSum(result.votes) }}</p>
+                            </div>
+                            <div class="result-subresult">
+                                <div v-if="" v-for="(subVotes, key) of result.votes" :key="key">
+                                    {{ key + ": " + subVotes}}
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <script src="js/app.js"></script>
-    </body>
+    </div>
+    <script src="js/app.js"></script>
+</body>
 </html>
