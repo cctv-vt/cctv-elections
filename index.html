@@ -1,7 +1,7 @@
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<html lang="en-US">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- load css compiled from sass -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -21,7 +21,7 @@
             <!-- election html structure -->
             <div v-for="(x, i) of districts" :key="i" class="districts">
                 <h1 v-on:click="districtShow[i].show = !districtShow[i].show" class="districts">{{ x.title }}</h1>
-                <div v-if="districtShow[i].show" v-for="y of x.elections" class="elections">
+                <div v-show="districtShow[i].show" v-for="y of x.elections" class="elections">
                     <h1>{{ y.title }}</h1>
                     <div class="results-container">
                         <div v-for="result of sortVotes(y.results)" class="results multi">
@@ -36,9 +36,12 @@
                             <div class="result-num">
                                 <p>{{ getSum(result.votes) }}</p>
                             </div>
-                            <div class="result-subresult">
-                                <div v-if="" v-for="(subVotes, key) of result.votes" :key="key">
-                                    {{ key + ": " + subVotes}}
+                            <div v-for="(subVotes, key) of result.votes" :key="key" class="result-subresult">
+                                <div class="result-name">
+                                    <p>{{ key }}</p>
+                                </div>
+                                <div class="result-num">
+                                    <p>{{ subVotes }}</p>
                                 </div>
                             </div>
                         </div>
