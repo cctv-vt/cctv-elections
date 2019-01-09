@@ -30,7 +30,6 @@ var app = new Vue({
       axios.get(api_endpoint)
         .then(function (response) {
           app.districts = response.data.districts;
-          //console.log(response.data.districts);
         }).catch(error => {
           console.log(error);
         });
