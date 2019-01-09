@@ -38,7 +38,7 @@ var app = new Vue({
     sortVotes: function (arr) {
       // Set slice() to avoid to generate an infinite loop!
       return arr.slice().sort(function (a, b) {
-        console.log(getSum(b.votes) - getSum(a.votes));
+        //console.log(getSum(b.votes) - getSum(a.votes));
         return getSum(b.votes) - getSum(a.votes);
       });
     },
