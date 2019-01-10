@@ -81,7 +81,7 @@ div.results {
   flex-direction: row;
   flex-wrap: wrap;
   background: rgba(255, 252, 249, 0);
-  width: 50%;
+  width: 100%;
   justify-content: space-between;
   align-content: center;
   margin-bottom: 1px;
@@ -103,6 +103,8 @@ div.results {
   }
   .result-subresult {
     width: 100%;
+    display: flex;
+    
   }
 }
 

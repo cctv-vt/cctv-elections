@@ -106,7 +106,7 @@ div.results {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   background: rgba(255, 252, 249, 0);
-  width: 50%;
+  width: 100%;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -136,6 +136,9 @@ div.results .result-num {
 
 div.results .result-subresult {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 div.results:hover {

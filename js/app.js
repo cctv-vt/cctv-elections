@@ -75,7 +75,6 @@ var app = new Vue({
       axios.get(api_endpoint)
         .then(function (response) {
           app.districts = response.data.districts;
-          //console.log(response.data.districts);
         }).catch(error => {
           console.log(error);
         });
@@ -83,7 +82,7 @@ var app = new Vue({
     sortVotes: function (arr) {
       // Set slice() to avoid to generate an infinite loop!
       return arr.slice().sort(function (a, b) {
-        console.log(getSum(b.votes) - getSum(a.votes));
+        //console.log(getSum(b.votes) - getSum(a.votes));
         return getSum(b.votes) - getSum(a.votes);
       });
     },
