@@ -19,12 +19,14 @@ const districtClose = (str, element) => {
       duration: 300,
     },
     scaleX: {
-      value: 0,
+      value: 1.0,
       duration: 300,
     },
+
     height: {
       value: 0,
-      duration: 400
+      duration: 400,
+      delay: 100
     },
     autoplay: false
   });
@@ -43,7 +45,7 @@ const districtClose = (str, element) => {
       delay: 100
     },
     height: {
-      value: 900,
+      value: 1700,
       duration: 400
     },
     autoplay: false
