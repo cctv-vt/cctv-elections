@@ -4,12 +4,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- load css compiled from sass -->
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <!-- Load Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- Load Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
+    <!--Load Animejs-->
+    <script src="https://unpkg.com/animejs@3.0.0/lib/anime.min.js"></script>
+
     <title>CCTV Elections</title>
 </head>
 
@@ -20,8 +23,8 @@
         <div id="app" class="election-content">
             <!-- election html structure -->
             <div v-for="(x, i) of districts" :key="i" class="districts">
-                <h1 v-on:click="districtShow[i].show = !districtShow[i].show" class="districts">{{ x.title }}</h1>
-                <div v-show="districtShow[i].show" v-for="y of x.elections" class="elections">
+                <h1 v-on:click="vueDistrictClose(i, $event)" class="districts">{{ x.title }}</h1>
+                <div v-for="y of x.elections" class="elections" style="transform-origin: center top;">
                     <h1>{{ y.title }}</h1>
                     <div class="results-container">
                         <div v-for="result of sortVotes(y.results)" class="results multi">
@@ -52,4 +55,5 @@
     </div>
     <script src="js/app.js"></script>
 </body>
+
 </html>

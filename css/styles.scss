@@ -1,4 +1,4 @@
-$font-stack:    Helvetica, sans-serif;
+$font-stack:'Quicksand', sans-serif;
 $text-color: #2C363F;
 $primary-color: #FFFCF9;
 $secondary-color: #B1EDE8;
@@ -32,14 +32,31 @@ div.election-content {
 }
 
 div.districts {
-  background: linear-gradient($branding-color -1000%, $primary-color 200% );
+  background: linear-gradient($branding-color -500px, $primary-color);
+  background-size:1px 100%;
   margin: 4px;
   border-radius: 20px;
+  transform-origin: center top;
+  transition: 0.5s ease-out;
   h1.districts {
     margin: 0em;
     padding: 0.8em;
+    border-radius: 20px;
+    background-color: $branding-color ;
     cursor: pointer;
+    user-select: none;
+    transition: 0.5s ease-out;
+    &:active {
+      border-radius: 30px;
+    }
   }
+  &:hover {
+    background-position: 100px;
+  }
+  &:active {
+    border-radius: 30px;
+  }
+
 }
 
 div.elections {

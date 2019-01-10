@@ -1,5 +1,5 @@
 body {
-  font: 100% Helvetica, sans-serif;
+  font: 100% "Quicksand", sans-serif;
   color: #2C363F;
   margin: 0;
   background: #B1EDE8;
@@ -30,16 +30,40 @@ div.election-content {
 }
 
 div.districts {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(-1000%, #F06449), color-stop(200%, #FFFCF9));
-  background: linear-gradient(#F06449 -1000%, #FFFCF9 200%);
+  background: linear-gradient(#F06449 -500px, #FFFCF9);
+  background-size: 1px 100%;
   margin: 4px;
   border-radius: 20px;
+  -webkit-transform-origin: center top;
+          transform-origin: center top;
+  -webkit-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
 }
 
 div.districts h1.districts {
   margin: 0em;
   padding: 0.8em;
+  border-radius: 20px;
+  background-color: #F06449;
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+}
+
+div.districts h1.districts:active {
+  border-radius: 30px;
+}
+
+div.districts:hover {
+  background-position: 100px;
+}
+
+div.districts:active {
+  border-radius: 30px;
 }
 
 div.elections {
