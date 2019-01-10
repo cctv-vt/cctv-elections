@@ -68,7 +68,7 @@ var app = new Vue({
         easing: 'linear',
         top: -1000,
         duration: 1000,
-        delay: 2000
+        delay: 1000
       })
       //setTimeout(document.getElementById('loading').remove(), 501);
     })
