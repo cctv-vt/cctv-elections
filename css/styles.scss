@@ -11,7 +11,7 @@ body {
   font: 100% $font-stack;
   color: $text-color;
   margin: 0;
-  background: $secondary-color;
+  background: $primary-color;
 }
 
 #loading {
@@ -43,14 +43,15 @@ div.districts {
   background: linear-gradient($branding-color -500px, $primary-color);
   background-size:1px 100%;
   margin: 4px;
-  border-radius: 20px;
+  border-radius: 21px;
   transform-origin: center top;
   transition: 0.5s ease-out;
   h1.districts {
     margin: 0em;
     padding: 0.8em;
     border-radius: 20px;
-    background-color: $branding-color ;
+    background: linear-gradient($primary-color , $branding-color 250px) ;
+    box-shadow: -2px 2px 10px 0px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     user-select: none;
     transition: 0.5s ease-out;
@@ -81,7 +82,8 @@ div.results-container {
   flex-wrap: wrap;
   padding: 1em;
   border-radius: 20px;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px 2px 10px 0px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease-in-out;
 }
 
 div.results {
