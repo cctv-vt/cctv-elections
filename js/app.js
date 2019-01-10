@@ -43,7 +43,7 @@ const districtClose = (str, element) => {
       delay: 100
     },
     height: {
-      value: 900,
+      value: 1600,
       duration: 400
     },
     autoplay: false
