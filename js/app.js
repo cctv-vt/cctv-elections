@@ -18,11 +18,7 @@ const districtClose = (str, element) => {
       value: 0,
       duration: 300,
     },
-    scaleX: {
-      value: 0,
-      duration: 300,
-    },
-    height: {
+    'max-height': {
       value: 0,
       duration: 400
     },
@@ -37,13 +33,8 @@ const districtClose = (str, element) => {
       duration: 250,
       delay: 200
     },
-    scaleX: {
-      value: 1.0,
-      duration: 300,
-      delay: 100
-    },
-    height: {
-      value: 1600,
+    'max-height': {
+      value: 10000,
       duration: 400
     },
     autoplay: false
@@ -60,14 +51,27 @@ var app = new Vue({
   data: {
     districts: [],
     districtShow: [{
-      show: false
-    },{ show: false }]
+      show: true
+    },{ show: true }]
   },
   mounted() {
     this.getResults();
     setInterval(function () {
       this.getResults();
     }.bind(this), refresh_rate);
+  },
+  updated: function () {
+    this.$nextTick(function () {
+      console.log('loaded');
+      anime({
+        targets:'#loading',
+        easing: 'linear',
+        top: -1000,
+        duration: 1000,
+        delay: 2000
+      })
+      //setTimeout(document.getElementById('loading').remove(), 501);
+    })
   },
   //TODO:Todo
   methods: {

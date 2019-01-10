@@ -11,7 +11,15 @@ body {
   font: 100% $font-stack;
   color: $text-color;
   margin: 0;
-  background: #B1EDE8
+  background: $secondary-color;
+}
+
+#loading {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: $primary-color;
+  opacity: 1.0;
 }
 
 div.main-content {
@@ -54,7 +62,7 @@ div.districts {
     background-position: 100px;
   }
   &:active {
-    border-radius: 30px;
+    border-radius: 40px;
   }
 
 }

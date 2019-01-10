@@ -1,4 +1,5 @@
 <html lang="en-US">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,14 +18,19 @@
 </head>
 
 <body>
+    <div id='loading'>Loading...</div>
     <div class="main-content">
         <h1 id="pageTitle">CCTV Elections</h1>
+        <div>
+            <iframe width="100%" height="470" src="https://www.youtube.com/embed/-9N1gGuHCaM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
 
         <div id="app" class="election-content">
             <!-- election html structure -->
             <div v-for="(x, i) of districts" :key="i" class="districts">
                 <h1 v-on:click="vueDistrictClose(i, $event)" class="districts">{{ x.title }}</h1>
-                <div v-for="y of x.elections" class="elections" style="transform-origin: center top;">
+                <div v-for="y of x.elections" class="elections" style="max-height: 10000; transform-origin: center top;">
                     <h1>{{ y.title }}</h1>
                     <div class="results-container">
                         <div v-for="result of sortVotes(y.results)" class="results multi">
