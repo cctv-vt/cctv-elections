@@ -13,29 +13,38 @@ const getSum = (obj) => {
 const districtClose = (str, element) => {
   animClose = anime({
     targets: element,
-    easing: 'easeInBack',
+    easing: 'easeOutCubic',
     scaleY: {
       value: 0,
-      duration: 200,
+      duration: 300,
+    },
+    scaleX: {
+      value: 0,
+      duration: 300,
     },
     height: {
       value: 0,
-      duration: 300
+      duration: 400
     },
     autoplay: false
   });
 
   animOpen = anime({
     targets: element,
-    easing: 'easeOutBack',
+    easing: 'easeOutCubic',
     scaleY: {
       value: 1.0,
       duration: 250,
       delay: 200
     },
+    scaleX: {
+      value: 1.0,
+      duration: 300,
+      delay: 100
+    },
     height: {
       value: 900,
-      duration: 300
+      duration: 400
     },
     autoplay: false
   });

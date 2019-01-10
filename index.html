@@ -23,7 +23,7 @@
         <div id="app" class="election-content">
             <!-- election html structure -->
             <div v-for="(x, i) of districts" :key="i" class="districts">
-                <a v-on:click="vueDistrictClose(i, $event)" class="districts">{{ x.title }}</a>
+                <h1 v-on:click="vueDistrictClose(i, $event)" class="districts">{{ x.title }}</h1>
                 <div v-for="y of x.elections" class="elections" style="transform-origin: center top;">
                     <h1>{{ y.title }}</h1>
                     <div class="results-container">
