@@ -1,8 +1,5 @@
-html, body {
-  height: 100%;
-}
 body {
-  font: 100% Helvetica, sans-serif;
+  font: 100% "Quicksand", sans-serif;
   color: #2C363F;
   margin: 0;
   background: #B1EDE8;
@@ -37,6 +34,8 @@ div.districts {
   background: linear-gradient(#F06449 -1000%, #FFFCF9 200%);
   margin: 4px;
   border-radius: 20px;
+  -webkit-transform-origin: center top;
+          transform-origin: center top;
 }
 
 div.districts h1.districts {

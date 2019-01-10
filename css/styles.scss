@@ -1,4 +1,4 @@
-$font-stack:    Helvetica, sans-serif;
+$font-stack:'Quicksand', sans-serif;
 $text-color: #2C363F;
 $primary-color: #FFFCF9;
 $secondary-color: #B1EDE8;
@@ -35,6 +35,7 @@ div.districts {
   background: linear-gradient($branding-color -1000%, $primary-color 200% );
   margin: 4px;
   border-radius: 20px;
+  transform-origin: center top;
   h1.districts {
     margin: 0em;
     padding: 0.8em;

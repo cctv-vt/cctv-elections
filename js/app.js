@@ -10,13 +10,49 @@ const getSum = (obj) => {
   return sum;
 };
 
+const districtClose = (str, element) => {
+  animClose = anime({
+    targets: element,
+    easing: 'easeInBack',
+    scaleY: {
+      value: 0,
+      duration: 200,
+    },
+    height: {
+      value: 0,
+      duration: 300
+    },
+    autoplay: false
+  });
+
+  animOpen = anime({
+    targets: element,
+    easing: 'easeOutBack',
+    scaleY: {
+      value: 1.0,
+      duration: 250,
+      delay: 200
+    },
+    height: {
+      value: 900,
+      duration: 300
+    },
+    autoplay: false
+  });
+  if (str === 'close') {
+    animClose.play();
+  } else {
+    animOpen.play();
+  }
+}
+
 var app = new Vue({
   el: '#app',
   data: {
     districts: [],
     districtShow: [{
-      show: true
-    }]
+      show: false
+    },{ show: false }]
   },
   mounted() {
     this.getResults();
@@ -48,6 +84,15 @@ var app = new Vue({
         sum += obj[i];
       }
       return sum;
+    },
+    vueDistrictClose: function (i, event) {
+      if (app.districtShow[i]) {
+        districtClose('close', event.srcElement.nextSibling.nextSibling);
+        app.districtShow[i] = false;
+      } else {
+        app.districtShow[i] = true;
+        districtClose('open', event.srcElement.nextSibling.nextSibling);
+      }
     }
   }
 });
