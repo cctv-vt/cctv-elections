@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- load css compiled from sass -->
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <!-- Load Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -18,9 +17,23 @@
 </head>
 
 <body>
-    <div id='main-content'>
-        <div id='app'>
-            
+    <div id="main-content">
+        <div id="app">
+            <div id="nav">
+                <nav>
+                    <div></div>
+                    <div v-on:click="currentVue = key" class="menu-item" v-for="(district, key) of districts" :key="key">
+                        <h3>{{ district.title }}</h3>
+                        <div class="divider"></div>
+                    </div>
+                </nav>
+            </div>
+            <div class="election-content">
+                <h1>{{ districts[currentVue].title }}</h1>
+                <div v-for="election of districts[currentVue].elections">
+                    <h1>{{ election.title }}</h1>
+                </div>
+            </div>
         </div>
     </div>
     <script src="js/app.js"></script>
