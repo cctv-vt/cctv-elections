@@ -1,1 +1,27 @@
-/* No CSS *//*# sourceMappingURL=styles.css.map */
+@import url("https://fonts.googleapis.com/css?family=Roboto:300");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400");
+body {
+  background: #FCFCFC;
+  font-family: "Roboto", sans-serif;
+}
+
+.divider {
+  height: 1px;
+  width: 80%;
+  border-bottom: 1px solid lightgrey;
+  margin: -1 auto;
+}
+
+#nav {
+  position: fixed;
+  width: 200px;
+  top: 100px;
+  background: white;
+  border: 0.75px solid lightgrey;
+}
+
+.menu-item {
+  text-align: center;
+  cursor: pointer;
+}
+/*# sourceMappingURL=styles.css.map */
