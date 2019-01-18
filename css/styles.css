@@ -3,25 +3,106 @@
 body {
   background: #FCFCFC;
   font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  margin: 0.3em 0em 0em 0em;
 }
 
 .divider {
   height: 1px;
   width: 80%;
   border-bottom: 1px solid lightgrey;
-  margin: -1 auto;
+  margin: 0 auto;
 }
 
 #nav {
   position: fixed;
-  width: 200px;
   top: 100px;
+  left: 1%;
+  right: 81%;
   background: white;
+  border-radius: 5px;
   border: 0.75px solid lightgrey;
 }
 
-.menu-item {
+#nav .menu-item {
+  padding: 0em;
   text-align: center;
   cursor: pointer;
+}
+
+#nav .menu-item h3 {
+  margin: 0.1em;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+
+#nav .menu-item h3:hover {
+  background: #F0F0F0;
+}
+
+#election-coverage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: pink;
+  max-width: 800px;
+  height: 1000px;
+  margin: 0 auto;
+  padding: 0em;
+}
+
+#election-coverage #video {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+#election-coverage #video iframe, #election-coverage #video object, #election-coverage #video embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#election-coverage #election-results {
+  background: greenyellow;
+  max-width: 800px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+#election-coverage #election-results h2 {
+  text-align: center;
+  width: 100%;
+}
+
+#election-coverage #election-results .result-container {
+  background: orange;
+  width: 400px;
+  height: 200px;
+}
+
+#election-coverage #election-results .result-container h3 {
+  text-align: center;
 }
 /*# sourceMappingURL=styles.css.map */

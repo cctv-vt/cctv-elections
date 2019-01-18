@@ -5,24 +5,94 @@ $font-stack:'Roboto', sans-serif;
 body {
   background: #FCFCFC;
   font-family: $font-stack;
+  margin:0;
+}
+
+#app {
+  //display: flex;
+}
+
+h1 {
+  text-align: center;
+  margin: 0.3em 0em 0em 0em;
 }
 
 .divider {
   height: 1px;
   width: 80%;
   border-bottom: 1px solid lightgrey;
-  margin: -1 auto;
+  margin: 0 auto;
 }
 
 #nav {
   position: fixed;
-  width: 200px;
   top: 100px;
+  left: 1%;
+  right: 81%;
   background: white;
+  border-radius: 5px;
   border: 0.75px solid lightgrey;
+  .menu-item {
+    padding:0em;
+    text-align: center;
+    cursor: pointer;
+    h3{
+      margin: 0.1em;
+      padding: 0.5em;
+      border-radius: 5px;
+      &:hover {
+        background: #F0F0F0;
+  
+      }
+    }
+  }
 }
 
-.menu-item {
-  text-align: center;
-  cursor: pointer;
+
+
+
+#election-coverage {
+  display: flex;
+  flex-direction: column;
+  background:pink;
+  max-width: 800px;
+  height: 1000px;
+  margin:0 auto;
+  padding: 0em;
+  #video {
+    position:relative;
+    padding-bottom:56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+  }
+  
+  #video iframe, #video object, #video embed {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+  }
+  #election-results {
+    background: greenyellow;
+    max-width: 800px;;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    h2 {
+      text-align: center;
+      width: 100%;
+    }
+    .result-container {
+      background: orange;
+      width: 400px;
+      height: 200px;
+      h3 {
+        text-align: center;
+      }
+    }
+  }
 }
+
