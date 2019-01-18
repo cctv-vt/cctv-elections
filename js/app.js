@@ -1,6 +1,6 @@
 let refresh_rate = 20000;
 //var api_endpoint = "https://elections.cctv.org/elections/index.php?f=results";
-let api_endpoint = "./js/election-results.json"
+let api_endpoint = "http://34.73.59.134/api.php?f=results"
 //Vue Creation
 const getSum = (obj) => {
   let sum = 0;
