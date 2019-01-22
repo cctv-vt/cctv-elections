@@ -22,7 +22,7 @@ var app = new Vue({
       this.getResults();
     }.bind(this), refresh_rate);
   },
-  updated: function () {
+  updated() {
     this.$nextTick(function () {
       console.log('loaded');
       anime({
@@ -37,7 +37,7 @@ var app = new Vue({
   },
   //TODO:Todo
   methods: {
-    getResults: function () {
+    getResults() {
       axios.get(api_endpoint)
         .then(function (response) {
           app.districts = response.data.districts;
@@ -45,14 +45,14 @@ var app = new Vue({
           console.log(error);
         });
     },
-    sortVotes: function (arr) {
+    sortVotes(arr) {
       // Set slice() to avoid to generate an infinite loop!
       return arr.slice().sort(function (a, b) {
         //console.log(getSum(b.votes) - getSum(a.votes));
         return getSum(b.votes) - getSum(a.votes);
       });
     },
-    getSum: function (obj) {
+    getSum(obj) {
       let sum = 0;
       for (i in obj) {
         sum += obj[i];
