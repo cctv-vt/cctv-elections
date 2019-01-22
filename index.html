@@ -6,6 +6,7 @@
     <!-- load css compiled from sass -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300" rel="stylesheet">
     <!-- Load Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- Load Axios -->
@@ -32,11 +33,12 @@
             <div id="election-results">
                 <h2>{{ districts[currentVue].title }} Results</h2>
                 <div v-for="election of districts[currentVue].elections">
-                    <div class="result-container">
+                    <div class="election">
                         <h3>{{ election.title }}</h3>
-                        <div>
-                            <div>
-
+                        <div class="container">
+                            <div v-for="result of election.results" class="result">
+                                <h4>{{ result.name }}</h4>
+                                <h4>{{ getSum(result.votes) }}</h4>
                             </div>
                         </div>
                     </div>

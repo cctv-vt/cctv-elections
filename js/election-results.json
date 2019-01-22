@@ -1,10 +1,10 @@
 {
     "districts": [{
-            "title": "Chittenden",
+            "title": "Essex",
             "elections": [{
-                "title": "Elected Official",
+                "title": "Essex Town Article: FY20 Town Budget",
                 "results": [{
-                    "name": "Person 1",
+                    "name": "Richard Deane (D)",
                     "color": "#444054",
                     "votes": {
                         "Burlington": 1234,
@@ -13,7 +13,7 @@
                         "Essex": 1232
                     }
                 }, {
-                    "name": "Person 2",
+                    "name": "Jared Carter (D)",
                     "color": "#444054",
                     "votes": {
                         "Burlington": 12323,
@@ -22,7 +22,7 @@
                         "Essex": 1234
                     }
                 }, {
-                    "name": "Person 3",
+                    "name": "Perri Freeman (P)",
                     "color": "#444054",
                     "votes": {
                         "Burlington": 1234,
@@ -31,7 +31,7 @@
                         "Essex": 12121
                     }
                 }, {
-                    "name": "Person 4",
+                    "name": "Ryan D. McLaren",
                     "color": "#444054",
                     "votes": {
                         "Burlington": 1121,
@@ -40,7 +40,7 @@
                         "Essex": 344
                     }
                 }, {
-                    "name": "Person 5",
+                    "name": "Kienan Christianson (P)",
                     "color": "#444054",
                     "votes": {
                         "Burlington": 12141,

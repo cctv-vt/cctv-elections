@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:300");
-@import url("https://fonts.googleapis.com/css?family=Roboto:400");
 body {
   background: #FCFCFC;
-  font-family: "Roboto", sans-serif;
+  font-family: "Fira Sans", sans-serif;
   margin: 0;
 }
 
@@ -52,8 +50,7 @@ h1 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: pink;
-  max-width: 800px;
+  max-width: 1000px;
   height: 1000px;
   margin: 0 auto;
   padding: 0em;
@@ -76,8 +73,7 @@ h1 {
 }
 
 #election-coverage #election-results {
-  background: greenyellow;
-  max-width: 800px;
+  max-width: 1000px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -92,17 +88,57 @@ h1 {
 }
 
 #election-coverage #election-results h2 {
-  text-align: center;
+  text-align: left;
+  margin: 0.5em;
   width: 100%;
 }
 
-#election-coverage #election-results .result-container {
-  background: orange;
-  width: 400px;
-  height: 200px;
+#election-coverage #election-results .election {
+  width: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 
-#election-coverage #election-results .result-container h3 {
+#election-coverage #election-results .election h3 {
+  margin: 0.3em;
+  font-size: 26px;
   text-align: center;
+}
+
+#election-coverage #election-results .election .container {
+  background: white;
+  margin: 0.5em;
+  border-radius: 3px;
+  border: 0.5px solid #D0D0D0;
+  overflow: hidden;
+}
+
+#election-coverage #election-results .election .container .result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  outline: 1px solid black;
+}
+
+#election-coverage #election-results .election .container .result h4 {
+  margin: 1em;
+  font-size: 16px;
 }
 /*# sourceMappingURL=styles.css.map */

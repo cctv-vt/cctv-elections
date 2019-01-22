@@ -1,15 +1,9 @@
-$font-stack:'Roboto', sans-serif;
+$font-stack:'Fira Sans', sans-serif;
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:300');
-@import url('https://fonts.googleapis.com/css?family=Roboto:400');
 body {
   background: #FCFCFC;
   font-family: $font-stack;
   margin:0;
-}
-
-#app {
-  //display: flex;
 }
 
 h1 {
@@ -54,8 +48,8 @@ h1 {
 #election-coverage {
   display: flex;
   flex-direction: column;
-  background:pink;
-  max-width: 800px;
+  //background:pink;
+  max-width: 1000px;
   height: 1000px;
   margin:0 auto;
   padding: 0em;
@@ -75,22 +69,45 @@ h1 {
     height:100%;
   }
   #election-results {
-    background: greenyellow;
-    max-width: 800px;;
+    //background: greenyellow;
+    max-width: 1000px;;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     h2 {
-      text-align: center;
+      text-align: left;
+      margin: 0.5em;
       width: 100%;
     }
-    .result-container {
-      background: orange;
-      width: 400px;
-      height: 200px;
+    .election {
+      //background: orange;
+      width: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
       h3 {
+        margin: 0.3em;
+        font-size: 26px;
         text-align: center;
+      }
+      .container {
+        background: white;
+        margin:0.5em;
+        border-radius: 3px;
+        border: 0.5px solid #D0D0D0;
+        overflow: hidden;
+        .result {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          outline: 1px solid black;
+          h4 {
+            margin:1em;
+            font-size: 16px;
+          }
+        }
       }
     }
   }
