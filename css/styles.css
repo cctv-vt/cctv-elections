@@ -17,29 +17,13 @@ h1 {
 }
 
 #nav {
-  position: fixed;
-  top: 100px;
-  left: 1%;
-  right: 81%;
-  background: white;
-  border-radius: 5px;
-  border: 0.75px solid lightgrey;
+  margin-bottom: -3.1em;
 }
 
-#nav .menu-item {
-  padding: 0em;
-  text-align: center;
-  cursor: pointer;
-}
-
-#nav .menu-item h3 {
-  margin: 0.1em;
-  padding: 0.5em;
-  border-radius: 5px;
-}
-
-#nav .menu-item h3:hover {
-  background: #F0F0F0;
+#nav h2 {
+  font-size: 30px;
+  text-align: left;
+  margin: 0.5em;
 }
 
 #election-coverage {
@@ -74,6 +58,7 @@ h1 {
 
 #election-coverage #election-results {
   max-width: 1000px;
+  min-height: calc(100vh - 3em);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -85,16 +70,16 @@ h1 {
       flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-}
-
-#election-coverage #election-results h2 {
-  text-align: left;
-  margin: 0.5em;
-  width: 100%;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  padding-top: 3em;
 }
 
 #election-coverage #election-results .election {
   width: 500px;
+  min-height: 0;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -111,7 +96,7 @@ h1 {
 
 #election-coverage #election-results .election h3 {
   margin: 0.3em;
-  font-size: 26px;
+  font-size: 23px;
   text-align: center;
 }
 
@@ -159,12 +144,13 @@ h1 {
 
 #election-coverage #election-results .election .cresults .result .cvotes {
   width: 10%;
+  text-align: right;
   padding: 0.6em 0 0.6em 0;
 }
 
 #election-coverage #election-results .election .cresults .result .cbar {
   width: 50%;
-  padding: 0.6em 0 0.6em 0;
+  padding: 0.3em 0 0.3em 0;
 }
 
 #election-coverage #election-results .election .cresults .result .cbar .bgbar {
@@ -184,7 +170,6 @@ h1 {
 
 #election-coverage #election-results .election .cresults .result .csubresults {
   overflow: hidden;
-  height: auto;
   width: 80%;
   margin: auto;
   text-align: center;
