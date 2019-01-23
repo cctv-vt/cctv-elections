@@ -11,8 +11,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- Load Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!--Load Animejs-->
-    <script src="https://unpkg.com/animejs@3.0.0/lib/anime.min.js"></script>
 
     <title>CCTV Elections</title>
 </head>
@@ -30,27 +28,29 @@
         <div id="election-coverage">
             <h1>CCTV Elections</h1>
             <div id="video"><iframe src="https://www.youtube.com/embed/-9N1gGuHCaM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-            <div id="election-results">
-                <h2>{{ districts[currentVue].title }} Results</h2>
-                <div v-for="election of districts[currentVue].elections">
-                    <div class="election">
-                        <h3>{{ election.title }}</h3>
-                        <div class="cresults">
-                            <div v-for="result of election.results" onclick="" class="result">
-                                <div class="cname"><h4>{{ result.name }}</h4></div>
-                                <div class="cvotes"><h4>{{ getSum(result.votes) }}</h4></div>
-                                <div class="cbar">
-                                    <div class="bgbar">
-                                        <div class="fgbar"></div>
+            <div>
+                <div id="nav">
+                    <h2>{{ districts[currentVue].title }} Results</h2>
+                </div>
+                <div id="election-results">
+                    <div v-for="election of districts[currentVue].elections" class="election">
+                            <h3>{{ election.title }}</h3>
+                            <div class="cresults">
+                                <div v-for="result of election.results" @click="subToggle($event)" class="result">
+                                    <div class="cname"><h4>{{ result.name }}</h4></div>
+                                    <div class="cvotes"><h4>{{ getSum(result.votes) }}</h4></div>
+                                    <div class="cbar">
+                                        <div class="bgbar">
+                                            <div class="fgbar"></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="csubresults">
-                                    <div v-for="(subresult, dsubresult) of result.votes" class="subresult">
-                                        {{ dsubresult }} : {{ subresult }}
+                                    <div class="csubresults" style="height:0px;">
+                                        <div v-for="(subresult, dsubresult) of result.votes" class="subresult">
+                                            {{ dsubresult }} : {{ subresult }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>

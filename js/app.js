@@ -13,8 +13,8 @@ const getSum = (obj) => {
 };
 
 //subToggle is used to toggle subresults
-const subToggle = (event) => {
-  
+const subToggle = () => {
+  console.log(event.srcElement.lastChild);
 }
 
 //Vue Creation
@@ -30,33 +30,21 @@ var app = new Vue({
       this.getResults();
     }.bind(this), refresh_rate);
   },
-  updated() {
-    this.$nextTick(function () {
-      console.log('loaded');
-      anime({
-        targets:'#loading',
-        easing: 'linear',
-        top: -1000,
-        duration: 1000,
-        delay: 1000
-      })
-      //setTimeout(document.getElementById('loading').remove(), 501);
-    })
-  },
-  //TODO:Todo
   methods: {
+    //data retrieval functions
     getResults() {
+      //Gets results via an async get
       axios.get(api_endpoint)
         .then(function (response) {
+          //Sets the districts array in data to the districts array of the recieved data
           app.districts = response.data.districts;
         }).catch(error => {
           console.log(error);
         });
     },
+    //math and sorting functions
     sortVotes(arr) {
-      // Set slice() to avoid to generate an infinite loop!
-      return arr.slice().sort(function (a, b) {
-        //console.log(getSum(b.votes) - getSum(a.votes));
+      return arr.slice(0, 12).sort(function (a, b) {
         return getSum(b.votes) - getSum(a.votes);
       });
     },
@@ -66,6 +54,15 @@ var app = new Vue({
         sum += obj[i];
       }
       return sum;
+    },
+    //rendering and animation functions
+    subToggle(ev) {
+      let sr = ev.currentTarget.lastChild
+      if(sr.style.height == '0px') {
+        sr.style.height = 'auto';
+      } else {
+        sr.style.height = '0px';
+      };
     }
   }
 });
