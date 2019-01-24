@@ -1,6 +1,6 @@
 body {
   background: #FCFCFC;
-  font-family: "Fira Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
 }
 
@@ -12,7 +12,7 @@ h1 {
 .divider {
   height: 1px;
   width: 80%;
-  border-bottom: 1px solid lightgrey;
+  border-top: 1px solid #D0D0D0;
   margin: 0 auto;
 }
 
@@ -106,7 +106,7 @@ h1 {
   border-radius: 5px;
   border: 0.5px solid #D0D0D0;
   overflow: hidden;
-  padding: 0.4em 0.3em 0.4em 0.3em;
+  padding: 0.2em 0.2em 0.2em 0.2em;
 }
 
 #election-coverage #election-results .election .cresults h4 {
@@ -127,12 +127,12 @@ h1 {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
-  padding: 0.4em 0.3em 0.4em 0.3em;
+  padding: 0.25em 0.4em 0.25em 0.4em;
   border-radius: 5px;
 }
 
 #election-coverage #election-results .election .cresults .result:hover {
-  background: #efefef;
+  background: #EFEFEF;
   cursor: pointer;
 }
 
@@ -150,22 +150,26 @@ h1 {
 
 #election-coverage #election-results .election .cresults .result .cbar {
   width: 50%;
-  padding: 0.3em 0 0.3em 0;
+  padding: 0.52em 0 0.65em 0;
 }
 
 #election-coverage #election-results .election .cresults .result .cbar .bgbar {
-  background: #D0D0D0;
+  float: right;
+  position: relative;
+  background: #EFEFEF;
+  border: 1px solid #D0D0D0;
   border-radius: 5px;
-  width: 90%;
+  width: 93%;
   height: 100%;
-  overflow: hidden;
   margin: 0 auto;
 }
 
 #election-coverage #election-results .election .cresults .result .cbar .bgbar .fgbar {
-  background: #FDF;
-  height: 100%;
-  width: 50%;
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  border-radius: 4px;
 }
 
 #election-coverage #election-results .election .cresults .result .csubresults {

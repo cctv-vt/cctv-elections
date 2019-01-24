@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet"> 
     <!-- Load Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- Load Axios -->
@@ -34,14 +35,14 @@
                 </div>
                 <div id="election-results">
                     <div v-for="election of districts[currentVue].elections" class="election">
-                            <h3>{{ election.title }}</h3>
+                            <h3 tabindex="0">{{ election.title }}</h3>
                             <div class="cresults">
                                 <div v-for="result of election.results" @click="subToggle($event)" class="result">
                                     <div class="cname"><h4>{{ result.name }}</h4></div>
                                     <div class="cvotes"><h4>{{ getSum(result.votes) }}</h4></div>
                                     <div class="cbar">
                                         <div class="bgbar">
-                                            <div class="fgbar"></div>
+                                            <div :style="{ background: result.color, width: result.perc + '%' }" class="fgbar"></div>
                                         </div>
                                     </div>
                                     <div class="csubresults" style="height:0px;">
@@ -49,6 +50,7 @@
                                             {{ dsubresult }} : {{ subresult }}
                                         </div>
                                     </div>
+                                    <div></div>
                                 </div>
                             </div>
                     </div>
