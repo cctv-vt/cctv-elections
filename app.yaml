@@ -1,4 +1,4 @@
-runtime: python27
+runtime: custom
 api_version: 1
 threadsafe: true
 
