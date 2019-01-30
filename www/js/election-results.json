@@ -302,7 +302,129 @@
                             }
                         }
                     ]
+                },
+                {
+                    "title": "Essex Town Article: FY20 Town Budget",
+                    "results": [
+                        {
+                            "name": "Richard Deane (D)",
+                            "color": "#FFB800",
+                            "perc": 60,
+                            "votes": {
+                                "Burlington": 1234,
+                                "Bolton": 2525,
+                                "Charlotte": 33223,
+                                "Essex": 1232
+                            }
+                        },
+                        {
+                            "name": "Jared Carter (D)",
+                            "color": "#AD00FF",
+                            "perc": 25,
+                            "votes": {
+                                "Burlington": 12323,
+                                "Bolton": 1233,
+                                "Charlotte": 1234,
+                                "Essex": 1234
+                            }
+                        },
+                        {
+                            "name": "Perri Freeman (P)",
+                            "color": "#00E0FF",
+                            "perc": 10,
+                            "votes": {
+                                "Burlington": 1234,
+                                "Bolton": 16634,
+                                "Charlotte": 11213,
+                                "Essex": 12121
+                            }
+                        },
+                        {
+                            "name": "Ryan D. McLaren",
+                            "color": "#00FF75",
+                            "perc": 5,
+                            "votes": {
+                                "Burlington": 1121,
+                                "Bolton": 12121,
+                                "Charlotte": 11221,
+                                "Essex": 344
+                            }
+                        },
+                        {
+                            "name": "Kienan Christianson (P)",
+                            "color": "#FF003D",
+                            "perc": 0,
+                            "votes": {
+                                "Burlington": 12141,
+                                "Bolton": 1124,
+                                "Charlotte": 11244,
+                                "Essex": 121442
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Essex Town Article: FY20 Town Budget",
+                    "results": [
+                        {
+                            "name": "Richard Deane (D)",
+                            "color": "#FFB800",
+                            "perc": 60,
+                            "votes": {
+                                "Burlington": 1234,
+                                "Bolton": 2525,
+                                "Charlotte": 33223,
+                                "Essex": 1232
+                            }
+                        },
+                        {
+                            "name": "Jared Carter (D)",
+                            "color": "#AD00FF",
+                            "perc": 25,
+                            "votes": {
+                                "Burlington": 12323,
+                                "Bolton": 1233,
+                                "Charlotte": 1234,
+                                "Essex": 1234
+                            }
+                        },
+                        {
+                            "name": "Perri Freeman (P)",
+                            "color": "#00E0FF",
+                            "perc": 10,
+                            "votes": {
+                                "Burlington": 1234,
+                                "Bolton": 16634,
+                                "Charlotte": 11213,
+                                "Essex": 12121
+                            }
+                        },
+                        {
+                            "name": "Ryan D. McLaren",
+                            "color": "#00FF75",
+                            "perc": 5,
+                            "votes": {
+                                "Burlington": 1121,
+                                "Bolton": 12121,
+                                "Charlotte": 11221,
+                                "Essex": 344
+                            }
+                        },
+                        {
+                            "name": "Kienan Christianson (P)",
+                            "color": "#FF003D",
+                            "perc": 0,
+                            "votes": {
+                                "Burlington": 12141,
+                                "Bolton": 1124,
+                                "Charlotte": 11244,
+                                "Essex": 121442
+                            }
+                        }
+                    ]
                 }
+
+
 
 
 

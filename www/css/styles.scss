@@ -19,13 +19,24 @@ h1 {
   margin: 0 auto;
 }
 
-#nav {
-  margin-bottom: -3.1em;
-  h2 {
-    font-size: 30px;
-    text-align: left;
-    margin: 0.5em;
+.nav {
+  position: absolute;
+  background: #FCFCFC;
+  max-width: 1000px;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center; 
+  align-content: center;
+  height: 60px;
+  .menu-item {
+    cursor: pointer;
+    margin: 0em;
   }
+}
+.static {
+  position: fixed;
+  top: 0;
 }
 
 #election-coverage {
@@ -68,6 +79,7 @@ h1 {
       flex-direction: column;
       justify-content: center;
       align-content: center;
+      transition: transform 1s ease-in-out;
       h3 {
         margin: 0.3em;
         font-size: 23px;

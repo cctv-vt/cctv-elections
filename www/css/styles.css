@@ -16,14 +16,31 @@ h1 {
   margin: 0 auto;
 }
 
-#nav {
-  margin-bottom: -3.1em;
+.nav {
+  position: absolute;
+  background: #FCFCFC;
+  max-width: 1000px;
+  width: 100%;
+  z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  height: 60px;
 }
 
-#nav h2 {
-  font-size: 30px;
-  text-align: left;
-  margin: 0.5em;
+.nav .menu-item {
+  cursor: pointer;
+  margin: 0em;
+}
+
+.static {
+  position: fixed;
+  top: 0;
 }
 
 #election-coverage {
@@ -92,6 +109,10 @@ h1 {
           justify-content: center;
   -ms-flex-line-pack: center;
       align-content: center;
+  -webkit-transition: -webkit-transform 1s ease-in-out;
+  transition: -webkit-transform 1s ease-in-out;
+  transition: transform 1s ease-in-out;
+  transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
 }
 
 #election-coverage #election-results .election h3 {

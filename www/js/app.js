@@ -2,6 +2,19 @@ let refresh_rate = 20000;
 //var api_endpoint = "https://elections.cctv.org/elections/index.php?f=results";
 let api_endpoint = "./js/election-results.json"
 
+let navOffset = document.getElementById("nav").offsetTop;
+
+window.onresize = () => {
+  document.getElementById("nav").classList.remove("static")
+  navOffset = document.getElementById("nav").offsetTop;
+  navLock(document.getElementById("nav"))
+}
+
+window.onscroll = () => {
+  console.log(window.pageYOffset)
+  navLock(document.getElementById("nav"));
+}
+
 //Local Functions
 //getSum is used to get and sum the subresults to form the total number of votes
 const getSum = (obj) => {
@@ -12,10 +25,16 @@ const getSum = (obj) => {
   return sum;
 };
 
-//subToggle is used to toggle subresults
-const subToggle = () => {
-  console.log(event.srcElement.lastChild);
+//misc functions
+const navLock = (target) => {
+  if (window.pageYOffset >= navOffset) {
+    target.classList.add("static")
+  } else {
+    target.classList.remove("static")
+  }
 }
+
+
 
 //Vue Creation
 var app = new Vue({
@@ -45,7 +64,7 @@ var app = new Vue({
     //math and sorting functions
     sortVotes(arr) {
       return arr.slice(0, 12).sort(function (a, b) {
-        return getSum(b.votes) - getSum(a.votes);
+        return this.getSum(b.votes) - this.getSum(a.votes);
       });
     },
     getSum(obj) {
