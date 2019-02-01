@@ -30,12 +30,13 @@
             <h1>CCTV Elections</h1>
             <div id="video"><iframe src="https://www.youtube.com/embed/-9N1gGuHCaM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
             <div>
-                <div id="nav" class="nav">
+                <nav id="nav" class="nav">
+                    <h2>{{ districts[currentVue].title }} Results</h2>
                     <div v-on:click="currentVue = key" class="menu-item" v-for="(district, key) of districts" :key="key">
                         <h3>{{ district.title }}</h3>
                         <!-- <div class="divider"></div> -->
                     </div>
-                </div>
+                </nav>
                 <div id="election-results">
                     <div v-for="election of districts[currentVue].elections" class="election">
                             <h3 tabindex="0">{{ election.title }}</h3>
