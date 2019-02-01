@@ -3,15 +3,21 @@ let refresh_rate = 20000;
 let api_endpoint = "./js/election-results.json"
 
 let navOffset = document.getElementById("nav").offsetTop;
-
 window.onresize = () => {
   document.getElementById("nav").classList.remove("static")
   navOffset = document.getElementById("nav").offsetTop;
   navLock(document.getElementById("nav"))
+  console.log(window.innerWidth)
+  if (window.innerWidth >= 1000) {
+    console.log("wow");
+    if (document.getElementById("cmenu-items").style.height == "0px") {
+      document.getElementById("cmenu-items").style.height = "auto";
+      console.log("cool")
+    }
+  }
 }
 
 window.onscroll = () => {
-  console.log(window.pageYOffset)
   navLock(document.getElementById("nav"));
 }
 
@@ -33,8 +39,7 @@ const navLock = (target) => {
     target.classList.remove("static")
   }
 }
-
-
+ 
 
 //Vue Creation
 var app = new Vue({
@@ -42,6 +47,7 @@ var app = new Vue({
   data: {
     districts: [],
     currentVue : 0,
+    windowY : 0,
   },
   mounted() {
     this.getResults();
@@ -75,9 +81,19 @@ var app = new Vue({
       return sum;
     },
     //rendering and animation functions
+    districtChange(k, ev) {
+      document.getElementById("election-results").style.opacity = 0;
+      if (window.scrollY > navOffset) {window.scrollTo(0, navOffset)};
+      if (window.innerWidth <= 1000) {
+        ev.currentTarget.parentElement.style = "0px";
+      }
+      this.currentVue = k;
+      document.getElementById("election-results").style.opacity = 1;
+    },
     subToggle(ev) {
-      let sr = ev.currentTarget.lastChild
-      if(sr.style.height == '0px') {
+      let sr = ev.lastChild
+      
+      if(sr.style.height == '0px' || !sr.style.height) {
         sr.style.height = 'auto';
       } else {
         sr.style.height = '0px';
