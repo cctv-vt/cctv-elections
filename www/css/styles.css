@@ -25,17 +25,33 @@ h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  height: 60px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-line-pack: end;
+      align-content: flex-end;
+  padding-top: 0.25em;
+  border-bottom: 1px solid #D0D0D0;
+}
+
+.nav h2 {
+  margin: auto auto auto 0;
 }
 
 .nav .menu-item {
   cursor: pointer;
-  margin: 0em;
+  margin: 0.25em 0.5em 0.25em 0.5em;
+  padding: 0.25em 0.5em 0.25em 0.5em;
+  border-radius: 5px;
+  border: 1px solid #D0D0D0;
+}
+
+.nav .menu-item h3 {
+  margin: 0;
+}
+
+.nav .menu-item:hover {
+  background: #EFEFEF;
 }
 
 .static {
@@ -75,7 +91,7 @@ h1 {
 
 #election-coverage #election-results {
   max-width: 1000px;
-  min-height: calc(100vh - 3em);
+  min-height: calc(100vh - 3.9em);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -89,7 +105,7 @@ h1 {
       justify-content: space-around;
   -ms-flex-line-pack: start;
       align-content: flex-start;
-  padding-top: 3em;
+  padding-top: 4em;
 }
 
 #election-coverage #election-results .election {
@@ -113,6 +129,7 @@ h1 {
   transition: -webkit-transform 1s ease-in-out;
   transition: transform 1s ease-in-out;
   transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
+  padding-top: 1.0em;
 }
 
 #election-coverage #election-results .election h3 {
@@ -131,7 +148,7 @@ h1 {
 }
 
 #election-coverage #election-results .election .cresults h4 {
-  font-size: 14px;
+  font-size: 16px;
   margin: 0em;
 }
 
