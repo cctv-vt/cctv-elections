@@ -1,7 +1,7 @@
 {
     "districts": [
         {
-            "title": "Essex",
+            "title": "State Wide",
             "elections": [
                 {
                     "title": "Essex Town Article: FY20 Town Budget",
@@ -490,6 +490,21 @@
                     ]
                 }
             ]
+        },
+        {
+            "title": "Winnooski"
+        },
+        {
+            "title": "District 4"
+        },
+        {
+            "title": "District 5"
+        },
+        {
+            "title": "District 6"
+        },
+        {
+            "title": "District 7"
         }
     ]
 }
