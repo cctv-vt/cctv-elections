@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- load css compiled from sass -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,600" rel="stylesheet">
+    <!-- Load Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.7.0/js/all.js" integrity="sha384-qD/MNBVMm3hVYCbRTSOW130+CWeRIKbpot9/gR1BHkd7sIct4QKhT1hOPd+2hO8K" crossorigin="anonymous"></script>
+    <!-- Load Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- Load Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- Load Anime -->
+
+
+    <title>CCTV Elections</title>
+</head>
+
+<body>
+    <div id="app">
+        <!--<div id="nav">
+            <nav>
+                <div v-on:click="currentVue = key" class="menu-item" v-for="(district, key) of districts" :key="key">
+                    <h3>{{ district.title }}</h3>
+                    <div class="divider"></div>
+                </div>
+            </nav>
+        </div>-->
+        <div id="election-coverage">
+            <h1>CCTV Elections</h1>
+            <div id="video"><iframe src="https://www.youtube.com/embed/-9N1gGuHCaM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            <div>
+                <nav id="nav" class="nav">
+                    <div id="chead">
+                        <h2>{{ districts[currentVue].title }} Results</h2>
+                        <button @click="subToggle($event.currentTarget.parentElement.parentElement)" id="hamburger"><i class="fas fa-hamburger"></i></button>
+                    </div>
+                    <div id="cmenu-items">
+                        <button @click="districtChange(key, $event)" class="menu-item" v-for="(district, key) of districts" :key="key" tabindex="0">
+                            <h3>{{ district.title }}</h3>
+                        </button>
+                    </div>
+                </nav>
+                <div v-if="districts.length" id="election-results">
+                    <div v-for="election of districts[currentVue].elections" class="election">
+                            <h3>{{ election.title }}</h3>
+                            <div class="cresults">
+                                <div v-for="result of election.results" @click="subToggle($event.currentTarget)" class="result">
+                                    <div class="cname"><h4>{{ result.name }}</h4></div>
+                                    <div class="cvotes"><h4>{{ getSum(result.votes) }}</h4></div>
+                                    <div class="cbar">
+                                        <div class="bgbar">
+                                            <div :style="{ background: result.color, width: result.perc + '%' }" class="fgbar"></div>
+                                        </div>
+                                    </div>
+                                    <div class="csubresults" style="height:0px;">
+                                        <div v-for="(subresult, dsubresult) of result.votes" class="subresult">
+                                            {{ dsubresult }} : {{ subresult }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
