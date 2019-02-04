@@ -1,18 +1,15 @@
 let refresh_rate = 20000;
 //var api_endpoint = "https://elections.cctv.org/elections/index.php?f=results";
-let api_endpoint = "./js/election-results.json"
+let api_endpoint = "https://elections-api.cctv.org/api.php?f=results"
 
 let navOffset = document.getElementById("nav").offsetTop;
 window.onresize = () => {
   document.getElementById("nav").classList.remove("static")
   navOffset = document.getElementById("nav").offsetTop;
   navLock(document.getElementById("nav"))
-  console.log(window.innerWidth)
   if (window.innerWidth >= 1000) {
-    console.log("wow");
     if (document.getElementById("cmenu-items").style.height == "0px") {
       document.getElementById("cmenu-items").style.height = "auto";
-      console.log("cool")
     }
   }
 }
@@ -45,9 +42,27 @@ const navLock = (target) => {
 var app = new Vue({
   el: '#app',
   data: {
-    districts: [],
+    districts: [
+      {
+        "title": "loading...",
+        "results": [
+          {
+            "name": "loading...",
+            "votes": {
+            "loading": " votes...",
+            }
+          }
+        ]
+      }
+    ],
     currentVue : 0,
-    windowY : 0,
+    color: [
+      "#FFB800",
+      "#AD00FF",
+      "#00E0FF",
+      "#00FF75",
+      "#FF003D",
+    ]
   },
   mounted() {
     this.getResults();
@@ -70,7 +85,7 @@ var app = new Vue({
     //math and sorting functions
     sortVotes(arr) {
       return arr.slice(0, 12).sort(function (a, b) {
-        return this.getSum(b.votes) - this.getSum(a.votes);
+        return app.getSum(b.votes) - app.getSum(a.votes);
       });
     },
     getSum(obj) {
@@ -79,6 +94,13 @@ var app = new Vue({
         sum += obj[i];
       }
       return sum;
+    },
+    getVotePerc(elec, votes) {
+      electionTotal = 0;
+      for (res of elec.results) {
+        electionTotal += this.getSum(res.votes);
+      }
+      return (votes/electionTotal)*100;
     },
     //rendering and animation functions
     districtChange(k, ev) {
