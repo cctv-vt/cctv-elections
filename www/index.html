@@ -22,14 +22,6 @@
 
 <body>
     <div id="app">
-        <!--<div id="nav">
-            <nav>
-                <div v-on:click="currentVue = key" class="menu-item" v-for="(district, key) of districts" :key="key">
-                    <h3>{{ district.title }}</h3>
-                    <div class="divider"></div>
-                </div>
-            </nav>
-        </div>-->
         <div id="election-coverage">
             <h1>CCTV Elections</h1>
             <div id="video"><iframe src="https://www.youtube.com/embed/-9N1gGuHCaM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
@@ -37,7 +29,7 @@
                 <nav id="nav" class="nav">
                     <div id="chead">
                         <h2>{{ districts[currentVue].title }} Results</h2>
-                        <button @click="subToggle($event.currentTarget.parentElement.parentElement)" id="hamburger"><i class="fas fa-hamburger"></i></button>
+                        <button @click="subToggle($event.currentTarget.parentElement.parentElement, districts, 40.31)" id="hamburger"><i class="fas fa-hamburger"></i></button>
                     </div>
                     <div id="cmenu-items">
                         <button @click="districtChange(key, $event)" class="menu-item" v-for="(district, key) of districts" :key="key" tabindex="0">
@@ -49,17 +41,18 @@
                     <div v-for="election of districts[currentVue].elections" class="election">
                             <h3>{{ election.title }}</h3>
                             <div class="cresults">
-                                <div v-for="(result, cn) of sortVotes(election.results)" @click="subToggle($event.currentTarget)" class="result">
+                                <div v-for="(result, cn) of sortVotes(election.results)" @click="if(subResultsLength(result.votes) > 1){subToggle($event.currentTarget, result.votes, 39)}" class="result">
                                     <div class="cname"><h4>{{ result.name }}</h4></div>
                                     <div class="cvotes"><h4>{{ getSum(result.votes) }}</h4></div>
                                     <div class="cbar">
                                         <div class="bgbar">
-                                            <div :style="{ background: color[cn], width: getVotePerc(election, getSum(result.votes)) + '%' }" class="fgbar"></div>
+                                            <div :style="{ background: settings.color[cn], width: getVotePerc(election, getSum(result.votes)) + '%' }" class="fgbar"></div>
                                         </div>
                                     </div>
-                                    <div class="csubresults" style="height:0px;">
-                                        <div v-for="(subresult, dsubresult) of result.votes" class="subresult">
-                                            {{ dsubresult }} : {{ subresult }}
+                                    <div v-if="subResultsLength(result.votes) > 1" class="csubresults" style="height:0px;">
+                                        <div v-for="(subresult, dsubresult) of result.votes" class="csubresult">
+                                            <p class="dsub">{{ dsubresult }}</p>
+                                            <p class="vsub">{{ subresult }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +62,7 @@
             </div>
         </div>
     </div>
-    <script src="js/app.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>

@@ -44,7 +44,7 @@ var app = new Vue({
   data: {
     districts: [
       {
-        "title": "loading...",
+        "title": "Loading",
         "results": [
           {
             "name": "loading...",
@@ -56,13 +56,16 @@ var app = new Vue({
       }
     ],
     currentVue : 0,
-    color: [
-      "#FFB800",
-      "#AD00FF",
-      "#00E0FF",
-      "#00FF75",
-      "#FF003D",
-    ]
+    settings: {
+      color: [
+        "#FFB800",
+        "#AD00FF",
+        "#00E0FF",
+        "#00FF75",
+        "#FF003D",
+      ]
+    }
+    
   },
   mounted() {
     this.getResults();
@@ -77,6 +80,7 @@ var app = new Vue({
       axios.get(api_endpoint)
         .then(function (response) {
           //Sets the districts array in data to the districts array of the recieved data
+          console.log("Receiving results from remote API endpoint.")
           app.districts = response.data.districts;
         }).catch(error => {
           console.log(error);
@@ -102,6 +106,13 @@ var app = new Vue({
       }
       return (votes/electionTotal)*100;
     },
+    subResultsLength(obj) {
+      let len = 0
+      for (d in obj) {
+        len += 1
+      }
+      return len
+    },
     //rendering and animation functions
     districtChange(k, ev) {
       document.getElementById("election-results").style.opacity = 0;
@@ -112,11 +123,14 @@ var app = new Vue({
       this.currentVue = k;
       document.getElementById("election-results").style.opacity = 1;
     },
-    subToggle(ev) {
+    subToggle(ev, v, eh) {
+      //'ev' refers to the clicked element, 
+      //'v' refers to the object that is iterated for the drop down, 
+      //and 'eh' is the height one of the iterated objects
       let sr = ev.lastChild
-      
+      let h = this.subResultsLength(v)
       if(sr.style.height == '0px' || !sr.style.height) {
-        sr.style.height = 'auto';
+        sr.style.height = h * eh + 'px';
       } else {
         sr.style.height = '0px';
       };
