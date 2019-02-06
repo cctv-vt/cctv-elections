@@ -8,9 +8,7 @@ window.onresize = () => {
   navOffset = document.getElementById("nav").offsetTop;
   navLock(document.getElementById("nav"))
   if (window.innerWidth >= 1000) {
-    if (document.getElementById("cmenu-items").style.height == "0px") {
-      document.getElementById("cmenu-items").style.height = "auto";
-    }
+    document.getElementById("cmenu-items").style.height = "auto";
   }
 }
 
