@@ -43,7 +43,7 @@
                             <div class="cresults">
                                 <div v-for="(result, cn) of sortVotes(election.results)" @click="if(subResultsLength(result.votes) > 1){subToggle($event.currentTarget, result.votes, 39)}" class="result">
                                     <div class="cname"><h4>{{ result.name }}</h4></div>
-                                    <div class="cvotes"><h4>{{ getSum(result.votes) }}</h4></div>
+                                    <div class="cvotes"><h4>{{ getSum(result.votes) }} ({{ Math.round(getVotePerc(election, getSum(result.votes))) }}%)</h4></div>
                                     <div class="cbar">
                                         <div class="bgbar">
                                             <div :style="{ background: settings.color[cn], width: getVotePerc(election, getSum(result.votes)) + '%' }" class="fgbar"></div>

@@ -207,13 +207,13 @@ h1 {
 }
 
 #election-coverage #election-results .election .cresults .result .cname {
-  width: 40%;
+  width: 35%;
   padding: 0.6em 0 0.6em 0;
   white-space: nowrap;
 }
 
 #election-coverage #election-results .election .cresults .result .cvotes {
-  width: 15%;
+  width: 20%;
   text-align: right;
   padding: 0.6em 0 0.6em 0;
 }
@@ -232,6 +232,23 @@ h1 {
   width: 93%;
   height: 100%;
   margin: 0 auto;
+}
+
+#election-coverage #election-results .election .cresults .result .cbar .bgbar .pbar {
+  z-index: 9;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.349);
+  top: -10px;
+  left: 10px;
+  border-radius: 100px;
+}
+
+#election-coverage #election-results .election .cresults .result .cbar .bgbar .pbar p {
+  overflow: visible;
+  text-align: center;
+  margin-top: 10px;
 }
 
 #election-coverage #election-results .election .cresults .result .cbar .bgbar .fgbar {
@@ -360,9 +377,11 @@ h1 {
             justify-content: space-between;
   }
   #election-coverage #election-results .election .cresults .result .cname {
+    width: 50%;
     padding: 0.2em 0 0.6em 0;
   }
   #election-coverage #election-results .election .cresults .result .cvotes {
+    width: 50%;
     padding: 0.2em 0 0.6em 0;
   }
   #election-coverage #election-results .election .cresults .result .cbar {
