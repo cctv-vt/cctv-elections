@@ -3,7 +3,7 @@ var refresh_rate = 20000;
 var api_endpoint = "https://elections-api.cctv.org/api.php?f=results"
 
 var navOffset = document.getElementById("nav").offsetTop;
-window.onresize = () => {
+window.onresize = function() {
   document.getElementById("nav").classList.remove("static")
   navOffset = document.getElementById("nav").offsetTop;
   navLock(document.getElementById("nav"))
