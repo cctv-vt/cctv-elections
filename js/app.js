@@ -1,8 +1,8 @@
-let refresh_rate = 20000;
+var refresh_rate = 20000;
 //var api_endpoint = "https://elections.cctv.org/elections/index.php?f=results";
-let api_endpoint = "https://elections-api.cctv.org/api.php?f=results"
+var api_endpoint = "https://elections-api.cctv.org/api.php?f=results"
 
-let navOffset = document.getElementById("nav").offsetTop;
+var navOffset = document.getElementById("nav").offsetTop;
 window.onresize = () => {
   document.getElementById("nav").classList.remove("static")
   navOffset = document.getElementById("nav").offsetTop;
@@ -12,14 +12,14 @@ window.onresize = () => {
   }
 }
 
-window.onscroll = () => {
+window.onscroll = function() {
   navLock(document.getElementById("nav"));
 }
 
 //Local Functions
 //getSum is used to get and sum the subresults to form the total number of votes
-const getSum = (obj) => {
-  let sum = 0;
+const getSum = function(obj) {
+  var sum = 0;
   for (i in obj) {
     sum += obj[i];
   }
@@ -27,7 +27,7 @@ const getSum = (obj) => {
 };
 
 //misc functions
-const navLock = (target) => {
+const navLock = function(target) {
   if (window.pageYOffset >= navOffset) {
     target.classList.add("static")
   } else {
@@ -80,7 +80,7 @@ var app = new Vue({
           //Sets the districts array in data to the districts array of the recieved data
           console.log("Receiving results from remote API endpoint.")
           app.districts = response.data.districts;
-        }).catch(error => {
+        }).catch(function(error) {
           console.log(error);
         });
     },
@@ -91,7 +91,7 @@ var app = new Vue({
       });
     },
     getSum(obj) {
-      let sum = 0;
+      var sum = 0;
       for (i in obj) {
         sum += obj[i];
       }
@@ -105,7 +105,7 @@ var app = new Vue({
       return (votes/electionTotal)*100;
     },
     subResultsLength(obj) {
-      let len = 0
+      var len = 0
       for (d in obj) {
         len += 1
       }
@@ -125,8 +125,8 @@ var app = new Vue({
       //'ev' refers to the clicked element, 
       //'v' refers to the object that is iterated for the drop down, 
       //and 'eh' is the height one of the iterated objects
-      let sr = ev.lastChild
-      let h = this.subResultsLength(v)
+      var sr = ev.lastChild
+      var h = this.subResultsLength(v)
       if(sr.style.height == '0px' || !sr.style.height) {
         sr.style.height = h * eh + 'px';
       } else {
