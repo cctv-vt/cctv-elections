@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- load css compiled from sass -->
-    <link rel="stylesheet" href="css/styles.min.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,600" rel="stylesheet">
@@ -31,9 +31,11 @@
 
 <body>
     <div id="app">
+        <div id="loading"></div>
         <div id="election-coverage">
-            <h1>CCTV Elections</h1>
-            <div id="video"><iframe src="https://www.youtube.com/embed/-9N1gGuHCaM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            <h1 style="width:100%;">CCTV Elections</h1>
+            <div id="cvideo"><div id="video"><iframe src="https://www.youtube.com/embed/-9N1gGuHCaM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+            <div id="csocial"><a class="twitter-timeline" data-height="390" data-partner="tweetdeck" data-theme="light" href="https://twitter.com/angryatcode/timelines/1093623910191505409?ref_src=twsrc%5Etfw">Test - Curated tweets by angryatcode</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
             <div>
                 <nav id="nav" class="nav">
                     <div id="chead">
