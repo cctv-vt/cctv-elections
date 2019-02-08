@@ -23,6 +23,14 @@ h1 {
   margin: 0.3em 2px 0.3em 2px;
 }
 
+#loading {
+  position: fixed;
+  z-index: 15;
+  background: white;
+  width: 100vw;
+  height: 100vh;
+}
+
 .divider {
   height: 1px;
   width: 100%;
@@ -92,12 +100,24 @@ h1 {
 #election-coverage {
   background: $background-c;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   max-width: 1000px;
   height: 690px;
   margin:0 auto;
   padding: 0em;
+<<<<<<< HEAD
   border-right: $border;
+=======
+  #cvideo {
+    width: 65%;
+  }
+  #csocial {
+    width:33%;
+    margin-left: 2%;
+    height: 390px;
+  }
+>>>>>>> social
   #video {
     position:relative;
     padding-bottom:56.25%;
@@ -116,8 +136,13 @@ h1 {
   }
 
   #election-results {
+<<<<<<< HEAD
     background: $body-c;
     max-width: 1000px;
+=======
+    width:100%;
+    //max-width: 1000px;
+>>>>>>> social
     min-height: calc(100vh - 3.9em);
     display: flex;
     flex-direction: row;
@@ -244,6 +269,14 @@ h1 {
   }
 }
 @media only screen and (max-width: 1000px) {
+  #election-coverage {
+    #cvideo {
+      width: 100%;
+    }
+    #csocial {
+      display:none;
+    }
+  }
   .nav {
     background: transparent;
     border: 0;
