@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- load css compiled from sass -->
-    <link rel="stylesheet" href="css/styles.min.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,600" rel="stylesheet">
@@ -38,7 +38,7 @@
                 <nav id="nav" class="nav">
                     <div id="chead">
                         <h2>{{ districts[currentVue].title }} Results</h2>
-                        <button @click="subToggle($event.currentTarget.parentElement.parentElement, districts, 40.31)" id="hamburger"><i class="fas fa-hamburger"></i></button>
+                        <button @click="subToggle($event.currentTarget.parentElement.parentElement, districts, 40.31)" id="hamburger"><i class="fas fa-bars fa-2x"></i></button>
                     </div>
                     <div id="cmenu-items">
                         <button @click="districtChange(key, $event)" class="menu-item" v-for="(district, key) of districts" :key="key" tabindex="0">
