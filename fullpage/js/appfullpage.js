@@ -2,19 +2,23 @@ var refresh_rate = 20000;
 //var api_endpoint = "https://elections.cctv.org/elections/index.php?f=results";
 var api_endpoint = "https://elections-api.cctv.org/api.php?f=results"
 
-var navOffset = document.getElementById("nav").offsetTop;
-window.onresize = function() {
-  document.getElementById("nav").classList.remove("static")
-  navOffset = document.getElementById("nav").offsetTop;
-  navLock(document.getElementById("nav"))
-  if (window.innerWidth >= 1000) {
-    document.getElementById("cmenu-items").style.height = "auto";
-  }
-}
+var url = new URLSearchParams(window.location.search)
+var d = url.get("d")
+var e = url.get("e")
+console.log(d + e)
+// var navOffset = document.getElementById("nav").offsetTop;
+// window.onresize = function() {
+//   document.getElementById("nav").classList.remove("static")
+//   navOffset = document.getElementById("nav").offsetTop;
+//   navLock(document.getElementById("nav"))
+//   if (window.innerWidth >= 1000) {
+//     document.getElementById("cmenu-items").style.height = "auto";
+//   }
+// }
 
-window.onscroll = function() {
-  navLock(document.getElementById("nav"));
-}
+// window.onscroll = function() {
+//   navLock(document.getElementById("nav"));
+// }
 
 //Local Functions
 //getSum is used to get and sum the subresults to form the total number of votes
@@ -37,8 +41,8 @@ const navLock = function(target) {
  
 
 //Vue Creation
-var app = new Vue({
-  el: '#app',
+var appfullpage = new Vue({
+  el: '#appfullpage',
   data: {
     districts: [
       {
@@ -53,7 +57,8 @@ var app = new Vue({
         ]
       }
     ],
-    currentVue : 0,
+    currentVue : d,
+    elec: e,
     settings: {
       color: [
         "#FFB800",
@@ -80,7 +85,7 @@ var app = new Vue({
         .then(function (response) {
           //Sets the districts array in data to the districts array of the recieved data
           console.log("Receiving results from remote API endpoint.")
-          app.districts = response.data.districts;
+          appfullpage.districts = response.data.districts;
         }).catch(function(error) {
           console.log(error);
         });
@@ -88,7 +93,7 @@ var app = new Vue({
     //math and sorting functions
     sortVotes(arr) {
       return arr.slice(0, 12).sort(function (a, b) {
-        return app.getSum(b.votes) - app.getSum(a.votes);
+        return appfullpage.getSum(b.votes) - appfullpage.getSum(a.votes);
       });
     },
     getSum(obj) {

@@ -103,12 +103,10 @@ h1 {
   flex-direction: row;
   flex-wrap: wrap;
   max-width: 1000px;
-  height: 690px;
+  height: 490px;
   margin:0 auto;
   padding: 0em;
-<<<<<<< HEAD
   border-right: $border;
-=======
   #cvideo {
     width: 65%;
   }
@@ -117,7 +115,6 @@ h1 {
     margin-left: 2%;
     height: 390px;
   }
->>>>>>> social
   #video {
     position:relative;
     padding-bottom:56.25%;
@@ -136,13 +133,10 @@ h1 {
   }
 
   #election-results {
-<<<<<<< HEAD
     background: $body-c;
     max-width: 1000px;
-=======
     width:100%;
     //max-width: 1000px;
->>>>>>> social
     min-height: calc(100vh - 3.9em);
     display: flex;
     flex-direction: row;
@@ -270,6 +264,7 @@ h1 {
 }
 @media only screen and (max-width: 1000px) {
   #election-coverage {
+    border-right: 0;
     #cvideo {
       width: 100%;
     }
