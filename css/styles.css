@@ -395,6 +395,26 @@ h1 {
     border-left: 0;
     max-width: 100%;
   }
+  #election-coverage {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    min-height: 1000px;
+    border-right: 0;
+  }
+  #election-coverage #cvideo {
+    width: 100%;
+  }
+  #election-coverage #csocial {
+    display: none;
+  }
+  #election-coverage #election-results {
+    width: 100%;
+    max-width: 100%;
+  }
   #election-coverage #election-results .election {
     padding: 0;
     padding-top: 1em;

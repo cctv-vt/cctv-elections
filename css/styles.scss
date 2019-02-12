@@ -330,7 +330,6 @@ h1 {
 }
 
 @media only screen and (max-width: 500px) {
-
   .nav {
     #cmenu-items {
       width: 100%;
@@ -340,7 +339,19 @@ h1 {
   }
 
   #election-coverage {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    min-height: 1000px;
+    border-right: 0;
+    #cvideo {
+      width: 100%;
+    }
+    #csocial {
+      display:none;
+    }
     #election-results {
+      width: 100%;
+      max-width: 100%;
       .election {
         padding: 0;
         padding-top: 1em;
