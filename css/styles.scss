@@ -264,6 +264,9 @@ h1 {
 }
 @media only screen and (max-width: 1000px) {
   #election-coverage {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    min-height: 1000px;
     border-right: 0;
     #cvideo {
       width: 100%;
