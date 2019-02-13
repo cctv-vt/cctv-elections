@@ -2,6 +2,11 @@ var refresh_rate = 20000;
 //var api_endpoint = "https://elections.cctv.org/elections/index.php?f=results";
 var api_endpoint = "https://elections-api.cctv.org/api.php?f=results"
 
+var url = new URLSearchParams(window.location.search)
+var d = url.get("d")
+var e = url.get("e")
+console.log(d + e)
+
 var navOffset = document.getElementById("nav").offsetTop;
 window.onresize = function() {
   document.getElementById("nav").classList.remove("static")
@@ -54,6 +59,8 @@ var app = new Vue({
       }
     ],
     currentVue : 0,
+    dist : d,
+    elec : e,
     settings: {
       color: [
         "#FFB800",

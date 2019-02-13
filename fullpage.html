@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- load css compiled from sass -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="fullpagecss/styles.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,600" rel="stylesheet">
@@ -30,16 +30,17 @@
 </head>
 
 <body>
-    <div id="appfullpage">
+    <div id="nav"></div>
+    <div id="app">
         <div class="election">
-            <h3>{{ districts[currentVue].elections[elec].title }}</h3>
+            <h3>{{ districts[dist].elections[elec].title }}</h3>
             <div class="cresults">
-                <div v-for="(result, cn) of sortVotes(districts[currentVue].elections[elec].results)" @click="if(subResultsLength(result.votes) > 1){subToggle($event.currentTarget, result.votes, 39)}" class="result">
+                <div v-for="(result, cn) of sortVotes(districts[dist].elections[elec].results)" @click="if(subResultsLength(result.votes) > 1){subToggle($event.currentTarget, result.votes, 39)}" class="result">
                     <div class="cname"><h4>{{ result.name }}</h4></div>
-                    <div class="cvotes"><h4>{{ getSum(result.votes) }} ({{ Math.round(getVotePerc(districts[currentVue].elections[elec], getSum(result.votes))) }}%)</h4></div>
+                    <div class="cvotes"><h4>{{ getSum(result.votes) }} ({{ Math.round(getVotePerc(districts[dist].elections[elec], getSum(result.votes))) }}%)</h4></div>
                     <div class="cbar">
                         <div class="bgbar">
-                            <div :style="{ background: settings.color[cn], width: getVotePerc(districts[currentVue].elections[elec], getSum(result.votes)) + '%' }" class="fgbar"></div>
+                            <div :style="{ background: settings.color[cn], width: getVotePerc(districts[dist].elections[elec], getSum(result.votes)) + '%' }" class="fgbar"></div>
                         </div>
                     </div>
                     <div v-if="subResultsLength(result.votes) > 1" class="csubresults" style="height:0px;">
@@ -51,7 +52,7 @@
                 </div>
             </div>
         </div>
-    <script src="js/appfullpage.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
