@@ -63,11 +63,11 @@ var app = new Vue({
     elec : e,
     settings: {
       color: [
-        "#FFB800",
-        "#AD00FF",
-        "#00E0FF",
-        "#00FF75",
-        "#FF003D",
+        "#A76DA6",
+        "#FEE351",
+        "#D6647F",
+        "#79A8ED",
+        "#78E381",
       ]
     }
     
