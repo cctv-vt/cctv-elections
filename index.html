@@ -68,7 +68,7 @@
                                             <div :style="{ background: settings.color[cn], width: getVotePerc(election, getSum(result.votes)) + '%' }" class="fgbar"></div>
                                         </div>
                                     </div>
-                                    <div v-if="subResultsLength(result.votes) > 1" class="csubresults" style="height:0px;">
+                                    <div v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults" class="csubresults" style="height:0px;">
                                         <div v-for="(subresult, dsubresult) of result.votes" class="csubresult">
                                             <p class="dsub">{{ dsubresult }}</p>
                                             <p class="vsub">{{ subresult }}</p>
