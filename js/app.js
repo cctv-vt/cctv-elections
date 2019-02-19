@@ -7,7 +7,7 @@ var d = url.get("d")
 var e = url.get("e")
 var theme = url.get("theme")
 if (!theme) {
-  theme = "dull"
+  var theme = "dull"
 }
 console.log(d + e)
 
@@ -81,8 +81,8 @@ var app = new Vue({
       "tmd19" : {
         img : "img/newlogo.svg",
         color: [
-          "#AD00FF",
           "#FFB800",
+          "#AD00FF",
           "#00E0FF",
           "#FF003D",
           "#00FF75",
