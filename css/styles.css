@@ -161,7 +161,7 @@ h1 {
 
 #election-coverage #clinks a {
   text-decoration: none;
-  font-size: 19px;
+  font-size: 14px;
   color: #000000;
 }
 
@@ -405,7 +405,7 @@ h1 {
   }
   #election-coverage #clinks a {
     display: block;
-    height: 20px;
+    height: 16px;
   }
   #election-coverage #cvideo {
     width: 100%;
