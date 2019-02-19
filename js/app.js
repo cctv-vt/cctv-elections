@@ -12,6 +12,19 @@ if (!theme) {
 console.log(d + e)
 
 var navOffset = document.getElementById("nav").offsetTop;
+
+setTimeout(function () {
+  console.log("cool")
+  document.getElementById("nav").classList.remove("static")
+  navOffset = document.getElementById("nav").offsetTop;
+  navLock(document.getElementById("nav"))
+  document.getElementById("election-coverage").style.height = navOffset + 'px'
+  if (window.innerWidth >= 1000) {
+    document.getElementById("cmenu-items").style.height = "auto";
+  }
+}, 500);
+
+
 window.onresize = function() {
   document.getElementById("election-coverage").style.height = navOffset + 'px'
   document.getElementById("nav").classList.remove("static")
@@ -98,7 +111,6 @@ var app = new Vue({
     setInterval(function () {
       this.getResults();
     }.bind(this), refresh_rate);
-    document.getElementById("election-coverage").style.height = '600px'
   },
   methods: {
     //data retrieval functions
