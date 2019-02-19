@@ -5,10 +5,15 @@ var api_endpoint = "https://elections-api.cctv.org/api.php?f=results"
 var url = new URLSearchParams(window.location.search)
 var d = url.get("d")
 var e = url.get("e")
+var theme = url.get("theme")
+if (!theme) {
+  theme = "dull"
+}
 console.log(d + e)
 
 var navOffset = document.getElementById("nav").offsetTop;
 window.onresize = function() {
+  document.getElementById("election-coverage").style.height = navOffset + 'px'
   document.getElementById("nav").classList.remove("static")
   navOffset = document.getElementById("nav").offsetTop;
   navLock(document.getElementById("nav"))
@@ -61,14 +66,29 @@ var app = new Vue({
     currentVue : 0,
     dist : d,
     elec : e,
+    theme : theme,
     settings: {
-      color: [
-        "#A76DA6",
-        "#FEE351",
-        "#D6647F",
-        "#79A8ED",
-        "#78E381",
-      ]
+      "dull" : {
+        img : "img/logo.svg",
+        color: [
+          "#A76DA6",
+          "#FEE351",
+          "#D6647F",
+          "#79A8ED",
+          "#78E381",
+        ]
+      },
+      "tmd19" : {
+        img : "img/newlogo.svg",
+        color: [
+          "#AD00FF",
+          "#FFB800",
+          "#00E0FF",
+          "#FF003D",
+          "#00FF75",
+        ]
+      }
+
     }
     
   },
@@ -78,6 +98,7 @@ var app = new Vue({
     setInterval(function () {
       this.getResults();
     }.bind(this), refresh_rate);
+    document.getElementById("election-coverage").style.height = '600px'
   },
   methods: {
     //data retrieval functions
@@ -121,13 +142,13 @@ var app = new Vue({
     },
     //rendering and animation functions
     districtChange(k, ev) {
-      document.getElementById("election-results").style.opacity = 0;
       if (window.scrollY > navOffset) {window.scrollTo(0, navOffset)};
       if (window.innerWidth <= 1000) {
         ev.currentTarget.parentElement.style = "0px";
       }
       this.currentVue = k;
-      document.getElementById("election-results").style.opacity = 1;
+      dChangeAnim.reverse();
+      
     },
     subToggle(ev, v, eh) {
       //'ev' refers to the clicked element, 
@@ -140,6 +161,9 @@ var app = new Vue({
       } else {
         sr.style.height = '0px';
       };
+    },
+    themeToggle() {
+
     }
   }
 });

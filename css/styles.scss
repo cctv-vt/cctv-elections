@@ -1,4 +1,5 @@
 $font-stack:'Lato', sans-serif;
+$font-color: #000000;
 $background-c: #ffffff;
 $border-c:#e9e9e9;
 $body-c:#f5f5f5;
@@ -10,11 +11,13 @@ body {
   background: $body-c;
   font-family: $font-stack;
   font-weight: normal;
+  color: $font-color;
   margin:0;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
+  font-family: $font-stack;
 }
 
 h1 {
@@ -51,7 +54,8 @@ h1 {
   //padding-bottom: 0.25em;
   padding-top: 0.25em;
   border-right: $border;
-  border-bottom: 2px solid $border-c;
+  border-bottom: $border;
+  border-radius: 0 0 5px 5px;
   h2 {
     margin: auto auto auto 10px;
     font-size: 27px;
@@ -71,22 +75,28 @@ h1 {
     display: flex;
     width: auto;
     height: auto;
+    //margin-bottom: 10px;
     margin-right: 10px;
-    .menu-item {
-      background-color: $background-c;
-      cursor: pointer;
-      margin: 0.25em 2px 0.25em 2px;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-      border-radius: 5px;
-      border: $border;
-      h3 {
-        margin: 0;
-        font-size: 22px;
-      }
-      &:hover {
-        background: $border-c;
-      }
-      }
+    border-bottom: 0;
+    transition: height 0.4s ease-in-out;
+  }
+}
+.menu-item {
+  background-color: $background-c;
+  cursor: pointer;
+  margin: 0.25em 2px 7px 2px;
+  padding: 0.25em 0.5em 0.25em 0.5em;
+  border-radius: 5px;
+  border: $border;
+  h3 {
+    margin: 0;
+    font-size: 22px;
+  }
+  &:hover {
+    background: $border-c;
+  }
+  &:active {
+    background: $border-c;
   }
 }
 .static {
@@ -100,7 +110,7 @@ h1 {
   flex-direction: row;
   flex-wrap: wrap;
   max-width: 1000px;
-  height: 600px;
+  height: 550px;
   margin:0 auto;
   padding: 0;
   border-right: $border;
@@ -113,17 +123,23 @@ h1 {
     img {
       display: block;
       max-width: 100%;
+      margin: auto;
     }
     h1 {
+      display: none;
       margin: auto 0 0 0;
     }
   }
   #clinks {
-    width: 100%;
+    //width: 100%;
     margin: 1%;
-    margin-top: -1%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
     a {
-      margin-right: 1%;
+      text-decoration: none;
+      font-size: 19px;
+      color: $font-color;
     }
   }
   #cvideo {
@@ -187,6 +203,7 @@ h1 {
         border: $border;
         overflow: hidden;
         padding:0.5em;
+        box-shadow: 5px 5px 0px -3px $border-c;
         h4 {
           font-size: 16px;
           margin: 0em;
@@ -199,10 +216,6 @@ h1 {
           padding:0.25em 0.4em 0.25em 0.4em;
           //border-bottom: 1px solid #D0D0D0;
           border-radius: 5px;
-          &:hover {
-            background: $border-c;
-            cursor: pointer;
-          }
           .cname {
             width: 35%;
             padding:0.6em 0 0.6em 0;
@@ -277,6 +290,12 @@ h1 {
             }
           }
         }
+        .hresult {
+          &:hover {
+            background: $border-c;
+            cursor: pointer;
+          }
+        }
       }
     }
   }
@@ -289,7 +308,7 @@ h1 {
     border-right: 0;
     header {
       margin: 0;
-      margin-bottom: 7.5em;
+      margin-bottom: 5.5em;
       flex-direction: column;
       img {
         margin: auto;
@@ -300,11 +319,13 @@ h1 {
     }
     #clinks {
       margin: 0;
-      margin-bottom: 2em;
+      margin-bottom: 3em;
       display: flex;
       justify-content: center;
+
       a {
         display: block;
+        height: 20px;
         //margin: auto;
       }
     }
@@ -344,6 +365,7 @@ h1 {
       //border-bottom: 1px solid $border-c;
       border-left: 1px solid $border-c;
       margin-right: 0;
+      border-bottom: $border;
       .menu-item {
         background-color: $background-c;
         cursor: pointer;
@@ -388,6 +410,15 @@ h1 {
     flex-wrap: nowrap;
     min-height: 1000px;
     border-right: 0;
+    #clinks {
+      display: flex;
+      flex-direction: column;
+      margin-top: 3.2em;
+      margin-bottom: 4em;
+      a {
+        margin-bottom: 0;
+      }
+    }
     #cvideo {
       width: 100%;
       margin: 0;
