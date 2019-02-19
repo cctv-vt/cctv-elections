@@ -31,7 +31,8 @@
 
 <body>
     <div id="nav"></div>
-    <div id="app">
+    <div id="app"> 
+        <h1>{{ districts[dist].title }}</h1>
         <div class="election">
             <h3>{{ districts[dist].elections[elec].title }}</h3>
             <div class="cresults">
@@ -40,7 +41,7 @@
                     <div class="cvotes"><h4>{{ getSum(result.votes) }} ({{ Math.round(getVotePerc(districts[dist].elections[elec], getSum(result.votes))) }}%)</h4></div>
                     <div class="cbar">
                         <div class="bgbar">
-                            <div :style="{ background: settings.color[cn], width: getVotePerc(districts[dist].elections[elec], getSum(result.votes)) + '%' }" class="fgbar"></div>
+                            <div :style="{ background: settings[theme].color[cn], width: getVotePerc(districts[dist].elections[elec], getSum(result.votes)) + '%' }" class="fgbar"></div>
                         </div>
                     </div>
                     <div v-if="subResultsLength(result.votes) > 1" class="csubresults" style="height:0px;">
