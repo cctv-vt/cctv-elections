@@ -1,12 +1,53 @@
 //THIS CSS IS FOR OVERRIDING THEMAIN STYLESHEET KEEP IT SHORT
+#clinks {
+  margin: 0 !important;
+  width: 100%;
+  display: flex !important;
+  justify-content: center !important;
+}
+.menu-item {
+  display: block;
+  border-radius: 0 !important;
+  transform: skew(-5deg, 0);
+  margin-left: 0 !important;
+  margin-right: -1px !important;
+  transition-duration: 0.05s;
+  &:hover{
+    transform: scale(1.5) skew(-5deg, 0);
+    z-index: 2;
+    background: white !important;
+  }
+}
 
+.cresults {
+  border-radius: 0 !important;
+  box-shadow: 0 0 0 transparent !important;
+  transform: skew(5deg, 0);
+  transition-duration: 0.1s;
+  &:hover{
+    transform: scale(1.2) skew(5deg, 0);
+    z-index: 2;
+  }
+}
+.result {
+  border-radius: 0 !important;
+  
+  div {
+    transform: skew(-5deg, 0);
+  }
+}
 .cbar {
   padding: 0.9em 0 0.9em 0 !important;
-  transform: skew(10deg, 0);
+  transform: skew(1deg, 0) !important;
 }
 .bgbar {
   border-radius: 0 !important;
+  transform: skew(1deg, 0) !important;
 }
 .fgbar {
   border-radius: 0 !important;
+  transform: skew(1deg, 0) !important;
+  top: -2px !important;
+  bottom: -2px !important;
+  left: -2px !important;
 }

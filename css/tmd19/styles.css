@@ -1,14 +1,75 @@
+#clinks {
+  margin: 0 !important;
+  width: 100%;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+}
+
+.menu-item {
+  display: block;
+  border-radius: 0 !important;
+  -webkit-transform: skew(-5deg, 0);
+          transform: skew(-5deg, 0);
+  margin-left: 0 !important;
+  margin-right: -1px !important;
+  -webkit-transition-duration: 0.05s;
+          transition-duration: 0.05s;
+}
+
+.menu-item:hover {
+  -webkit-transform: scale(1.5) skew(-5deg, 0);
+          transform: scale(1.5) skew(-5deg, 0);
+  z-index: 2;
+  background: white !important;
+}
+
+.cresults {
+  border-radius: 0 !important;
+  -webkit-box-shadow: 0 0 0 transparent !important;
+          box-shadow: 0 0 0 transparent !important;
+  -webkit-transform: skew(5deg, 0);
+          transform: skew(5deg, 0);
+  -webkit-transition-duration: 0.1s;
+          transition-duration: 0.1s;
+}
+
+.cresults:hover {
+  -webkit-transform: scale(1.2) skew(5deg, 0);
+          transform: scale(1.2) skew(5deg, 0);
+  z-index: 2;
+}
+
+.result {
+  border-radius: 0 !important;
+}
+
+.result div {
+  -webkit-transform: skew(-5deg, 0);
+          transform: skew(-5deg, 0);
+}
+
 .cbar {
   padding: 0.9em 0 0.9em 0 !important;
-  -webkit-transform: skew(10deg, 0);
-          transform: skew(10deg, 0);
+  -webkit-transform: skew(1deg, 0) !important;
+          transform: skew(1deg, 0) !important;
 }
 
 .bgbar {
   border-radius: 0 !important;
+  -webkit-transform: skew(1deg, 0) !important;
+          transform: skew(1deg, 0) !important;
 }
 
 .fgbar {
   border-radius: 0 !important;
+  -webkit-transform: skew(1deg, 0) !important;
+          transform: skew(1deg, 0) !important;
+  top: -2px !important;
+  bottom: -2px !important;
+  left: -2px !important;
 }
 /*# sourceMappingURL=styles.css.map */
