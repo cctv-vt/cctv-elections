@@ -1,0 +1,14 @@
+.cbar {
+  padding: 0.9em 0 0.9em 0 !important;
+  -webkit-transform: skew(10deg, 0);
+          transform: skew(10deg, 0);
+}
+
+.bgbar {
+  border-radius: 0 !important;
+}
+
+.fgbar {
+  border-radius: 0 !important;
+}
+/*# sourceMappingURL=styles.css.map */

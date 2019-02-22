@@ -92,7 +92,8 @@ var app = new Vue({
         ]
       },
       "tmd19" : {
-        img : "img/newlogo.svg",
+        img: "img/newlogo.svg",
+        styles: "css/tmd19/styles.css",
         color: [
           "#FFB800",
           "#AD00FF",
