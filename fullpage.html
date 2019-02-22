@@ -33,10 +33,10 @@
 
 <body>
     <div id="nav"></div>
-    <div id="app"> 
-        <h1>{{ districts[dist].title }}</h1>
+    <div id="app">
+        <link rel="stylesheet" :href="settings[theme].styles">
         <div class="election">
-            <h3>{{ districts[dist].elections[elec].title }}</h3>
+            <h3>{{ districts[dist].title }} {{ districts[dist].elections[elec].title }}</h3>
             <div class="cresults">
                 <div v-for="(result, cn) of sortVotes(districts[dist].elections[elec].results)" @click="if(subResultsLength(result.votes) > 1){subToggle($event.currentTarget, result.votes, 39)}" class="result">
                     <div class="cname"><h4>{{ result.name }}</h4></div>
