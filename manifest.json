@@ -1,0 +1,20 @@
+{
+  "short_name": "TMD19",
+  "name": "Channel 17 Election Coverage",
+  "icons": [
+    {
+      "src": "img/fav.svg",
+      "type": "image/svg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "img/fav.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    }
+  ],
+  "start_url": "/index.html",
+  "background_color": "#F5F5F5",
+  "display": "standalone",
+  "theme_color": "#3D247C"
+}

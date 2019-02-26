@@ -82,7 +82,7 @@ h1 {
     //margin-bottom: 10px;
     margin-right: 10px;
     border-bottom: 0;
-    transition: height 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
   }
 }
 .menu-item {
@@ -91,7 +91,7 @@ h1 {
   margin: 0.25em 2px 7px 2px;
   padding: 0.25em 0.5em 0.25em 0.5em;
   border-radius: 5px;
-  border: $border;
+  border: 0;
   h3 {
     margin: 0;
     font-size: 22px;
@@ -199,7 +199,6 @@ h1 {
         font-size: 23px;
         text-align: center;
       }
-
       .cresults {
         background: white;
         margin:0.5em;
@@ -300,6 +299,22 @@ h1 {
             cursor: pointer;
           }
         }
+      }
+    }
+  }
+}
+
+//THIS IS FOR FEATURING AN ELECTION IF WE THINK IT NEEDS TO BE
+//FORGIVE ME FOR THE IMPORTANT FLAGS
+@media only screen and (min-width: 1000px) {
+  .featured {
+    width: 1000px !important;
+    h3 {
+      font-size: 27px !important;
+    }
+    .cresults {
+      h4 {
+        font-size: 23px !important;
       }
     }
   }
@@ -417,8 +432,8 @@ h1 {
     #clinks {
       display: flex;
       flex-direction: column;
-      margin-top: 3.2em;
-      margin-bottom: 4em;
+      margin-top: 4.2em;
+      margin-bottom: 4.7em;
       a {
         margin-bottom: 0;
       }
