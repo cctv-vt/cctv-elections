@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- load css compiled from sass -->
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="img/fav.png" type="image/png" />
+    <link rel="manifest" href="/manifest.json">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,600" rel="stylesheet">
     <!-- Load Babel Polyfill -->
@@ -60,7 +61,7 @@
                     </div>
                 </nav>
                 <div v-if="districts.length" id="election-results">
-                    <div v-for="(election, en) of districts[currentVue].elections" class="election">
+                    <div v-for="(election, en) of districts[currentVue].elections" :class="election.featured" class="election">
                             <h3><a alt="Show fullscreen version." :href="'/fullpage.html?d='+currentVue+'&e='+en+'&theme='+theme">{{ election.title }}</a></h3>
                             <div class="cresults">
                                 <div v-for="(result, cn) of sortVotes(election.results)" @click="if(subResultsLength(result.votes) > 1){subToggle($event.currentTarget, result.votes, 39)}" :class="{ hresult: districts[currentVue].showSubResults }" class="result">
@@ -68,7 +69,7 @@
                                     <div class="cvotes"><h4>{{ getSum(result.votes) }} ({{ Math.round(getVotePerc(election, getSum(result.votes))) }}%)</h4></div>
                                     <div class="cbar">
                                         <div class="bgbar">
-                                            <div :style="{ background: settings[theme].color[cn], width: getVotePerc(election, getSum(result.votes)) + '%' }" class="fgbar"></div>
+                                            <div :style="{ background: settings[theme].color[cn], width: getVotePerc(election, getSum(result.votes)) + 0.48 + '%' }" class="fgbar"></div>
                                         </div>
                                     </div>
                                     <div v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults" class="csubresults" style="height:0px;">

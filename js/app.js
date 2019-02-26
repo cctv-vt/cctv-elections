@@ -9,12 +9,20 @@ var theme = url.get("theme")
 if (!theme) {
   var theme = "dull"
 }
-console.log(d + e)
+
+// if ('serviceWorker' in navigator) {
+//   navigator.serviceWorker.register('/service-worker.js')
+//   .then(function(registration) {
+//     console.log('Registration successful, scope is:', registration.scope);
+//   })
+//   .catch(function(error) {
+//     console.log('Service worker registration failed, error:', error);
+//   });
+// }
 
 var navOffset = document.getElementById("nav").offsetTop;
 
 setTimeout(function () {
-  console.log("cool")
   document.getElementById("nav").classList.remove("static")
   navOffset = document.getElementById("nav").offsetTop;
   navLock(document.getElementById("nav"))
@@ -57,7 +65,6 @@ const navLock = function(target) {
     target.classList.remove("static")
   }
 }
- 
 
 //Vue Creation
 var app = new Vue({
@@ -120,7 +127,7 @@ var app = new Vue({
       axios.get(api_endpoint)
         .then(function (response) {
           //Sets the districts array in data to the districts array of the recieved data
-          console.log("Receiving results from remote API endpoint.")
+          console.log("Receiving results from remote API endpoint at " + new Date());
           app.districts = response.data.districts;
         }).catch(function(error) {
           console.log(error);
@@ -171,8 +178,10 @@ var app = new Vue({
       var h = this.subResultsLength(v)
       if(sr.style.height == '0px' || !sr.style.height) {
         sr.style.height = h * eh + 'px';
+        sr.style.opacity = '1.0';
       } else {
         sr.style.height = '0px';
+        sr.style.opacity = '0.0';
       };
     },
     themeToggle() {
