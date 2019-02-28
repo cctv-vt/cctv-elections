@@ -39,7 +39,10 @@ window.onresize = function() {
   navOffset = document.getElementById("nav").offsetTop;
   navLock(document.getElementById("nav"))
   if (window.innerWidth >= 1000) {
-    document.getElementById("cmenu-items").style.height = "auto";
+    var meni = document.getElementById("cmenu-items").style;
+    meni.height = "auto";
+    meni.opacity = 1;
+
   }
 }
 
