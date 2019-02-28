@@ -127,7 +127,8 @@ h1 {
     img {
       display: block;
       max-width: 100%;
-      margin: auto;
+      //margin: auto;
+      float: left;
     }
     h1 {
       display: none;
@@ -138,8 +139,8 @@ h1 {
     //width: 100%;
     margin: 1%;
     margin-left: auto;
-    margin-right: auto;
-    margin-top: 1%;
+    //margin-right: auto;
+    margin-top: -50px;
     a {
       text-decoration: none;
       font-size: 19px;
@@ -415,7 +416,7 @@ h1 {
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 540px) {
   .nav {
     #cmenu-items {
       width: 100%;

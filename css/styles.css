@@ -149,7 +149,7 @@ h1 {
 #election-coverage header img {
   display: block;
   max-width: 100%;
-  margin: auto;
+  float: left;
 }
 
 #election-coverage header h1 {
@@ -160,8 +160,7 @@ h1 {
 #election-coverage #clinks {
   margin: 1%;
   margin-left: auto;
-  margin-right: auto;
-  margin-top: 1%;
+  margin-top: -50px;
 }
 
 #election-coverage #clinks a {
@@ -494,7 +493,7 @@ h1 {
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 540px) {
   .nav #cmenu-items {
     width: 100%;
     border-left: 0;
