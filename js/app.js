@@ -138,9 +138,13 @@ var app = new Vue({
     },
     //math and sorting functions
     sortVotes(arr) {
-      return arr.slice(0, 12).sort(function (a, b) {
-        return app.getSum(b.votes) - app.getSum(a.votes);
-      });
+      if (arr.len > 2) {
+        return arr.slice(0, 12).sort(function (a, b) {
+          return app.getSum(b.votes) - app.getSum(a.votes);
+        });
+      } else {
+        return arr;
+      }
     },
     getSum(obj) {
       var sum = 0;
