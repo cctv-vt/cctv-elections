@@ -1,4 +1,4 @@
-var refresh_rate = 20000;
+var refresh_rate = 10000 + Math.floor((Math.random() * 10000));
 //var api_endpoint = "https://elections.cctv.org/elections/index.php?f=results";
 var api_endpoint = "https://elections-api.cctv.org/api.php?f=results"
 
@@ -6,9 +6,14 @@ var url = new URLSearchParams(window.location.search)
 var d = url.get("d")
 var e = url.get("e")
 var theme = url.get("theme")
-if (!theme) {
-  var theme = "dull"
+if (!d) {
+  var d = 0
+  console.log(window.location)
 }
+if (!theme) {
+  var theme = "classic"
+}
+
 
 // if ('serviceWorker' in navigator) {
 //   navigator.serviceWorker.register('/service-worker.js')
@@ -86,12 +91,12 @@ var app = new Vue({
         ]
       }
     ],
-    currentVue : 0,
+    currentVue : d,
     dist : d,
     elec : e,
     theme : theme,
     settings: {
-      "dull" : {
+      "classic" : {
         img : "img/logo.svg",
         color: [
           "#A76DA6",
@@ -153,12 +158,21 @@ var app = new Vue({
       }
       return sum;
     },
-    getVotePerc(elec, votes) {
+    getVotePerc(elec, votes, round) {
       electionTotal = 0;
       for (res of elec.results) {
         electionTotal += this.getSum(res.votes);
       }
-      return (votes/electionTotal)*100;
+      if (round) {
+        if (votes/electionTotal) {
+          return Math.round((votes/electionTotal)*100);
+        } else return 0;
+      } else {
+        if (votes/electionTotal) {
+          return (votes/electionTotal)*100;
+        } else return 0;
+      }
+      
     },
     subResultsLength(obj) {
       var len = 0
