@@ -1,18 +1,20 @@
 var refresh_rate = 10000 + Math.floor((Math.random() * 10000));
-//var api_endpoint = "https://elections.cctv.org/elections/index.php?f=results";
-var api_endpoint = "https://elections-api.cctv.org/api.php?f=results"
-
 var url = new URLSearchParams(window.location.search)
 var d = url.get("d")
 var e = url.get("e")
+var ev = url.get("ev")
 var theme = url.get("theme")
 if (!d) {
   var d = 0
-  console.log(window.location)
+}
+if (!ev) {
+  var ev = "results"
 }
 if (!theme) {
   var theme = "classic"
 }
+
+var api_endpoint = "https://elections-api.cctv.org/api.php?f=" + ev
 
 
 // if ('serviceWorker' in navigator) {
@@ -80,23 +82,27 @@ var app = new Vue({
   data: {
     districts: [
       {
-        "title": "Loading",
-        "results": [
+        title: "Loading",
+        results: [
           {
-            "name": "loading...",
-            "votes": {
-            "loading": " votes...",
+            name: "loading...",
+            votes: {
+            loading: " votes...",
             }
           }
         ]
       }
     ],
+    evSettings : {
+      title: "Elections Page",
+      live: false
+    },
     currentVue : d,
     dist : d,
     elec : e,
     theme : theme,
     settings: {
-      "classic" : {
+      classic : {
         img : "img/logo.svg",
         color: [
           "#A76DA6",
@@ -106,7 +112,7 @@ var app = new Vue({
           "#78E381",
         ]
       },
-      "tmd19" : {
+      tmd19 : {
         img: "img/newlogo.svg",
         styles: "css/tmd19/styles.css",
         color: [
@@ -123,10 +129,13 @@ var app = new Vue({
   },
   mounted() {
     this.getResults();
-    
-    setInterval(function () {
-      this.getResults();
-    }.bind(this), refresh_rate);
+    console.log(this.evSettings.title)
+    document.title = this.evSettings.title
+    if (this.evSettings.live) {
+      setInterval(function () {
+        this.getResults();
+      }.bind(this), refresh_rate);
+    }
   },
   methods: {
     //data retrieval functions
@@ -137,13 +146,16 @@ var app = new Vue({
           //Sets the districts array in data to the districts array of the recieved data
           console.log("Receiving results from remote API endpoint at " + new Date());
           app.districts = response.data.districts;
+          app.evSettings = response.data.evSettings;
+          document.title = app.evSettings.title
+          console.log(response.data.evSettings)
         }).catch(function(error) {
           console.log(error);
         });
     },
     //math and sorting functions
     sortVotes(arr) {
-      if (arr.len > 2) {
+      if (arr.length > 2) {
         return arr.slice(0, 12).sort(function (a, b) {
           return app.getSum(b.votes) - app.getSum(a.votes);
         });

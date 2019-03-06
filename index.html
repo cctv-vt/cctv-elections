@@ -6,8 +6,6 @@
     <!-- load css compiled from sass -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="img/fav.png" type="image/png" />
-    <link rel="manifest" href="/manifest.json">
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,600" rel="stylesheet">
     <!-- Load Babel Polyfill -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.2.5/polyfill.min.js" integrity="sha256-5MaPCzSnmBMXH0Z0wdF0ETeJh9zN+psdZ641gqe4AQo=" crossorigin="anonymous"></script>
@@ -30,14 +28,14 @@
     </script>
 
 
-    <title>Town Meeting Day 2019</title>
+    <title>Town Meeting Day 2019 Error</title>
 </head>
 
 <body>
     <div id="app">
         <link rel="stylesheet" :href="settings[theme].styles">
         <div id="election-coverage">
-            <header><img id="iheader" :src="settings[theme].img" alt="Channel 17 Town Meeting TV Logo"><h1>Town Meeting 2019</h1></header>
+            <header><img id="iheader" :src="settings[theme].img" alt="Channel 17 Town Meeting TV Logo"><h1>{{ evSettings.title }}</h1></header>
             <div id="clinks">
                 <a class="menu-item" href="http://www.cctv.org/about-us/channel-17">Channel 17 Home</a>
                 <a class="menu-item" href="https://www.youtube.com/watch?v=m2P6DjVub2A&list=PLljLFn4BZd2O7bG1XHuWl54Dh80sqkHNc">Exit Voices</a>
