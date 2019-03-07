@@ -1,65 +1,37 @@
+// ─── VARIABLES ──────────────────────────────────────────────────────────────────
+//refresh rate definition 
 var refresh_rate = 10000 + Math.floor((Math.random() * 10000));
-var url = new URLSearchParams(window.location.search)
-var d = url.get("d")
-var e = url.get("e")
-var ev = url.get("ev")
-var theme = url.get("theme")
-if (!d) {
-  var d = 0
-}
-if (!ev) {
-  var ev = "results"
-}
-if (!theme) {
-  var theme = "classic"
-}
 
-var api_endpoint = "https://elections-api.cctv.org/api.php?f=" + ev
+// extracts url parameters (this uses a polyfill for older browsers)
+var url = new URLSearchParams(window.location.search);
 
+//assigns variables/handles defaults
+var d = url.get("d") || 0;
+var e = url.get("e") || 0;
+var ev = url.get("ev") || "results";
+var theme = url.get("theme") || "classic";
 
-// if ('serviceWorker' in navigator) {
-//   navigator.serviceWorker.register('/service-worker.js')
-//   .then(function(registration) {
-//     console.log('Registration successful, scope is:', registration.scope);
-//   })
-//   .catch(function(error) {
-//     console.log('Service worker registration failed, error:', error);
-//   });
-// }
+//defines api endpoint based on the url, the parameter 'f' defines the name of the json file to pull from the server
+var api_endpoint = "https://elections-api.cctv.org/api.php?f=" + ev;
 
-var navOffset = document.getElementById("nav").offsetTop;
+// coverageHeightFix is run when the page loads or the user resizes the window
+window.onload = function () {
+  coverageHeightFix();
+};
+window.onresize = function () {
+  coverageHeightFix();
+};
 
-setTimeout(function () {
-  document.getElementById("nav").classList.remove("static")
-  navOffset = document.getElementById("nav").offsetTop;
-  navLock(document.getElementById("nav"))
-  document.getElementById("election-coverage").style.height = navOffset + 'px'
-  if (window.innerWidth >= 1000) {
-    document.getElementById("cmenu-items").style.height = "auto";
-  }
-}, 500);
+//this sticks the navbar to the top when the page is scrolled
+window.onscroll = function () {
+  navLock();
+};
 
+// ─── FUNCTIONS ──────────────────────────────────────────────────────────────────
 
-window.onresize = function() {
-  document.getElementById("election-coverage").style.height = navOffset + 'px'
-  document.getElementById("nav").classList.remove("static")
-  navOffset = document.getElementById("nav").offsetTop;
-  navLock(document.getElementById("nav"))
-  if (window.innerWidth >= 1000) {
-    var meni = document.getElementById("cmenu-items").style;
-    meni.height = "auto";
-    meni.opacity = 1;
-
-  }
-}
-
-window.onscroll = function() {
-  navLock(document.getElementById("nav"));
-}
-
-//Local Functions
-//getSum is used to get and sum the subresults to form the total number of votes
-const getSum = function(obj) {
+const getSum = function (obj) {
+  /* getSum is used to get and sum the sub-results
+  to form the total number of votes */
   var sum = 0;
   for (i in obj) {
     sum += obj[i];
@@ -67,8 +39,25 @@ const getSum = function(obj) {
   return sum;
 };
 
-//misc functions
-const navLock = function(target) {
+const coverageHeightFix = function () {
+  /* coverageHeightFix changes the height of the 'election-coverage' element
+  to make sure that the background renders correctly */
+  document.getElementById("nav").classList.remove("static");
+  navOffset = document.getElementById("nav").offsetTop;
+  document.getElementById("election-coverage").style.height = navOffset + 'px';
+  navLock();
+  if (window.innerWidth >= 1000) {
+    var menuItems = document.getElementById("cmenu-items").style;
+    menuItems.height = "auto";
+    menuItems.opacity = 1;
+
+  }
+}
+
+const navLock = function () {
+  /* navLock makes the 'nav' element attach to the top of the page 
+  by applying the css class 'static' */
+  var target = document.getElementById("nav")
   if (window.pageYOffset >= navOffset) {
     target.classList.add("static")
   } else {
@@ -76,34 +65,37 @@ const navLock = function(target) {
   }
 }
 
-//Vue Creation
+// ─── VUE ────────────────────────────────────────────────────────────────────────
 var app = new Vue({
   el: '#app',
   data: {
+    /* districts holds all of the data, including names, numbers, 
+    and a few district specific configuration options */
     districts: [
       {
-        title: "Loading",
-        results: [
-          {
-            name: "loading...",
-            votes: {
+      title: "Loading",
+      results: [
+        {
+          name: "loading...",
+          votes: {
             loading: " votes...",
-            }
-          }
-        ]
-      }
-    ],
-    evSettings : {
+        }
+        }
+      ]
+    }],
+    /* evSettings has event level settings  */
+    evSettings: {
       title: "Elections Page",
-      live: false
+      live: false,
+
     },
-    currentVue : d,
-    dist : d,
-    elec : e,
-    theme : theme,
+    currentVue: d,
+    dist: d,
+    elec: e,
+    theme: theme,
     settings: {
-      classic : {
-        img : "img/logo.svg",
+      classic: {
+        img: "img/logo.svg",
         color: [
           "#A76DA6",
           "#FEE351",
@@ -112,7 +104,7 @@ var app = new Vue({
           "#78E381",
         ]
       },
-      tmd19 : {
+      tmd19: {
         img: "img/newlogo.svg",
         styles: "css/tmd19/styles.css",
         color: [
@@ -125,7 +117,7 @@ var app = new Vue({
       }
 
     }
-    
+
   },
   mounted() {
     this.getResults();
@@ -143,13 +135,13 @@ var app = new Vue({
       //Gets results via an async get
       axios.get(api_endpoint)
         .then(function (response) {
-          //Sets the districts array in data to the districts array of the recieved data
+          //Sets the districts array in data to the districts array of the received data
           console.log("Receiving results from remote API endpoint at " + new Date());
           app.districts = response.data.districts;
           app.evSettings = response.data.evSettings;
           document.title = app.evSettings.title
           console.log(response.data.evSettings)
-        }).catch(function(error) {
+        }).catch(function (error) {
           console.log(error);
         });
     },
@@ -176,15 +168,15 @@ var app = new Vue({
         electionTotal += this.getSum(res.votes);
       }
       if (round) {
-        if (votes/electionTotal) {
-          return Math.round((votes/electionTotal)*100);
+        if (votes / electionTotal) {
+          return Math.round((votes / electionTotal) * 100);
         } else return 0;
       } else {
-        if (votes/electionTotal) {
-          return (votes/electionTotal)*100;
+        if (votes / electionTotal) {
+          return (votes / electionTotal) * 100;
         } else return 0;
       }
-      
+
     },
     subResultsLength(obj) {
       var len = 0
@@ -195,13 +187,15 @@ var app = new Vue({
     },
     //rendering and animation functions
     districtChange(k, ev) {
-      if (window.scrollY > navOffset) {window.scrollTo(0, navOffset)};
+      if (window.scrollY > navOffset) {
+        window.scrollTo(0, navOffset)
+      };
       if (window.innerWidth <= 1000) {
         ev.currentTarget.parentElement.style = "0px";
       }
       this.currentVue = k;
       dChangeAnim.reverse();
-      
+
     },
     subToggle(ev, v, eh) {
       //'ev' refers to the clicked element, 
@@ -209,7 +203,7 @@ var app = new Vue({
       //and 'eh' is the height one of the iterated objects
       var sr = ev.lastChild
       var h = this.subResultsLength(v)
-      if(sr.style.height == '0px' || !sr.style.height) {
+      if (sr.style.height == '0px' || !sr.style.height) {
         sr.style.height = h * eh + 'px';
         sr.style.opacity = '1.0';
       } else {
