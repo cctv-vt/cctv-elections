@@ -1,0 +1,1090 @@
+{
+    "evSettings": {
+        "title": "Town Meeting 2019 Results",
+        "live": false
+    },
+    "districts": [
+        {
+            "title": "Burlington",
+            "showSubResults": true,
+            "elections": [
+                {
+                    "title": "City Council: East District",
+                    "results": [
+                        {
+                            "name": "Richard Deane (D)*",
+                            "votes": {
+                                "Ward 1": 371,
+                                "Ward 8": 175
+                            }
+                        },
+                        {
+                            "name": "Jack Hanson (P)",
+                            "votes": {
+                                "Ward 1": 541,
+                                "Ward 8": 296
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "City Council: Central District",
+                    "results": [
+                        {
+                            "name": "Jared K. Carter (D)",
+                            "votes": {
+                                "Ward 2": 65,
+                                "Ward 3": 79
+                            }
+                        },
+                        {
+                            "name": "Perri Freeman (P)",
+                            "votes": {
+                                "Ward 2": 460,
+                                "Ward 3": 468
+                            }
+                        },
+                        {
+                            "name": "Jane Knodell (I)* ",
+                            "votes": {
+                                "Ward 2": 266,
+                                "Ward 3": 377
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "City Council: South District",
+                    "results": [
+                        {
+                            "name": "Mohamed Jafar (P)",
+                            "votes": {
+                                "Ward 5": 412,
+                                "Ward 6": 257
+                            }
+                        },
+                        {
+                            "name": "Joan Shannon (D)*",
+                            "votes": {
+                                "Ward 5": 797,
+                                "Ward 6": 626
+                            }
+                        },
+                        {
+                            "name": "Paco DeFrancis (I)",
+                            "votes": {
+                                "Ward 5": 33,
+                                "Ward 6": 42
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "City Council: North District",
+                    "results": [
+                        {
+                            "name": "Kienan Christianson (I)",
+                            "votes": {
+                                "Ward 4": 605,
+                                "Ward 7": 530
+                            }
+                        },
+                        {
+                            "name": "Franklin Paulino (D)",
+                            "votes": {
+                                "Ward 4": 808,
+                                "Ward 7": 559
+                            }
+                        },
+                        {
+                            "name": "Ericka Bundy Redic (I)",
+                            "votes": {
+                                "Ward 4": 40,
+                                "Ward 7": 34
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "School Board: East District",
+                    "results": [
+                        {
+                            "name": "Kathleen (Kathy) Olwell*",
+                            "votes": {
+                                "Ward 1": 0,
+                                "Ward 8": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "School Board: Central District",
+                    "results": [
+                        {
+                            "name": "Jean Waltz*",
+                            "votes": {
+                                "Ward 2": 0,
+                                "Ward 3": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "School Board: South District",
+                    "results": [
+                        {
+                            "name": "Jeff Wick*",
+                            "votes": {
+                                "Ward 5": 989,
+                                "Ward 6": 753
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "School Board: North District",
+                    "results": [
+                        {
+                            "name": "Kendra Sowers",
+                            "votes": {
+                                "Ward 1": 1071,
+                                "Ward 8": 910
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Article 1: FY20 School Budget",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Ward 1": 753,
+                                "Ward 2": 650,
+                                "Ward 3": 720,
+                                "Ward 4": 767,
+                                "Ward 5": 901,
+                                "Ward 6": 656,
+                                "Ward 7": 607,
+                                "Ward 8": 411
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Ward 1": 141,
+                                "Ward 2": 125,
+                                "Ward 3": 205,
+                                "Ward 4": 717,
+                                "Ward 5": 365,
+                                "Ward 6": 279,
+                                "Ward 7": 544,
+                                "Ward 8": 47
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Article 2: Maximum Tax Rate Increase",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Ward 1": 615,
+                                "Ward 2": 484,
+                                "Ward 3": 563,
+                                "Ward 4": 706,
+                                "Ward 5": 825,
+                                "Ward 6": 579,
+                                "Ward 7": 534,
+                                "Ward 8": 290
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Ward 1": 255,
+                                "Ward 2": 269,
+                                "Ward 3": 343,
+                                "Ward 4": 769,
+                                "Ward 5": 418,
+                                "Ward 6": 341,
+                                "Ward 7": 607,
+                                "Ward 8": 147
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Article 3: Charter Change - Create Department of Permitting & Inspection, Make Zoning Administrator and Planning Director Mayoral Appointments",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Ward 1": 534,
+                                "Ward 2": 362,
+                                "Ward 3": 452,
+                                "Ward 4": 848,
+                                "Ward 5": 826,
+                                "Ward 6": 633,
+                                "Ward 7": 691,
+                                "Ward 8": 294
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Ward 1": 324,
+                                "Ward 2": 390,
+                                "Ward 3": 457,
+                                "Ward 4": 640,
+                                "Ward 5": 409,
+                                "Ward 6": 296,
+                                "Ward 7": 495,
+                                "Ward 8": 124
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Article 4: Charter Change - Downtown Improvement District",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Ward 1": 443,
+                                "Ward 2": 219,
+                                "Ward 3": 336,
+                                "Ward 4": 698,
+                                "Ward 5": 634,
+                                "Ward 6": 564,
+                                "Ward 7": 472,
+                                "Ward 8": 249
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Ward 1": 445,
+                                "Ward 2": 575,
+                                "Ward 3": 598,
+                                "Ward 4": 800,
+                                "Ward 5": 622,
+                                "Ward 6": 383,
+                                "Ward 7": 678,
+                                "Ward 8": 190
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Article 5: Charter Change - Eliminate Business Personal Property Tax",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Ward 1": 538,
+                                "Ward 2": 431,
+                                "Ward 3": 529,
+                                "Ward 4": 889,
+                                "Ward 5": 807,
+                                "Ward 6": 633,
+                                "Ward 7": 659,
+                                "Ward 8": 271
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Ward 1": 273,
+                                "Ward 2": 291,
+                                "Ward 3": 333,
+                                "Ward 4": 557,
+                                "Ward 5": 348,
+                                "Ward 6": 252,
+                                "Ward 7": 452,
+                                "Ward 8": 135
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Article 6: Advisory Question - Single Use Plastic Reduction Policy",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Ward 1": 816,
+                                "Ward 2": 686,
+                                "Ward 3": 801,
+                                "Ward 4": 1100,
+                                "Ward 5": 1900,
+                                "Ward 6": 826,
+                                "Ward 7": 816,
+                                "Ward 8": 436
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Ward 1": 92,
+                                "Ward 2": 112,
+                                "Ward 3": 144,
+                                "Ward 4": 397,
+                                "Ward 5": 174,
+                                "Ward 6": 138,
+                                "Ward 7": 344,
+                                "Ward 8": 28
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Essex",
+            "elections": [
+                {
+                    "title": "Article II: FY20 Town Budget",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Essex1": null,
+                                "Essex2": null,
+                                "Essex3": null
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Essex1": null,
+                                "Essex2": null,
+                                "Essex3": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Selectboard - 3 Year Term (2 Seats)",
+                    "results": [
+                        {
+                            "name": "Annie Cooper",
+                            "votes": {
+                                "Essex1": 1056,
+                                "Essex2": null,
+                                "Essex3": null
+                            }
+                        },
+                        {
+                            "name": "Patrick Murray",
+                            "votes": {
+                                "Essex1": 1178,
+                                "Essex2": null,
+                                "Essex3": null
+                            }
+                        },
+                        {
+                            "name": "Irene Wrenner*",
+                            "votes": {
+                                "Essex1": 898,
+                                "Essex2": null,
+                                "Essex3": null
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "So. Burlington",
+            "elections": [
+                {
+                    "title": "Article II: FY20 City Budget",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Chamberlin": 310,
+                                "Tuttle": 757,
+                                "Orchard": 473
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Chamberlin": 290,
+                                "Tuttle": 517,
+                                "Orchard": 231
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Article III: Charter Change - Local Option Tax for Municipal Capital Improvements",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Chamberlin": 242,
+                                "Tuttle": 569,
+                                "Orchard": 347
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Chamberlin": 372,
+                                "Tuttle": 714,
+                                "Orchard": 372
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Article IV: Charter Change - Short Term Car Rental Tax for Highway Infrastructure & Emergency Services",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Chamberlin": 373,
+                                "Tuttle": 841,
+                                "Orchard": 489
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Chamberlin": 230,
+                                "Tuttle": 433,
+                                "Orchard": 229
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Article V: Advisory Question - Raise Age for Purchase of Tobacco Products from 18 to 21 Years",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Chamberlin": 446,
+                                "Tuttle": 957,
+                                "Orchard": 570
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Chamberlin": 163,
+                                "Tuttle": 322,
+                                "Orchard": 146
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "School Article II: FY20 School Budget",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Chamberlin": 283,
+                                "Tuttle": 704,
+                                "Orchard": 473
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Chamberlin": 330,
+                                "Tuttle": 582,
+                                "Orchard": 250
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "City Council - 3 Year Term",
+                    "results": [
+                        {
+                            "name": "Tim Barritt*",
+                            "votes": {
+                                "Chamberlin": 420,
+                                "Tuttle": 912,
+                                "Orchard": 519
+                            }
+                        },
+                        {
+                            "name": "Frank Davis",
+                            "votes": {
+                                "Chamberlin": 120,
+                                "Tuttle": 201,
+                                "Orchard": 90
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "City Council - 2 Year Term",
+                    "results": [
+                        {
+                            "name": "David Kaufman*",
+                            "votes": {
+                                "Chamberlin": 473,
+                                "Tuttle": 968,
+                                "Orchard": 550
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "School Director - 3 Year Term",
+                    "results": [
+                        {
+                            "name": "Brian Minier",
+                            "votes": {
+                                "Chamberlin": 461,
+                                "Tuttle": 944,
+                                "Orchard": 522
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "School Director - 2 Year Term",
+                    "results": [
+                        {
+                            "name": "Martin LaLonde*",
+                            "votes": {
+                                "Chamberlin": 450,
+                                "Tuttle": 959,
+                                "Orchard": 567
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Williston",
+            "elections": [
+                {
+                    "title": "Town Article 6: FY20 Town Budget",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Williston": 1100
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Williston": 460
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Town Article 7: Purchase (2) Fire Trucks",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Williston": 1064
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Williston": 514
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Town Article 8: Charter Change - Town Manager Appoints Town Treasurer",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Williston": 830
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Williston": 735
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Town Article 9: Charter Change - Town Manager Appoints Town Clerk After Properly Warned Vote",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Williston": 777
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Williston": 785
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Town Article 10: Charter Change - Eliminate Pound Keeper and Town Service Officer Positions",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Williston": 1344
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Williston": 196
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Town Article 11: Charter Change - Listers Appointed or By Contract After Properly Warned Vote",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Williston": 990
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Williston": 548
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Town Article 12: Charter Change - Town Constable Appointed by Selectboard",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Williston": 844
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Williston": 706
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Town Article 13: Charter Change - Technical Corrections",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Williston": 1003
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Williston": 544
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Selectboard - 2 Year Term",
+                    "results": [
+                        {
+                            "name": "Gordon St. Hilaire",
+                            "votes": {
+                                "Williston": 1295
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Selectboard - 3 Year Term",
+                    "results": [
+                        {
+                            "name": "Theresa (Terri) Zittritsch*",
+                            "votes": {
+                                "Williston": 541
+                            }
+                        },
+                        {
+                            "name": "Ted Kenney*",
+                            "votes": {
+                                "Williston": 784
+                            }
+                        },
+                        {
+                            "name": "McKew Devitt",
+                            "votes": {
+                                "Chamberlin": 161
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Winooski",
+            "elections": [
+                {
+                    "title": "City Article 4: FY20 City Budget",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Winooski1": 808,
+                                "Winooski2": null,
+                                "Winooski3": null
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Winooski1": 328,
+                                "Winooski2": null,
+                                "Winooski3": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "City Article 5: Accept Funds From Other Sources",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Winooski1": 1026,
+                                "Winooski2": null,
+                                "Winooski3": null
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Winooski1": 113,
+                                "Winooski2": null,
+                                "Winooski3": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "City Article 6: Hickok Street General Obligation Bond",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Winooski1": 971,
+                                "Winooski2": null,
+                                "Winooski3": null
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Winooski1": 170,
+                                "Winooski2": null,
+                                "Winooski3": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "City Article 7: Abenaki Garage General Obligation Bond",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Winooski1": 701,
+                                "Winooski2": null,
+                                "Winooski3": null
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Winooski1": 420,
+                                "Winooski2": null,
+                                "Winooski3": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "City Article 8: Local Option Taxes - Sales and Rooms, Meals, and Alcohol",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Winooski1": 735,
+                                "Winooski2": null,
+                                "Winooski3": null
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Winooski1": 390,
+                                "Winooski2": null,
+                                "Winooski3": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "School Article IV: Accept Federal Funding",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Winooski1": 1004,
+                                "Winooski2": null,
+                                "Winooski3": null
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Winooski1": 142,
+                                "Winooski2": null,
+                                "Winooski3": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "School Article V: FY20 School Budget",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Winooski1": 731,
+                                "Winooski2": null,
+                                "Winooski3": null
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Winooski1": 409,
+                                "Winooski2": null,
+                                "Winooski3": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Mayor - 2 Years Remaining of a 3 Year Term",
+                    "results": [
+                        {
+                            "name": "Eric Covey",
+                            "votes": {
+                                "Winooski": 478
+                            }
+                        },
+                        {
+                            "name": "Kristine Lott",
+                            "votes": {
+                                "Winooski": 650
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "City Council - 2 Year Term (2 Seats)",
+                    "results": [
+                        {
+                            "name": "James Duncan",
+                            "votes": {
+                                "Winooski": 693
+                            }
+                        },
+                        {
+                            "name": "Amy Lafayette",
+                            "votes": {
+                                "Winooski": 838
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "City Council - 1 Year Remaining of a 2 Year Term",
+                    "results": [
+                        {
+                            "name": "Corey Mack",
+                            "votes": {
+                                "Winooski": 309
+                            }
+                        },
+                        {
+                            "name": "Michael Myers",
+                            "votes": {
+                                "Winooski": 667
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "School Board - 3 Year Term",
+                    "results": [
+                        {
+                            "name": "Margaret K Bass",
+                            "votes": {
+                                "Winooski": 928
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "School Board - 2 Year Term",
+                    "results": [
+                        {
+                            "name": "Matthew MacNeil*",
+                            "votes": {
+                                "Winooski": 922
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Colchester",
+            "elections": [
+                {
+                    "title": "Town Article 6: FY20 Budget",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Colchester1": 1728,
+                                "Colchester2": null,
+                                "Colchester3": null
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Colchester1": 858,
+                                "Colchester2": null,
+                                "Colchester3": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Town Article 7: Malletts Bay Sewer Project General Obligation Bond",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Colchester1": 1203,
+                                "Colchester2": null,
+                                "Colchester3": null
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Colchester1": 1399,
+                                "Colchester2": null,
+                                "Colchester3": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "School Article 14: FY20 Budget ",
+                    "results": [
+                        {
+                            "name": "Yes",
+                            "votes": {
+                                "Colchester1": 1582,
+                                "Colchester2": null,
+                                "Colchester3": null
+                            }
+                        },
+                        {
+                            "name": "No",
+                            "votes": {
+                                "Colchester1": 1036,
+                                "Colchester2": null,
+                                "Colchester3": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Selectboard - 2 Year Term",
+                    "results": [
+                        {
+                            "name": "Jacki Murphy*",
+                            "votes": {
+                                "Colchester1": 2045,
+                                "Colchester2": null,
+                                "Colchester3": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Selectboard - 3 Year Term",
+                    "results": [
+                        {
+                            "name": "Tom Mulcahy*",
+                            "votes": {
+                                "Colchester1": 2031,
+                                "Colchester2": null,
+                                "Colchester3": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "School Board - 2 Year Term",
+                    "results": [
+                        {
+                            "name": "Curt Taylor*",
+                            "votes": {
+                                "Colchester1": 2058,
+                                "Colchester2": null,
+                                "Colchester3": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "School Board - 3 Year Term",
+                    "results": [
+                        {
+                            "name": "Craig Kieny*",
+                            "votes": {
+                                "Colchester1": 2041,
+                                "Colchester2": null,
+                                "Colchester3": null
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
