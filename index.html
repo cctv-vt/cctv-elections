@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,15 @@
     <link rel="icon" href="img/fav.png" type="image/png" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,600" rel="stylesheet">
     <!-- Load Babel Polyfill -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.2.5/polyfill.min.js" integrity="sha256-5MaPCzSnmBMXH0Z0wdF0ETeJh9zN+psdZ641gqe4AQo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.2.5/polyfill.min.js" integrity="sha256-5MaPCzSnmBMXH0Z0wdF0ETeJh9zN+psdZ641gqe4AQo="
+        crossorigin="anonymous"></script>
     <!-- Url Search Params Polyfill -->
     <script src="https://unpkg.com/@ungap/url-search-params@0.1.2/min.js"></script>
     <!-- Load Font Awesome -->
-    <script defer src="https://use.fontawesome.com/releases/v5.7.0/js/all.js" integrity="sha384-qD/MNBVMm3hVYCbRTSOW130+CWeRIKbpot9/gR1BHkd7sIct4QKhT1hOPd+2hO8K" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.0/js/all.js" integrity="sha384-qD/MNBVMm3hVYCbRTSOW130+CWeRIKbpot9/gR1BHkd7sIct4QKhT1hOPd+2hO8K"
+        crossorigin="anonymous"></script>
     <!-- Load Vue -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- Load Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -22,7 +25,10 @@
 
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
         gtag('config', 'UA-134092550-1');
     </script>
@@ -35,50 +41,73 @@
     <div id="app">
         <link rel="stylesheet" :href="settings[theme].styles">
         <div id="election-coverage">
-            <header><img id="iheader" :src="settings[theme].img" alt="Channel 17 Town Meeting TV Logo"><h1>{{ evSettings.title }}</h1></header>
+            <header>
+                <!-- Header: h1 element is hidden unless overridden by theme -->
+                <img id="iheader" :src="settings[theme].img" alt="Channel 17 Town Meeting TV Logo">
+                <h1>{{ evSettings.title }}</h1>
+            </header>
             <div id="clinks">
-                <a class="menu-item" href="http://www.cctv.org/about-us/channel-17">Channel 17 Home</a>
+                <!-- External Links: These need to be updated each time -->
+                <a v-for="link of evSettings.links" class="menu-item" :href="link.href">{{ link.title }}</a>
+                <!-- <a class="menu-item" href="http://www.cctv.org/about-us/channel-17">Channel 17 Home</a>
                 <a class="menu-item" href="https://www.youtube.com/watch?v=m2P6DjVub2A&list=PLljLFn4BZd2O7bG1XHuWl54Dh80sqkHNc">Exit Voices</a>
                 <a class="menu-item" href="https://www.youtube.com/watch?v=XCvoxGEx6gk&list=PLljLFn4BZd2M9DJ8C-_zpZYKVBuzxVMIP">Election Forums</a>
-                <a class="menu-item" href="https://www.cctv.org/civicrm/contribute/transact?reset=1&id=4"><strong>Donate</strong></a>
+                <a class="menu-item" href="https://www.cctv.org/civicrm/contribute/transact?reset=1&id=4"><strong>Donate</strong></a> -->
             </div>
+            <!-- cvideo and csocial are containers for the social media embeds these are controlled via the json template  -->
             <div id="cvideo">
-                <div id="video"><iframe src="https://www.youtube.com/embed/-9N1gGuHCaM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div id="video"><iframe :src="'https://www.youtube.com/embed/' + evSettings.embed.youtube + '/'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
             </div>
-            <div id="csocial"><a class="twitter-timeline" data-height="390" data-partner="tweetdeck" href="https://twitter.com/ch_17/timelines/1098311669133000704?ref_src=twsrc%5Etfw">Town Meeting Day 2019 - Curated tweets by ch_17</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+            <div id="csocial"><a class="twitter-timeline" data-height="390" data-partner="tweetdeck" :href="evSettings.embed.twitter">Town
+                    Meeting Day 2019 - Curated tweets by ch_17</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+            <!-- the nav element is used to navigate between regions/municipalities -->
             <div>
                 <nav id="nav" class="nav">
                     <div id="chead">
                         <h2>{{ districts[currentVue].title }} Results</h2>
-                        <button @click="subToggle($event.currentTarget.parentElement.parentElement, districts, 40.31)" id="hamburger"><i class="fas fa-bars fa-2x"></i></button>
+                        <button @click="subToggle($event.currentTarget.parentElement.parentElement, districts, 40.31)"
+                            id="hamburger"><i class="fas fa-bars fa-2x"></i></button>
                     </div>
                     <div id="cmenu-items">
-                        <button @click="districtChange(key, $event)" class="menu-item" v-for="(district, key) of districts" :key="key" tabindex="0">
+                        <button @click="districtChange(key, $event)" class="menu-item" v-for="(district, key) of districts"
+                            :key="key" tabindex="0">
                             <h3>{{ district.title }}</h3>
                         </button>
                     </div>
                 </nav>
                 <div v-if="districts.length" id="election-results">
-                    <p v-if="districts[currentVue].showSubResults" style="width: 100%; height: 10px; text-align: center; margin-top: 0; margin-bottom:2em">Click on the ballot items to see the contributing results</p>
+                    <p v-if="districts[currentVue].showSubResults" style="width: 100%; height: 10px; text-align: center; margin-top: 0; margin-bottom:2em">Click
+                        on the ballot items to see the contributing results</p>
                     <div v-for="(election, en) of districts[currentVue].elections" :class="election.featured" class="election">
-                            <h3><a alt="Show fullscreen version." :href="'/fullpage.html?d='+currentVue+'&e='+en+'&theme='+theme">{{ election.title }}</a></h3>
-                            <div class="cresults">
-                                <div v-for="(result, cn) of sortVotes(election.results)" @click="if(subResultsLength(result.votes) > 1){subToggle($event.currentTarget, result.votes, 39)}" :class="{ hresult: districts[currentVue].showSubResults }" class="result">
-                                    <div class="cname"><h4>{{ result.name }}</h4></div>
-                                    <div class="cvotes"><h4>{{ getSum(result.votes) }} ({{ getVotePerc(election, getSum(result.votes), true) }}%)</h4></div>
-                                    <div class="cbar">
-                                        <div class="bgbar">
-                                            <div :style="{ background: settings[theme].color[cn], width: getVotePerc(election, getSum(result.votes), false) + '%' }" class="fgbar"></div>
-                                        </div>
+                        <h3><a alt="Show fullscreen version." :href="'/fullpage.html?d='+currentVue+'&e='+en+'&theme='+theme">{{
+                                election.title }}</a></h3>
+                        <div class="cresults">
+                            <div v-for="(result, cn) of sortVotes(election.results)" @click="if(subResultsLength(result.votes) > 1){subToggle($event.currentTarget, result.votes, 39)}"
+                                :class="{ hresult: districts[currentVue].showSubResults }" class="result">
+                                <div class="cname">
+                                    <h4>{{ result.name }}</h4>
+                                </div>
+                                <div class="cvotes">
+                                    <h4>{{ getSum(result.votes) }} ({{ getVotePerc(election, getSum(result.votes),
+                                        true) }}%)</h4>
+                                </div>
+                                <div class="cbar">
+                                    <div class="bgbar">
+                                        <div :style="{ background: settings[theme].color[cn], width: getVotePerc(election, getSum(result.votes), false) + '%' }"
+                                            class="fgbar"></div>
                                     </div>
-                                    <div v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults" class="csubresults" style="height:0px;">
-                                        <div v-for="(subresult, dsubresult) of result.votes" class="csubresult">
-                                            <p class="dsub">{{ dsubresult }}</p>
-                                            <p class="vsub">{{ subresult }}</p>
-                                        </div>
+                                </div>
+                                <div v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults"
+                                    class="csubresults" style="height:0px;">
+                                    <div v-for="(subresult, dsubresult) of result.votes" class="csubresult">
+                                        <p class="dsub">{{ dsubresult }}</p>
+                                        <p class="vsub">{{ subresult }}</p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>

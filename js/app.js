@@ -87,7 +87,28 @@ var app = new Vue({
     evSettings: {
       title: "Elections Page",
       live: false,
-
+      links: [
+        {
+          title: "Channel 17 Home",
+          href: "http://www.cctv.org/about-us/channel-17"
+        },
+        {
+          title: "Exit Voices",
+          href: "https://www.youtube.com/watch?v=m2P6DjVub2A&list=PLljLFn4BZd2O7bG1XHuWl54Dh80sqkHNc"
+        },
+        {
+          title: "Election Forums",
+          href: "https://www.youtube.com/watch?v=XCvoxGEx6gk&list=PLljLFn4BZd2M9DJ8C-_zpZYKVBuzxVMIP"
+        },
+        {
+          title: "Donate",
+          href: "https://www.cctv.org/civicrm/contribute/transact?reset=1&id=4"
+        }
+      ],
+      embed: {
+        youtube: "-9N1gGuHCaM",
+        twitter: "https://twitter.com/ch_17/timelines/1098311669133000704?ref_src=twsrc%5Etfw"
+      }
     },
     currentVue: d,
     dist: d,
