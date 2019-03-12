@@ -8,7 +8,7 @@ var url = new URLSearchParams(window.location.search);
 //assigns variables/handles defaults
 var d = url.get("d") || 0;
 var e = url.get("e") || 0;
-var ev = url.get("ev") || "results";
+var ev = url.get("ev") || "default";
 var theme = url.get("theme") || "classic";
 
 //defines api endpoint based on the url, the parameter 'f' defines the name of the json file to pull from the server
