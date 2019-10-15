@@ -69,17 +69,24 @@ const navLock = function () {
 var app = new Vue({
   el: '#app',
   data: {
-    /* districts holds all of the data, including names, numbers, 
+    /* districts holds all of the data, including names, numbers,
     and a few district specific configuration options */
     districts: [
       {
       title: "Loading",
+      showSubResults: false,
       results: [
         {
           name: "loading...",
           votes: {
-            loading: " votes...",
-        }
+            loading: 0,
+        },
+        },
+        {
+          name: "loading...",
+          votes: {
+            loading: 0,
+        },
         }
       ]
     }],
@@ -135,6 +142,17 @@ var app = new Vue({
           "#FF003D",
           "#00FF75",
         ]
+      },
+      classicplus: {
+        img: "img/logo.svg",
+        styles: "css/classicplus/styles.css",
+        color: [
+          "#A76DA6",
+          "#FEE351",
+          "#D6647F",
+          "#79A8ED",
+          "#78E381",
+        ]
       }
 
     }
@@ -160,9 +178,10 @@ var app = new Vue({
           console.log("Receiving results from remote API endpoint at " + new Date());
           app.districts = response.data.districts;
           app.evSettings = response.data.evSettings;
-          document.title = app.evSettings.title
-          console.log(response.data.evSettings)
+          document.title = app.evSettings.title;
+          console.log(response.data.evSettings);
         }).catch(function (error) {
+          console.log("cool")
           console.log(error);
         });
     },
@@ -215,7 +234,10 @@ var app = new Vue({
         ev.currentTarget.parentElement.style = "0px";
       }
       this.currentVue = k;
-      dChangeAnim.reverse();
+      //var ael = document.getElementsByClassName("active");
+      //console.log(ael)
+      //ev.currentTarget.classList.add("active");
+      //dChangeAnim.reverse();
 
     },
     subToggle(ev, v, eh) {
