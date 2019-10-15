@@ -1,0 +1,23 @@
+.menu-item:hover {
+  -webkit-transition: -webkit-transform 0.2s ease;
+  transition: -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
+  height: 105%;
+}
+
+.menu-item :focus {
+  height: 105%;
+}
+
+.active {
+  background: crimson;
+}
+
+@media only screen and (max-width: 1000px) {
+  .menu-item :hover {
+    -webkit-transform-origin: center right;
+            transform-origin: center right;
+  }
+}
+/*# sourceMappingURL=styles.css.map */

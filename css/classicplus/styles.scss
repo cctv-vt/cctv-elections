@@ -1,0 +1,24 @@
+.menu-item {
+    //height: 110%;
+    &:hover{
+        transition: transform 0.2s ease;
+        //transform: scale(1.1);
+        height: 105%;
+    }
+    :focus {
+        height: 105%;
+    }
+}
+
+.active {
+    background: crimson;
+}
+
+
+@media only screen and  (max-width: 1000px) {
+    .menu-item {
+        :hover{
+            transform-origin: center right;
+        }
+    }
+}
