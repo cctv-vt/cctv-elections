@@ -1,17 +1,33 @@
 .menu-item {
-    //height: 110%;
+    // height: 100%;
+    transition: height 1s ease;
     &:hover{
-        transition: transform 0.2s ease;
-        //transform: scale(1.1);
-        height: 105%;
+        transition: transform 0.1s ease;
+        // transform: scale(1.01);
+        
     }
     :focus {
         height: 105%;
+        border: 0px;
     }
 }
 
 .active {
-    background: crimson;
+    // transition: all 1s ease;
+    //vertical-align: text-top;
+    display: flex;
+    align-items: flex-start;
+    height: 105%;
+    background: #f5f5f5;
+    //border-radius: 5px 5px 0 0;
+    border: 3px solid #f5f5f5;
+    // border-bottom: 100px solid #f5f5f5;
+    
+    box-shadow: none;
+    // background: crimson;
+    h3 {
+        vertical-align: top;
+    }
 }
 
 

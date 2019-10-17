@@ -1,17 +1,36 @@
+.menu-item {
+  -webkit-transition: height 1s ease;
+  transition: height 1s ease;
+}
+
 .menu-item:hover {
-  -webkit-transition: -webkit-transform 0.2s ease;
-  transition: -webkit-transform 0.2s ease;
-  transition: transform 0.2s ease;
-  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
-  height: 105%;
+  -webkit-transition: -webkit-transform 0.1s ease;
+  transition: -webkit-transform 0.1s ease;
+  transition: transform 0.1s ease;
+  transition: transform 0.1s ease, -webkit-transform 0.1s ease;
 }
 
 .menu-item :focus {
   height: 105%;
+  border: 0px;
 }
 
 .active {
-  background: crimson;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  height: 105%;
+  background: #f5f5f5;
+  border: 3px solid #f5f5f5;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.active h3 {
+  vertical-align: top;
 }
 
 @media only screen and (max-width: 1000px) {
