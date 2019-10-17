@@ -234,6 +234,16 @@ var app = new Vue({
         ev.currentTarget.parentElement.style = "0px";
       }
       this.currentVue = k;
+      var cm = document.getElementById('cmenu-items').childNodes;
+      for (var i=0;i<cm.length; i++) {
+        if (i == k) {
+          cm[i].classList.add('active')
+        } else {
+          cm[i].classList.remove('active')
+        }
+        
+      }
+      console.log(document.getElementById('cmenu-items').childNodes[k])
       //var ael = document.getElementsByClassName("active");
       //console.log(ael)
       //ev.currentTarget.classList.add("active");
