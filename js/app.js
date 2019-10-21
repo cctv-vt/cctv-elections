@@ -10,13 +10,16 @@ var d = url.get("d") || 0;
 var e = url.get("e") || 0;
 var ev = url.get("ev") || "default";
 var theme = url.get("theme") || "classic";
-
+var navOffset = 0;
 //defines api endpoint based on the url, the parameter 'f' defines the name of the json file to pull from the server
 var api_endpoint = "https://elections-api.cctv.org/api.php?f=" + ev;
 
 // coverageHeightFix is run when the page loads or the user resizes the window
 window.onload = function () {
   coverageHeightFix();
+  
+  var cm = document.getElementById('cmenu-items').childNodes;
+  cm[url.get("d") || 0].classList.add("active");
 };
 window.onresize = function () {
   coverageHeightFix();
