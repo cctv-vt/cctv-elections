@@ -78,7 +78,7 @@
                     </div>
                 </nav>
                 <div v-if="districts.length" id="election-results">
-                    <p v-if="districts[currentVue].showSubResults" style="width: 100%; height: 10px; text-align: center; margin-top: 0; margin-bottom:2em">Click
+                    <p v-if="districts[currentVue].showSubResults" style="width: 100%; height: 10px; text-align: center; margin-top: 0; margin-bottom:1em">Click
                         on the ballot items to see the contributing results.</p>
                     <div v-for="(election, en) of districts[currentVue].elections" :class="election.featured" class="election">
                         <h3><a alt="Show fullscreen version." :href="'/fullpage.html?d='+currentVue+'&e='+en+'&theme='+theme">{{
