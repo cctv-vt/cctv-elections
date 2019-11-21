@@ -113,6 +113,23 @@
             </div>
         </div>
     </div>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyCof8-ayqa1PScJL-Mpfy8qStW9ZY1QhbQ",
+          authDomain: "cctv-elections.firebaseapp.com",
+          databaseURL: "https://cctv-elections.firebaseio.com",
+          projectId: "cctv-elections",
+          storageBucket: "cctv-elections.appspot.com",
+          messagingSenderId: "171900071347",
+          appId: "1:171900071347:web:132dc948df0e46002e2fc6"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+      </script>
     <script src="js/app.js"></script>
 </body>
 
