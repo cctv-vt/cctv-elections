@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "cctv-elections"
+  },
+  "targets": {
+    "cctv-elections": {
+      "hosting": {
+        "public": [
+          "cctv-elections"
+        ],
+        "admin": [
+          "cctv-elections-admin"
+        ]
+      }
+    }
   }
 }
