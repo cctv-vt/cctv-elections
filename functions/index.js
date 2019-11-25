@@ -9,16 +9,21 @@ admin.initializeApp({
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
-exports.helloWorld = functions.https.onRequest((request, response) => {
-    response.send("Hello from Firebase!");
+exports.helloWorld = functions.https.onCall((data, context) => {
+    return {
+        text: data.text,
+        uid: context.auth.uid
+    }
 });
 
-exports.updateDatabase = functions.https.onRequest((request, response) => {
-    var responseBody = "Results\n";
+exports.updateDatabase = functions.https.onCall((data, context) => {
+    var event = 'tmd19';
+
     var scopes = [
         "https://www.googleapis.com/auth/spreadsheets.readonly"
     ];
     
+
     
     
     const alphaNum = (s) => {
@@ -26,9 +31,11 @@ exports.updateDatabase = functions.https.onRequest((request, response) => {
         return a;
     };
 
+
+
     const createResults = (template, data) => {
         console.log('start update')
-        data
+        //data
         var districts = template.districts
         for (var d in districts) {
             //d stands for districts
@@ -36,7 +43,12 @@ exports.updateDatabase = functions.https.onRequest((request, response) => {
                 for (var r in districts[d].elections[e].results) {
                     for (var v in districts[d].elections[e].results[r].votes) {
                         a = alphaNum(districts[d].elections[e].results[r].votes[v])
-                        districts[d].elections[e].results[r].votes[v] = parseInt(data[a[1]][a[0]])
+                        if (data[a[1]][a[0]]) {
+                            districts[d].elections[e].results[r].votes[v] = parseInt(data[a[1]][a[0]]);
+                        } else {
+                            districts[d].elections[e].results[r].votes[v] = 0;
+                        }
+                        
                     }
                 }
             }
@@ -68,8 +80,9 @@ exports.updateDatabase = functions.https.onRequest((request, response) => {
 
     //Retrive template from /templates/ in the database based on the 'f' query eg: ?f=tmd19 gets /templates/tmd19
     var template = new Promise((resolve, reject) => {
-        if (request.query.f) {
-            var evTemplate = admin.database().ref('/templates/' + request.query.f);
+        console.log(event)
+        if (event) {
+            var evTemplate = admin.database().ref('/templates/' + event);
             evTemplate.once('value', (snapshot) => {
             	resolve(snapshot.val());
             })
@@ -77,10 +90,11 @@ exports.updateDatabase = functions.https.onRequest((request, response) => {
             reject(new Error("No Event Given"));
         }
         
-    });    
+    });
+    
 
     // eslint-disable-next-line promise/catch-or-return
-    Promise.all([token, template]).then((value) => {
+    return Promise.all([token, template]).then((value) => {
         var settings = value[1].evSettings
         var sheets = google.sheets({ version: "v4" });
         sheets.spreadsheets.values.get({
@@ -90,14 +104,17 @@ exports.updateDatabase = functions.https.onRequest((request, response) => {
         }, (err, res) => {
             if (err) return console.log("API FAILED: " + err);
             const rows = res.data.values;
-            
-            response.send(createResults(value[1], rows))
+            var results = createResults(value[1], rows)
+            admin.database().ref('/events/' + event + '/districts').update(results)
+            console.log(results)
             
         })
-        return null;  
+        return {
+            text: "done"
+        } 
     }, (reason) => {
         console.log(reason)
-        response.send(String(reason))
+        return { text: "failed"}
     })
 
 });
