@@ -8,11 +8,13 @@ var url = new URLSearchParams(window.location.search);
 //assigns variables/handles defaults
 var d = url.get("d") || 0;
 var e = url.get("e") || 0;
-var ev = url.get("ev") || "default";
+var ev = url.get("ev") || "tmd19";
 var theme = url.get("theme") || "classic";
 var navOffset = 0;
 //defines api endpoint based on the url, the parameter 'f' defines the name of the json file to pull from the server
 var api_endpoint = "https://elections-api.cctv.org/api.php?f=" + ev;
+var database = firebase.database();
+console.log(database)
 
 // coverageHeightFix is run when the page loads or the user resizes the window
 window.onload = function () {
@@ -165,28 +167,33 @@ var app = new Vue({
     this.getResults();
     console.log(this.evSettings.title)
     document.title = this.evSettings.title
-    if (this.evSettings.live) {
-      setInterval(function () {
-        this.getResults();
-      }.bind(this), refresh_rate);
-    }
+    // if (this.evSettings.live) {
+    //   setInterval(function () {
+    //     this.getResults();
+    //   }.bind(this), refresh_rate);
+    // }
   },
   methods: {
     //data retrieval functions
     getResults() {
       //Gets results via an async get
-      axios.get(api_endpoint)
-        .then(function (response) {
-          //Sets the districts array in data to the districts array of the received data
-          console.log("Receiving results from remote API endpoint at " + new Date());
-          app.districts = response.data.districts;
-          app.evSettings = response.data.evSettings;
-          document.title = app.evSettings.title;
-          console.log(response.data.evSettings);
-        }).catch(function (error) {
-          console.log("cool")
-          console.log(error);
-        });
+      // axios.get(api_endpoint)
+      //   .then(function (response) {
+      //     //Sets the districts array in data to the districts array of the received data
+      //     console.log("Receiving results from remote API endpoint at " + new Date());
+      //     app.districts = response.data.districts;
+      //     app.evSettings = response.data.evSettings;
+      //     document.title = app.evSettings.title;
+      //     console.log(response.data.evSettings);
+      //   }).catch(function (error) {
+      //     console.log("cool")
+      //     console.log(error);
+      //   });
+      districtsRef = database.ref('events/' + ev + '/districts');
+      districtsRef.on('value', function(snapshot) {
+        app.districts = snapshot.val()
+        console.log(snapshot.val())
+      })
     },
     //math and sorting functions
     sortVotes(arr) {
