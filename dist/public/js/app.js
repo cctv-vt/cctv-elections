@@ -8,18 +8,17 @@ var url = new URLSearchParams(window.location.search);
 //assigns variables/handles defaults
 var d = url.get("d") || 0;
 var e = url.get("e") || 0;
-var ev = url.get("ev") || "tmd19";
+var ev = url.get("ev") || "default";
 var theme = url.get("theme") || "classic";
 var navOffset = 0;
-//defines api endpoint based on the url, the parameter 'f' defines the name of the json file to pull from the server
-var api_endpoint = "https://elections-api.cctv.org/api.php?f=" + ev;
+
+
+//defines the variable database as the firebase database associated with the hosting project
 var database = firebase.database();
-console.log(database)
 
 // coverageHeightFix is run when the page loads or the user resizes the window
 window.onload = function () {
   coverageHeightFix();
-  
   var cm = document.getElementById('cmenu-items').childNodes;
   cm[url.get("d") || 0].classList.add("active");
 };
@@ -28,9 +27,9 @@ window.onresize = function () {
 };
 
 //this sticks the navbar to the top when the page is scrolled
-window.onscroll = function () {
-  navLock();
-};
+// window.onscroll = function () {
+//   navLock();
+// };
 
 // ─── FUNCTIONS ──────────────────────────────────────────────────────────────────
 
@@ -50,7 +49,7 @@ const coverageHeightFix = function () {
   document.getElementById("nav").classList.remove("static");
   navOffset = document.getElementById("nav").offsetTop;
   document.getElementById("election-coverage").style.height = navOffset + 'px';
-  navLock();
+  //navLock();
   if (window.innerWidth >= 1000) {
     var menuItems = document.getElementById("cmenu-items").style;
     menuItems.height = "auto";
@@ -59,16 +58,16 @@ const coverageHeightFix = function () {
   }
 }
 
-const navLock = function () {
-  /* navLock makes the 'nav' element attach to the top of the page 
-  by applying the css class 'static' */
-  var target = document.getElementById("nav")
-  if (window.pageYOffset >= navOffset) {
-    target.classList.add("static")
-  } else {
-    target.classList.remove("static")
-  }
-}
+// const navLock = function () {
+//   /* navLock makes the 'nav' element attach to the top of the page 
+//   by applying the css class 'static' */
+//   var target = document.getElementById("nav")
+//   if (window.pageYOffset >= navOffset) {
+//     target.classList.add("static")
+//   } else {
+//     target.classList.remove("static")
+//   }
+// }
 
 // ─── VUE ────────────────────────────────────────────────────────────────────────
 var app = new Vue({
@@ -80,21 +79,40 @@ var app = new Vue({
       {
       title: "Loading",
       showSubResults: false,
-      results: [
+      elections: [
         {
-          name: "loading...",
-          votes: {
-            loading: 0,
-        },
-        },
-        {
-          name: "loading...",
-          votes: {
-            loading: 0,
-        },
-        }
-      ]
-    }],
+        results: [
+          {
+            name: "loading...",
+            votes: {
+              loading: 0,
+          },
+          },
+          {
+            cname: "loading...",
+            votes: {
+              loading: 0,
+          },
+          }
+        ]
+      },
+      {
+        results: [
+          {
+            name: "loading...",
+            votes: {
+              loading: 0,
+          },
+          },
+          {
+            cname: "loading...",
+            votes: {
+              loading: 0,
+          },
+          }
+        ]
+      }
+      ]}],
     /* evSettings has event level settings  */
     evSettings: {
       title: "Elections Page",
@@ -164,35 +182,26 @@ var app = new Vue({
 
   },
   mounted() {
-    this.getResults();
-    console.log(this.evSettings.title)
+    this.getResultsOnce();
     document.title = this.evSettings.title
-    // if (this.evSettings.live) {
-    //   setInterval(function () {
-    //     this.getResults();
-    //   }.bind(this), refresh_rate);
-    // }
+    if (this.evSettings.live) {
+      this.getResults();
+    }
   },
   methods: {
     //data retrieval functions
+    //Gets results only a single time
+    getResultsOnce() {
+      districtsRef = database.ref('events/' + ev + '/districts');
+      districtsRef.once('value', function(snapshot) {
+        app.districts = snapshot.val()
+      })
+    },
     getResults() {
-      //Gets results via an async get
-      // axios.get(api_endpoint)
-      //   .then(function (response) {
-      //     //Sets the districts array in data to the districts array of the received data
-      //     console.log("Receiving results from remote API endpoint at " + new Date());
-      //     app.districts = response.data.districts;
-      //     app.evSettings = response.data.evSettings;
-      //     document.title = app.evSettings.title;
-      //     console.log(response.data.evSettings);
-      //   }).catch(function (error) {
-      //     console.log("cool")
-      //     console.log(error);
-      //   });
+      //Gets results and sets up a connection to the firebase server for live results
       districtsRef = database.ref('events/' + ev + '/districts');
       districtsRef.on('value', function(snapshot) {
         app.districts = snapshot.val()
-        console.log(snapshot.val())
       })
     },
     //math and sorting functions
