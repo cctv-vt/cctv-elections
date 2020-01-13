@@ -6,18 +6,33 @@ body {
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 400;
   font-family: "Lato", sans-serif;
 }
 
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
   text-decoration: none;
   color: #000000;
 }
 
-h1 a:focused, h2 a:focused, h3 a:focused, h4 a:focused, h5 a:focused, h6 a:focused {
-  outline-color: #A76DA6;
+h1 a:focused,
+h2 a:focused,
+h3 a:focused,
+h4 a:focused,
+h5 a:focused,
+h6 a:focused {
+  outline-color: #a76da6;
 }
 
 h1 {
@@ -208,7 +223,9 @@ h1 {
   overflow: hidden;
 }
 
-#election-coverage #video iframe, #election-coverage #video object, #election-coverage #video embed {
+#election-coverage #video iframe,
+#election-coverage #video object,
+#election-coverage #video embed {
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -238,7 +255,17 @@ h1 {
   padding-top: 1em;
 }
 
-#election-coverage #election-results .election {
+.celections {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.election {
   width: 500px;
   min-height: 0;
   -ms-flex-item-align: start;
@@ -259,16 +286,16 @@ h1 {
   transition: -webkit-transform 1s ease-in-out;
   transition: transform 1s ease-in-out;
   transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
-  padding-bottom: 1.0em;
+  padding-bottom: 1em;
 }
 
-#election-coverage #election-results .election h3 {
+.election h3 {
   margin: 0.3em;
   font-size: 23px;
   text-align: center;
 }
 
-#election-coverage #election-results .election .cresults {
+.cresults {
   background: white;
   margin: 0.5em;
   border-radius: 5px;
@@ -279,12 +306,17 @@ h1 {
           box-shadow: 2px 2px 0px -1px #e9e9e9;
 }
 
-#election-coverage #election-results .election .cresults h4 {
+.cresults h4 {
   font-size: 16px;
   margin: 0em;
 }
 
-#election-coverage #election-results .election .cresults .result {
+.cresults .hresult:hover {
+  background: #e9e9e9;
+  cursor: pointer;
+}
+
+.result {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -301,24 +333,24 @@ h1 {
   border-radius: 5px;
 }
 
-#election-coverage #election-results .election .cresults .result .cname {
+.result .cname {
   width: 40%;
   padding: 0.6em 0 0.6em 0;
   white-space: nowrap;
 }
 
-#election-coverage #election-results .election .cresults .result .cvotes {
+.result .cvotes {
   width: 20%;
   text-align: right;
   padding: 0.6em 0 0.6em 0;
 }
 
-#election-coverage #election-results .election .cresults .result .cbar {
+.result .cbar {
   width: 40%;
   padding: 0.52em 0 0.65em 0;
 }
 
-#election-coverage #election-results .election .cresults .result .cbar .bgbar {
+.result .cbar .bgbar {
   float: right;
   position: relative;
   background: #ffffff;
@@ -329,7 +361,7 @@ h1 {
   margin: 0 auto;
 }
 
-#election-coverage #election-results .election .cresults .result .cbar .bgbar .pbar {
+.result .cbar .bgbar .pbar {
   z-index: 9;
   position: absolute;
   width: 40px;
@@ -340,13 +372,13 @@ h1 {
   border-radius: 100px;
 }
 
-#election-coverage #election-results .election .cresults .result .cbar .bgbar .pbar p {
+.result .cbar .bgbar .pbar p {
   overflow: visible;
   text-align: center;
   margin-top: 10px;
 }
 
-#election-coverage #election-results .election .cresults .result .cbar .bgbar .fgbar {
+.result .cbar .bgbar .fgbar {
   position: absolute;
   top: -1px;
   bottom: -1px;
@@ -354,7 +386,7 @@ h1 {
   border-radius: 4px;
 }
 
-#election-coverage #election-results .election .cresults .result .csubresults {
+.result .csubresults {
   overflow: hidden;
   width: 80%;
   height: 5px;
@@ -365,7 +397,7 @@ h1 {
   padding-bottom: 0.1em;
 }
 
-#election-coverage #election-results .election .cresults .result .csubresults .csubresult {
+.result .csubresults .csubresult {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -374,25 +406,20 @@ h1 {
           justify-content: space-between;
 }
 
-#election-coverage #election-results .election .cresults .result .csubresults .csubresult .dsub {
+.result .csubresults .csubresult .dsub {
   width: 20%;
   margin: 10px;
   margin-left: 10px;
   margin-right: 10px;
 }
 
-#election-coverage #election-results .election .cresults .result .csubresults .csubresult .vsub {
+.result .csubresults .csubresult .vsub {
   margin: auto;
   margin-left: 0px;
   text-align: left;
 }
 
-#election-coverage #election-results .election .cresults .hresult:hover {
-  background: #e9e9e9;
-  cursor: pointer;
-}
-
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 930px) {
   .featured {
     width: 1000px !important;
   }
@@ -404,7 +431,7 @@ h1 {
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 930px) {
   #election-coverage {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -417,7 +444,7 @@ h1 {
   }
   #election-coverage header {
     margin: 0;
-    margin-bottom: 5.5em;
+    margin-bottom: 1em;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -481,7 +508,6 @@ h1 {
         -ms-flex-direction: column;
             flex-direction: column;
     width: 100%;
-    max-width: 200px;
     height: 0px;
     overflow: hidden;
     margin-top: -1px;
@@ -493,7 +519,7 @@ h1 {
     background-color: #ffffff;
     cursor: pointer;
     margin: 0 0 -1px 0px;
-    padding: 0.0em 0.0em 0.0em 0.0em;
+    padding: 0em 0.1em 0em 0em;
     border-radius: 0;
     border-bottom: 1px solid #e9e9e9;
     border-left: 0;
@@ -530,14 +556,14 @@ h1 {
     border-right: 0;
   }
   #election-coverage #clinks {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    margin-top: 4.2em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 1em;
     margin-bottom: 4.7em;
   }
   #election-coverage #clinks a {
@@ -554,35 +580,36 @@ h1 {
     width: 100%;
     max-width: 100%;
   }
-  #election-coverage #election-results .election {
+  #election-coverage #election-results .celections .election {
     padding: 0;
     padding-top: 1em;
+    width: 100%;
   }
-  #election-coverage #election-results .election .cresults {
+  #election-coverage #election-results .celections .election .cresults {
     border-left: 0;
     border-right: 0;
     border-radius: 0;
     padding: 0.8em;
     margin: 0;
   }
-  #election-coverage #election-results .election .cresults .result {
+  #election-coverage #election-results .celections .election .cresults .result {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  #election-coverage #election-results .election .cresults .result .cname {
+  #election-coverage #election-results .celections .election .cresults .result .cname {
     width: 50%;
     padding: 0.2em 0 0.6em 0;
   }
-  #election-coverage #election-results .election .cresults .result .cvotes {
+  #election-coverage #election-results .celections .election .cresults .result .cvotes {
     width: 50%;
     padding: 0.2em 0 0.6em 0;
   }
-  #election-coverage #election-results .election .cresults .result .cbar {
+  #election-coverage #election-results .celections .election .cresults .result .cbar {
     width: 100%;
     padding: 0 0 0 0;
   }
-  #election-coverage #election-results .election .cresults .result .cbar .bgbar {
+  #election-coverage #election-results .celections .election .cresults .result .cbar .bgbar {
     width: 100%;
     height: 10px;
   }

@@ -237,6 +237,8 @@ var app = new Vue({
       }
 
     },
+    isOdd(num) { return num & 1; },
+    isEven(num) { return !(num & 1); },
     subResultsLength(obj) {
       var len = 0
       for (d in obj) {
