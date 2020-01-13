@@ -10,14 +10,15 @@ admin.initializeApp({
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
 exports.helloWorld = functions.https.onCall((data, context) => {
+    
     return {
-        text: data.text,
+        text: data.event,
         uid: context.auth.uid
     }
 });
 
 exports.updateDatabase = functions.https.onCall((data, context) => {
-    var event = 'tmd19';
+    var event = data.event;
 
     var scopes = [
         "https://www.googleapis.com/auth/spreadsheets.readonly"
@@ -105,8 +106,8 @@ exports.updateDatabase = functions.https.onCall((data, context) => {
             if (err) return console.log("API FAILED: " + err);
             const rows = res.data.values;
             var results = createResults(value[1], rows)
-            admin.database().ref('/events/' + event + '/districts').update(results)
-            console.log(results)
+            admin.database().ref('/events/' + event + '/districts').set(results)
+            console.log('finished')
             
         })
         return {
