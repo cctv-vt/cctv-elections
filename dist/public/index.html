@@ -45,7 +45,7 @@
 			</header>
 			<div id="clinks">
 				<!-- External Links: These need to be updated each time -->
-				<a v-for="link of evSettings.links" class="menu-item" :href="link.href">{{ link.title }}</a>
+				<a v-for="(link, key) of evSettings.links" :class="{ 'first': key === 0, 'last': key === (evSettings.links.length -1) }" class="menu-item" :href="link.href">{{ link.title }}</a>
 			</div>
 			<!-- cvideo and csocial are containers for the social media embeds these are controlled via the json template  -->
 			<div id="cvideo">
@@ -63,12 +63,12 @@
 				<nav id="nav" class="nav">
 					<div id="chead">
 						<h2>{{ districts[currentVue].title }} Results</h2>
-						<button @click="subToggle($event.currentTarget.parentElement.parentElement, districts, 27)"
+						<button @click="subToggle($event.currentTarget.parentElement.parentElement, districts, 34)"
 							id="hamburger"><i class="fas fa-bars fa-2x"></i></button>
 					</div>
 					<div id="cmenu-items">
 						<button @click="districtChange(key, $event)" class="menu-item"
-							v-for="(district, key) of districts" :key="key" tabindex="0">
+							v-for="(district, key) of districts" :class="{ 'first': key === 0, 'last': key === (districts.length -1) }" :key="key" tabindex="0">
 							<h3>{{ district.title }}</h3>
 						</button>
 					</div>
@@ -86,27 +86,29 @@
 						<div class="cresults">
 							<div v-for="(result, cn) of sortVotes(election.results)"
 								@click="if(subResultsLength(result.votes) > 1){subToggle($event.currentTarget, result.votes, 39)}"
-								:class="{ hresult: districts[currentVue].showSubResults }" class="result">
+								:class="{ hresult: districts[currentVue].showSubResults && election.results.length > 1 }" class="result">
 								<div class="cname">
 									<h4>{{ result.name }}</h4>
 								</div>
 								<div class="cvotes">
-									<h4>{{ getSum(result.votes) }} ({{ getVotePerc(election, getSum(result.votes),
-										true) }}%)</h4>
+									<h4 v-if="election.results.length > 1">{{ getSum(result.votes) }} ({{ getVotePerc(election, getSum(result.votes),true) }}%)</h4>
+									<h4 v-if="election.results.length === 1">(Uncontested)</h4>
+
 								</div>
-								<div class="cbar">
+								<div v-if="election.results.length > 1" class="cbar">
 									<div class="bgbar">
 										<div :style="{ background: settings[theme].color[cn], width: getVotePerc(election, getSum(result.votes), false) + '%' }"
 											class="fgbar"></div>
 									</div>
 								</div>
-								<div v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults"
-									class="csubresults" style="height:0px;">
-									<div v-for="(subresult, dsubresult) of result.votes" class="csubresult">
-										<p class="dsub">{{ dsubresult }}</p>
-										<p class="vsub">{{ subresult }}</p>
-									</div>
-								</div>
+									<table v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults" class="csubresults" style="height:0px;">
+										<tbody style="display: flex;">
+											<tr v-for="(subresult, dsubresult) of result.votes" class="csubresult">
+												<th class="dsub">{{ dsubresult }}</th>
+												<th class="vsub">{{ subresult }}</th>
+											</tr>
+										</tbody>
+									</table>
 							</div>
 						</div>
 						</div>
@@ -120,15 +122,15 @@
 						<div class="cresults">
 							<div v-for="(result, cn) of sortVotes(election.results)"
 								@click="if(subResultsLength(result.votes) > 1){subToggle($event.currentTarget, result.votes, 39)}"
-								:class="{ hresult: districts[currentVue].showSubResults }" class="result">
+								:class="{ hresult: districts[currentVue].showSubResults && election.results.length > 1 }" class="result">
 								<div class="cname">
 									<h4>{{ result.name }}</h4>
 								</div>
 								<div class="cvotes">
-									<h4>{{ getSum(result.votes) }} ({{ getVotePerc(election, getSum(result.votes),
-										true) }}%)</h4>
+									<h4 v-if="election.results.length > 1">{{ getSum(result.votes) }} ({{ getVotePerc(election, getSum(result.votes),true) }}%)</h4>
+									<h4 v-if="election.results.length === 1">(Uncontested)</h4>
 								</div>
-								<div class="cbar">
+								<div v-if="election.results.length > 1" class="cbar">
 									<div class="bgbar">
 										<div :style="{ background: settings[theme].color[cn], width: getVotePerc(election, getSum(result.votes), false) + '%' }"
 											class="fgbar"></div>
@@ -136,10 +138,12 @@
 								</div>
 								<div v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults"
 									class="csubresults" style="height:0px;">
-									<div v-for="(subresult, dsubresult) of result.votes" class="csubresult">
-										<p class="dsub">{{ dsubresult }}</p>
-										<p class="vsub">{{ subresult }}</p>
-									</div>
+									<table>
+										<tr v-for="(subresult, dsubresult) of result.votes" class="csubresult">
+											<th class="dsub">{{ dsubresult }}</th>
+											<th class="vsub">{{ subresult }}</th>
+										</tr>
+									</table>
 								</div>
 							</div>
 						</div>

@@ -8,7 +8,7 @@ var url = new URLSearchParams(window.location.search);
 //assigns variables/handles defaults
 var d = url.get("d") || 0;
 var e = url.get("e") || 0;
-var ev = url.get("ev") || "default";
+var ev = url.get("ev") || "tmd19";
 var theme = url.get("theme") || "classic";
 var navOffset = 0;
 
@@ -183,14 +183,24 @@ var app = new Vue({
   },
   mounted() {
     this.getResultsOnce();
-    document.title = this.evSettings.title
-    if (this.evSettings.live) {
-      this.getResults();
-    }
+    this.getEvSettingsOnce();
   },
   methods: {
     //data retrieval functions
     //Gets results only a single time
+    getEvSettingsOnce() {
+      districtsRef = database.ref('events/' + ev + '/evSettings');
+      districtsRef.once('value', function(snapshot) {
+        app.evSettings = snapshot.val();
+        app.loadResults();
+      })
+    },
+    loadResults () {
+      document.title = this.evSettings.title
+      if (this.evSettings.live) {
+        this.getResults();
+      }
+    },
     getResultsOnce() {
       districtsRef = database.ref('events/' + ev + '/districts');
       districtsRef.once('value', function(snapshot) {
