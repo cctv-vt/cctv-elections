@@ -98,18 +98,20 @@ exports.updateDatabase = functions.https.onCall((data, context) => {
     return Promise.all([token, template]).then((value) => {
         var settings = value[1].evSettings
         var sheets = google.sheets({ version: "v4" });
-        sheets.spreadsheets.values.get({
-            access_token: value[0],
-            spreadsheetId: settings.sheetId,
-            range: settings.sheetsPageName + '!A1:Z400'
-        }, (err, res) => {
-            if (err) return console.log("API FAILED: " + err);
-            const rows = res.data.values;
-            var results = createResults(value[1], rows)
-            admin.database().ref('/events/' + event + '/districts').set(results)
-            console.log('finished')
-            
-        })
+        if (context.auth.uid === 'ZsyOQx7MOGcfTNe0XBjHRLtkmmA3') {
+            sheets.spreadsheets.values.get({
+                access_token: value[0],
+                spreadsheetId: settings.sheetId,
+                range: settings.sheetsPageName + '!A1:Z400'
+            }, (err, res) => {
+                if (err) return console.log("API FAILED: " + err);
+                const rows = res.data.values;
+                var results = createResults(value[1], rows)
+                admin.database().ref('/events/' + event + '/districts').set(results)
+                console.log('finished')
+                
+            })
+        }
         return {
             text: "done"
         } 
