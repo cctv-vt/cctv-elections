@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <!-- <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script> -->
+    <!-- <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" /> -->
+    <link type="text/css" rel="stylesheet" href="css/styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Document</title>
 </head>
 <body>
     
-    <div id="firebaseui-auth-container"></div>
+    <form id="auth-panel"><input type="text" id="email"><input type="password" id="password"><input type="submit" id="signin-button" value="Sign In"></form>
     <!-- <div id="loader">Loading...</div> -->
     <div id="control-panel" style="display: none;">
         <h1>CCTV Elections Admin Panel</h1>
@@ -19,20 +20,20 @@
         <!-- <button id="update-button">Update Results</button> -->
         <h2>Template Editor:</h2>
         <div id="app">
-            <button @click="saveTemplate()" id="save" style="position: fixed; bottom: 0; right: 0; height: 50px; width: 100px;">Save</button>
-            <button id="update-button" @click="updateResults()" id="save" style="position: fixed; bottom: 0; right: 100px; height: 50px; width: 100px;">Update Live Results</button id="update-button">
+            <button @click="saveTemplate()" id="save">Save</button>
+            <button id="update-button" @click="updateResults()" id="save">Update Live Results</button>
             <nav id="event-switcher">
-                <p style="display: inline-block;">Template: </p>
-                <button @click="eventChange(key)" v-for="(template, key) of templates">{{ key }}</button>
+                <h3 style="display: inline-block;">Template: </h3>
+                <button @click="eventChange(key, $event)" v-for="(template, key) of templates">{{ key }}</button>
             </nav>
-            <h3>Current Template: {{ activeTemplate }}</h3>
+            <p>Current Template: {{ activeTemplate }}</p>
             <h3>Event Settings: </h3>
             <nav id="district-switcher">
-                <p style="display: inline-block;">Municipality: </p>
-                <button @click="districtChange(key)" v-for="(district, key) of templates[activeTemplate].districts"><input type="text" v-model="district.title" style="width: 100px;margin-right:  2px; margin-left: 10px;"></button>
+                <h3 style="display: inline-block;">Municipality: </h3>
+                <button @click="districtChange(key, $event)" v-for="(district, key) of templates[activeTemplate].districts">{{ district.title }}</button>
             </nav>
-            <h3>Current District: {{ templates[activeTemplate].districts[activeDistrict].title }}</h3>
-            <div id="election" v-for="(election, ekey) of templates[activeTemplate].districts[activeDistrict].elections" style="border: 2px solid black; margin:10px;">
+            <h4>Current District: <input type="text" v-model="templates[activeTemplate].districts[activeDistrict].title"></h4>
+            <div id="election" v-for="(election, ekey) of templates[activeTemplate].districts[activeDistrict].elections">
                 <input type="text" v-model="election.title">
                 
                 <div v-for="result of election.results" style="margin-top: 6px;">

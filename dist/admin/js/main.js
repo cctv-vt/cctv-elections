@@ -1,50 +1,63 @@
 // Initialize the FirebaseUI Widget using Firebase.
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
+// var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var db = new firebase.database();
 
-var uiConfig = {
-    callbacks: {
-        signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-            // User successfully signed in.
-            // Return type determines whether we continue the redirect automatically
-            // or whether we leave that to developer to handle.
-            console.log(authResult)
-            document.getElementById('control-panel').style.display = 'block';
-            firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-            return false;
-        },
-        uiShown: function () {
-            // The widget is rendered.
-            // Hide the loader.
-            document.getElementById('loader').style.display = 'none';
-        }
-    },
-    signInFlow: 'popup',
-    signInOptions: [
-        {
-            provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-            requireDisplayName: false
-        }
-    ]
-}
+// var uiConfig = {
+//     callbacks: {
+//         signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+//             // User successfully signed in.
+//             // Return type determines whether we continue the redirect automatically
+//             // or whether we leave that to developer to handle.
+//             console.log(authResult)
+//             document.getElementById('control-panel').style.display = 'block';
+//             firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+//             return false;
+//         },
+//         uiShown: function () {
+//             // The widget is rendered.
+//             // Hide the loader.
+//             document.getElementById('loader').style.display = 'none';
+//         }
+//     },
+//     signInFlow: 'popup',
+//     signInOptions: [
+//         {
+//             provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+//             requireDisplayName: false
+//         }
+//     ]
+// }
 
-ui.start('#firebaseui-auth-container', uiConfig);
+// ui.start('#firebaseui-auth-container', uiConfig);
 
 
 // var updateResults = firebase.functions().httpsCallable('helloWorld');
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 
 
-// window.addEventListener('load', () => {
+window.addEventListener('load', () => {
+    document.getElementById('auth-panel').addEventListener('submit', (event) => {
+        var email = document.getElementById('email')
+        var password = document.getElementById('password')
+        firebase.auth().signInWithEmailAndPassword(email.value, password.value).catch( (error) => {
+            console.log(error.code, error.message)
+            // email.value = ''
+            password.value = ''
+        })
+        event.preventDefault()
+    })
+})
 
-//     document.getElementById('update-button').addEventListener('click', (event) => {
-//         document.getElementById('update-button').disabled = true;
-//         updateResults({ event: "tmd19" }).then((result) => {
-//             console.log(result.data)
-//             document.getElementById('update-button').disabled = false;
-//         })
-
-//     })
-// })
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log('Signed in as', user.displayName)
+      document.getElementById('auth-panel').style.display = "none"
+      document.getElementById('control-panel').style.display = 'block';
+    } else {
+        // document.getElementById('auth-panel').style.display = "block"
+    }
+  });
+  
 
 app = new Vue({
     el: "#app",
@@ -84,10 +97,10 @@ app = new Vue({
                 document.getElementById('update-button').disabled = false;
         })
         },
-        eventChange(key) {
+        eventChange(key, ev) {
             app.activeTemplate = key;
         },
-        districtChange(key) {
+        districtChange(key, ev) {
             app.activeDistrict = key;
         },
     }
