@@ -62,18 +62,10 @@ firebase.auth().onAuthStateChanged(function(user) {
 app = new Vue({
     el: "#app",
     data: {
+        loaded:false,
         activeTemplate: 'test',
-        activeDistrict: 0,
-        templates: {
-            test: {
-                districts: [
-                    {
-                        title: "Hello",
-                        
-                    }
-                ]
-            }
-        }
+        activeDistrict: 0
+        
     },
     mounted() {
         this.getTemplate();
@@ -83,6 +75,7 @@ app = new Vue({
             templatesRef = db.ref('templates/');
             templatesRef.once('value', function(snapshot) {
                 app.templates = snapshot.val()
+                app.loaded = true
             })
         },
         saveTemplate() {

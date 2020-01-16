@@ -11,6 +11,18 @@ input {
     font-size: 11pt;
 }
 
+#load-screen {
+    position: fixed;
+    background: white;
+    top:0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    p {
+        margin: 0 auto;
+    }
+}
+
 #save {
     position: fixed;
     bottom: 1em;
