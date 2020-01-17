@@ -15,6 +15,7 @@
 
     <form id="auth-panel"><input type="text" id="email"><input type="password" id="password"><input type="submit"
             id="signin-button" value="Sign In"></form>
+    <button id="logout-button">Logout</button>
     <!-- <div id="loader">Loading...</div> -->
     <div id="control-panel" style="display: none;">
         <h1>CCTV Elections Admin Panel</h1>
@@ -23,7 +24,9 @@
         <!-- <button id="update-button">Update Results</button> -->
         <h2>Template Editor:</h2>
         <div id="app">
-            <div id="load-screen" v-if="!loaded"><p>LOADING</p></div>
+            <div id="load-screen" v-if="!loaded">
+                <p>LOADING</p>
+            </div>
             <div v-if="loaded">
                 <button @click="saveTemplate()" id="save">Save</button>
                 <button id="update-button" @click="updateResults()" id="save">Update Live Results</button>
@@ -46,18 +49,23 @@
                 </nav>
                 <h4>Current District: <input type="text"
                         v-model="templates[activeTemplate].districts[activeDistrict].title"></h4>
-                <div id="election"
-                    v-for="(election, ekey) of templates[activeTemplate].districts[activeDistrict].elections">
-                    <input type="text" v-model="election.title">
+                <div id="celections">
+                    <div class="election"
+                        v-for="(election, ekey) of templates[activeTemplate].districts[activeDistrict].elections">
+                        <input class="election-title" type="text" v-model="election.title">
 
-                    <div v-for="result of election.results" style="margin-top: 6px;">
-                        <input type="text" v-model="result.name">
-                        <div v-for="(voteField, key) of result.votes">
-                            <p style="display: inline-block; width: 100px; margin-top: 0;margin-bottom: 0;">{{ key }}
-                            </p><input type="text" v-model="result.votes[key]" style="width:40px;">
+                        <div v-for="result of election.results" style="margin-top: 6px;">
+                            <input type="text" v-model="result.name">
+                            <div v-for="(voteEntry) of result.votes">
+                                <input type="text" v-model="voteEntry.title" style="width:40%;margin: 0;">
+                                <input type="text" v-model="voteEntry.value" style="width:40%; margin: 0;">
+                            </div>
+                            <button @click="addVoteEntry(election)">Add Reference</button>
                         </div>
+                        <button @click="addResult(election)" style="width: 100%;">Add Result</button>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

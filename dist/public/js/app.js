@@ -79,40 +79,41 @@ var app = new Vue({
       {
       title: "Loading",
       showSubResults: false,
-      elections: [
-        {
-        results: [
-          {
-            name: "loading...",
-            votes: {
-              loading: 0,
-          },
-          },
-          {
-            cname: "loading...",
-            votes: {
-              loading: 0,
-          },
-          }
-        ]
-      },
-      {
-        results: [
-          {
-            name: "loading...",
-            votes: {
-              loading: 0,
-          },
-          },
-          {
-            cname: "loading...",
-            votes: {
-              loading: 0,
-          },
-          }
-        ]
-      }
-      ]}],
+      // elections: [
+      //   {
+      //   results: [
+      //     {
+      //       name: "loading...",
+      //       votes: {
+      //         loading: 0,
+      //     },
+      //     },
+      //     {
+      //       cname: "loading...",
+      //       votes: {
+      //         loading: 0,
+      //     },
+      //     }
+      //   ]
+      // },
+      // {
+      //   results: [
+      //     {
+      //       name: "loading...",
+      //       votes: {
+      //         loading: 0,
+      //     },
+      //     },
+      //     {
+      //       cname: "loading...",
+      //       votes: {
+      //         loading: 0,
+      //     },
+      //     }
+      //   ]
+      // }
+      // ]
+    }],
     /* evSettings has event level settings  */
     evSettings: {
       title: "Elections Page",
@@ -227,7 +228,7 @@ var app = new Vue({
     getSum(obj) {
       var sum = 0;
       for (i in obj) {
-        sum += obj[i];
+        sum += obj[i].value;
       }
       return sum;
     },

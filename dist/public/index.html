@@ -85,7 +85,7 @@
 								election.title }}</a></h3>
 						<div class="cresults">
 							<div v-for="(result, cn) of sortVotes(election.results)"
-								@click="if(subResultsLength(result.votes) > 1){subToggle($event.currentTarget, result.votes, 39)}"
+								@click="if(subResultsLength(result.votes) > 1 && election.results.length > 1){subToggle($event.currentTarget, result.votes, 39)}"
 								:class="{ hresult: districts[currentVue].showSubResults && election.results.length > 1 }" class="result">
 								<div class="cname">
 									<h4>{{ result.name }}</h4>
@@ -103,9 +103,9 @@
 								</div>
 									<table v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults" class="csubresults" style="height:0px;">
 										<tbody style="display: flex;">
-											<tr v-for="(subresult, dsubresult) of result.votes" class="csubresult">
-												<th class="dsub">{{ dsubresult }}</th>
-												<th class="vsub">{{ subresult }}</th>
+											<tr v-for="(subresult) of result.votes" class="csubresult">
+												<th class="dsub">{{ subresult.title }}</th>
+												<th class="vsub">{{ subresult.value }}</th>
 											</tr>
 										</tbody>
 									</table>
@@ -121,7 +121,7 @@
 								election.title }}</a></h3>
 						<div class="cresults">
 							<div v-for="(result, cn) of sortVotes(election.results)"
-								@click="if(subResultsLength(result.votes) > 1){subToggle($event.currentTarget, result.votes, 39)}"
+								@click="if(subResultsLength(result.votes) > 1 && election.results.length > 1){subToggle($event.currentTarget, result.votes, 39)}"
 								:class="{ hresult: districts[currentVue].showSubResults && election.results.length > 1 }" class="result">
 								<div class="cname">
 									<h4>{{ result.name }}</h4>
@@ -139,9 +139,9 @@
 								<div v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults"
 									class="csubresults" style="height:0px;">
 									<table>
-										<tr v-for="(subresult, dsubresult) of result.votes" class="csubresult">
-											<th class="dsub">{{ dsubresult }}</th>
-											<th class="vsub">{{ subresult }}</th>
+										<tr v-for="(subresult) of result.votes" class="csubresult">
+											<th class="dsub">{{ subresult.title }}</th>
+											<th class="vsub">{{ subresult.value }}</th>
 										</tr>
 									</table>
 								</div>

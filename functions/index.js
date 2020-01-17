@@ -43,9 +43,9 @@ exports.updateDatabase = functions.https.onCall((data, context) => {
             for (var e in districts[d].elections) {
                 for (var r in districts[d].elections[e].results) {
                     for (var v in districts[d].elections[e].results[r].votes) {
-                        a = alphaNum(districts[d].elections[e].results[r].votes[v])
+                        a = alphaNum(districts[d].elections[e].results[r].votes[v].value)
                         if (data[a[1]][a[0]]) {
-                            districts[d].elections[e].results[r].votes[v] = parseInt(data[a[1]][a[0]]);
+                            districts[d].elections[e].results[r].votes[v].value = parseInt(data[a[1]][a[0]]);
                         } else {
                             districts[d].elections[e].results[r].votes[v] = 0;
                         }
@@ -98,23 +98,25 @@ exports.updateDatabase = functions.https.onCall((data, context) => {
     return Promise.all([token, template]).then((value) => {
         var settings = value[1].evSettings
         var sheets = google.sheets({ version: "v4" });
-        if (context.auth.uid === 'ZsyOQx7MOGcfTNe0XBjHRLtkmmA3') {
-            sheets.spreadsheets.values.get({
-                access_token: value[0],
-                spreadsheetId: settings.sheetId,
-                range: settings.sheetsPageName + '!A1:Z400'
-            }, (err, res) => {
-                if (err) return console.log("API FAILED: " + err);
-                const rows = res.data.values;
-                var results = createResults(value[1], rows)
-                admin.database().ref('/events/' + event + '/districts').set(results)
-                console.log('finished')
-                
-            })
-        }
-        return {
-            text: "done"
-        } 
+        return new Promise((resolve, reject) => {
+            if (context.auth.uid === 'ZsyOQx7MOGcfTNe0XBjHRLtkmmA3') {
+                sheets.spreadsheets.values.get({
+                    access_token: value[0],
+                    spreadsheetId: settings.sheetId,
+                    range: settings.sheetsPageName + '!A1:Z400'
+                }, (err, res) => {
+                    if (err) reject(err);
+                    const rows = res.data.values;
+                    var results = createResults(value[1], rows);
+                    admin.database().ref('/events/' + event + '/districts').set(results)
+                    resolve({
+                        status: "completed"
+                    })
+                })
+            }
+        }).then((value) => {
+            return value
+        })
     }, (reason) => {
         console.log(reason)
         return { text: "failed"}

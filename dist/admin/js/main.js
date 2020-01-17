@@ -46,6 +46,9 @@ window.addEventListener('load', () => {
         })
         event.preventDefault()
     })
+    document.getElementById('logout-button').addEventListener('click', () => {
+        firebase.auth().signOut().then(console.log("Signed Out"))
+    })
 })
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -54,7 +57,8 @@ firebase.auth().onAuthStateChanged(function(user) {
       document.getElementById('auth-panel').style.display = "none"
       document.getElementById('control-panel').style.display = 'block';
     } else {
-        // document.getElementById('auth-panel').style.display = "block"
+        document.getElementById('auth-panel').style.display = "block"
+        document.getElementById('control-panel').style.display = 'none';
     }
   });
   
@@ -63,7 +67,7 @@ app = new Vue({
     el: "#app",
     data: {
         loaded:false,
-        activeTemplate: 'test',
+        activeTemplate: 'tmd19',
         activeDistrict: 0
         
     },
@@ -96,5 +100,14 @@ app = new Vue({
         districtChange(key, ev) {
             app.activeDistrict = key;
         },
+        addVoteEntry(election) {
+            for (result of election.results) {
+                result.votes.push({
+                    value: result.votes[0].value,
+                    title: result.votes[0].title
+                })
+            }
+            this.$forceUpdate()
+        }
     }
 })
