@@ -1,7 +1,13 @@
 body {
   font-family: Helvetica, sans-serif;
+  font-size: 14pt;
   padding: 0;
   margin: 0;
+}
+
+h1 {
+  text-align: center;
+  margin: 0.1em;
 }
 
 p {
@@ -26,6 +32,10 @@ input {
   margin: 0 auto;
 }
 
+.event-button {
+  width: 100%;
+}
+
 #save {
   position: fixed;
   bottom: 1em;
@@ -34,12 +44,24 @@ input {
   width: 10em;
 }
 
+#live-control-panel {
+  background: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 20em;
+  padding: 0.2em;
+  margin: 0 auto;
+}
+
 #update-button {
-  position: fixed;
-  bottom: 1em;
-  right: 12em;
-  height: 50px;
-  width: 10em;
+  width: 100%;
+  background: white;
+  border: none;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 20pt;
 }
 
 #auth-panel {
@@ -78,5 +100,40 @@ input {
 
 .election-title {
   width: 100%;
+}
+
+.ref-button {
+  width: 100%;
+}
+
+.result-container {
+  display: ruby;
+  overflow-x: scroll;
+  height: 13.2em;
+}
+
+.result {
+  width: 46.8%;
+  margin: 0.1em;
+  border: 1px solid black;
+  padding: 0.75em;
+}
+
+.result-title {
+  width: 60%;
+  height: 2em;
+}
+
+.remove-result-button {
+  width: 34.5%;
+  height: 2.5em;
+}
+
+.remove-ref-button {
+  width: 10%;
+}
+
+.add-result-button {
+  width: 50%;
 }
 /*# sourceMappingURL=styles.css.map */
