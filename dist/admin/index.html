@@ -4,80 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script> -->
-    <!-- <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" /> -->
-    <link type="text/css" rel="stylesheet" href="css/styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Document</title>
 </head>
 
 <body>
 
-    <form id="auth-panel"><input type="text" id="email"><input type="password" id="password"><input type="submit"
+     <form id="auth-panel"><input type="text" id="email"><input type="password" id="password"><input type="submit"
             id="signin-button" value="Sign In"></form>
     <button id="logout-button">Logout</button>
-    <!-- <div id="loader">Loading...</div> -->
-    <div id="control-panel" style="display: none;">
-        <h1>CCTV Elections Admin Panel</h1>
-        <!-- <input type="radio" >tmd19<br> -->
-        <!-- <input type="radio">tmd20<br> -->
-        <!-- <button id="update-button">Update Results</button> -->
-        <h2>Template Editor:</h2>
-        <div id="app">
-            <div id="load-screen" v-if="!loaded">
-                <p>LOADING</p>
-            </div>
-            <div v-if="loaded">
-                <button @click="saveTemplate()" id="save">Save</button>
-                <button id="update-button" @click="updateResults()" id="save">Update Live Results</button>
-                <nav id="event-switcher">
-                    <h3 style="display: inline-block;">Template: </h3>
-                    <button @click="eventChange(key, $event)" v-for="(template, key) of templates">{{ key }}</button>
-                </nav>
-                <p>Current Template: {{ activeTemplate }}</p>
-                <h3>Event Settings: </h3>
-                <input type="text" v-model="templates[activeTemplate].evSettings.title">
-                <br>
-                <div v-for="link of templates[activeTemplate].evSettings.links">
-                    <input type="text" v-model="link.title">
-                    <input type="text" v-model="link.href">
-                </div>
-                <nav id="district-switcher">
-                    <h3 style="display: inline-block;">Municipality: </h3>
-                    <button @click="districtChange(key, $event)"
-                        v-for="(district, key) of templates[activeTemplate].districts">{{ district.title }}</button>
-                </nav>
-                <h4>Current District: <input type="text"
-                        v-model="templates[activeTemplate].districts[activeDistrict].title"></h4>
-                <div id="celections">
-                    <div class="election"
-                        v-for="(election, ekey) of templates[activeTemplate].districts[activeDistrict].elections">
-                        <input class="election-title" type="text" v-model="election.title">
-
-                        <div v-for="result of election.results" style="margin-top: 6px;">
-                            <input type="text" v-model="result.name">
-                            <div v-for="(voteEntry) of result.votes">
-                                <input type="text" v-model="voteEntry.title" style="width:40%;margin: 0;">
-                                <input type="text" v-model="voteEntry.value" style="width:40%; margin: 0;">
-                            </div>
-                            <button @click="addVoteEntry(election)">Add Reference</button>
-                        </div>
-                        <button @click="addResult(election)" style="width: 100%;">Add Result</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
 
     <script src="/__/firebase/7.5.0/firebase-app.js"></script>
     <script src="/__/firebase/7.5.0/firebase-auth.js"></script>
     <script src="/__/firebase/7.5.0/firebase-functions.js"></script>
     <script src="/__/firebase/7.5.0/firebase-database.js"></script>
     <script src="/__/firebase/init.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/signin.js"></script>
 </body>
 
 </html>
