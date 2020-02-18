@@ -26,13 +26,20 @@
         gtag('js', new Date());
         gtag('config', 'UA-134092550-1');
     </script>
-
-
+    <style>
+        body {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
     <title>CCTV Elections</title>
 </head>
 
-<body style="height: 100%;display: flex;justify-content: center;align-items: center;">
-    <div id="app" style="">
+<body>
+    <div id="nav"></div>
+    <div id="app">
         <link rel="stylesheet" :href="settings[theme].styles">
                 <div class="election" style="">
                     <h3>{{ districts[dist].title }} {{ districts[dist].elections[elec].title }}</h3>

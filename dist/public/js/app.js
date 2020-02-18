@@ -144,6 +144,7 @@ var app = new Vue({
     currentVue: d,
     dist: d,
     elec: e,
+    event: ev,
     theme: theme,
     settings: {
       classic: {
@@ -192,6 +193,7 @@ var app = new Vue({
     getEvSettingsOnce() {
       districtsRef = database.ref('events/' + ev + '/evSettings');
       districtsRef.once('value', function(snapshot) {
+        console.log(snapshot.val())
         app.evSettings = snapshot.val();
         app.loadResults();
       })
@@ -201,6 +203,7 @@ var app = new Vue({
       if (this.evSettings.live) {
         this.getResults();
       }
+      // document.body.style.display = "block";
     },
     getResultsOnce() {
       districtsRef = database.ref('events/' + ev + '/districts');

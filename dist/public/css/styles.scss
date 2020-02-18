@@ -211,13 +211,13 @@ h1 {
   #election-results {
     background: $body-c;
     max-width: 1000px;
-    width: 100%;
+    width: 1000px;
     //max-width: 1000px;
     min-height: calc(100vh - 3.9em);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     align-content: flex-start;
     padding-top: 1em;
   }
@@ -247,7 +247,7 @@ h1 {
 
 .cresults {
   background: white;
-  margin: 0.5em;
+  margin: 1em;
   border-radius: 5px;
   border: $border;
   overflow: hidden;
@@ -271,7 +271,7 @@ h1 {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: start;
-  padding: 0.25em 0.4em 0.25em 0.4em;
+  padding: 0.25em 1em 0.25em 1em;
   margin: 0.5em 0;
   //border-bottom: 1px solid #D0D0D0;
   border-radius: 0;
@@ -463,6 +463,10 @@ h1 {
         background: $background-c;
       }
     }
+  }
+  #election-results {
+    width: 100%;
+    justify-content: space-around;
   }
 }
 
