@@ -106,10 +106,10 @@ app = new Vue({
             }
             
         },
-        addElection(district) {
+        addElection(district, key) {
             console.log(district)
             if (district.elections) {
-                district.elections.push({
+                district.elections.splice(key +1, 0, {
                     title: "New Election",
                     results: [
                         {

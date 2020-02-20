@@ -177,11 +177,15 @@
                                     </span>
                                     <span>Add Reference</span>
                                 </button>
+                                <button 
+                                    class="button is-primary"
+                                    @click="addElection(templates[activeTemplate].districts[activeDistrict], ekey)">
+                                    <span>Insert Election After</span>
+                                </button>
                             </div>
+                            
                         </div>
-                        <button class="button is-primary"
-                            @click="addElection(templates[activeTemplate].districts[activeDistrict])">Add
-                            Election</button>
+                        
                         <section class="section"></section>
                     </div>
                 </div>

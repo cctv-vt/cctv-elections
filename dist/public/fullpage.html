@@ -44,7 +44,7 @@
                 <div class="election" style="">
                     <h3>{{ districts[dist].title }} {{ districts[dist].elections[elec].title }}</h3>
                     <div class="cresults">
-                        <div v-for="(result, cn) of sortVotes(districts[dist].elections[elec].results)" @click="if(subResultsLength(result.votes) > 1){subToggle($event.currentTarget, result.votes, 39)}" class="result">
+                        <div v-for="(result, cn) of sortVotes(districts[dist].elections[elec].results)" @click="if(subResultsLength(result.votes) > 1){subToggle($event.currentTarget, result.votes, 41)}" class="result">
                             <div class="cname"><h4>{{ result.name }}</h4></div>
                             <div class="cvotes"><h4>{{ getSum(result.votes) }} ({{ Math.round(getVotePerc(districts[dist].elections[elec], getSum(result.votes))) }}%)</h4></div>
                             <div class="cbar">
@@ -52,12 +52,21 @@
                                     <div :style="{ background: settings[theme].color[cn], width: getVotePerc(districts[dist].elections[elec], getSum(result.votes)) + '%' }" class="fgbar"></div>
                                 </div>
                             </div>
-                            <div v-if="subResultsLength(result.votes) > 1" class="csubresults" style="height:0px;">
-                                <div v-for="(subresult, dsubresult) of result.votes" class="csubresult">
-                                    <p class="dsub">{{ dsubresult }}</p>
-                                    <p class="vsub">{{ subresult }}</p>
-                                </div>
-                            </div>
+                            <table
+                      v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults"
+                      class="csubresults"
+                      style="height:0px;"
+                    >
+                      <tbody style="display: flex;">
+                        <tr
+                          v-for="(subresult) of result.votes"
+                          class="csubresult"
+                        >
+                          <th class="dsub">{{ subresult.title }}</th>
+                          <th class="vsub">{{ subresult.value }}</th>
+                        </tr>
+                      </tbody>
+                    </table>
                         </div>
                     </div>
                 </div>
