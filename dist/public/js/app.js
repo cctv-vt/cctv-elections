@@ -8,7 +8,7 @@ var url = new URLSearchParams(window.location.search);
 //assigns variables/handles defaults
 var d = url.get("d") || 0;
 var e = url.get("e") || 0;
-var ev = url.get("ev") || "tmd19";
+var ev = url.get("ev") || "tmd20";
 var theme = url.get("theme") || "classic";
 var navOffset = 0;
 
@@ -25,6 +25,24 @@ window.onload = function () {
 window.onresize = function () {
   coverageHeightFix();
 };
+window.addEventListener("keydown", (event) => {
+  if (event.code == "ArrowLeft") {
+    if (parseInt(app.elec) > 0) {
+      app.elec = parseInt(app.elec) - 1
+    } else {
+      app.elec = app.districts[app.currentVue].elections.length-1
+    }
+    console.log(app.elec)
+  }
+  if (event.code == "ArrowRight") {
+    if (parseInt(app.elec) < app.districts[app.currentVue].elections.length-1) {
+      app.elec = parseInt(app.elec) + 1
+    } else {
+      app.elec = 0
+    }
+    console.log(app.elec)
+  }
+})
 
 //this sticks the navbar to the top when the page is scrolled
 // window.onscroll = function () {
@@ -117,28 +135,24 @@ var app = new Vue({
     /* evSettings has event level settings  */
     evSettings: {
       title: "Elections Page",
-      live: false,
-      links: [
-        {
-          title: "Channel 17 Home",
-          href: "http://www.cctv.org/about-us/channel-17"
-        },
-        {
-          title: "Exit Voices",
-          href: "https://www.youtube.com/watch?v=m2P6DjVub2A&list=PLljLFn4BZd2O7bG1XHuWl54Dh80sqkHNc"
-        },
-        {
-          title: "Election Forums",
-          href: "https://www.youtube.com/watch?v=XCvoxGEx6gk&list=PLljLFn4BZd2M9DJ8C-_zpZYKVBuzxVMIP"
-        },
-        {
-          title: "Donate",
-          href: "https://www.cctv.org/civicrm/contribute/transact?reset=1&id=4"
-        }
-      ],
+      live: true,
+      // links: [
+      //   {
+      //     title: "Channel 17 Home",
+      //     href: "http://www.cctv.org/about-us/channel-17"
+      //   },
+      //   {
+      //     title: "Election Forums",
+      //     href: "https://www.youtube.com/watch?v=XCvoxGEx6gk&list=PLljLFn4BZd2M9DJ8C-_zpZYKVBuzxVMIP"
+      //   },
+      //   {
+      //     title: "Donate",
+      //     href: "https://www.cctv.org/civicrm/contribute/transact?reset=1&id=4"
+      //   }
+      // ],
       embed: {
-        youtube: "-9N1gGuHCaM",
-        twitter: "https://twitter.com/ch_17/timelines/1098311669133000704?ref_src=twsrc%5Etfw"
+        youtube: "NXDlJUivXyM",
+        twitter: "https://twitter.com/ch_17?ref_src=twsrc%5Etfw"
       }
     },
     currentVue: d,

@@ -17,7 +17,7 @@
     <!-- Load Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
     <!-- Load Axios -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134092550-1"></script>
     <script>
@@ -41,7 +41,7 @@
     <div id="nav"></div>
     <div id="app">
         <link rel="stylesheet" :href="settings[theme].styles">
-                <div class="election" style="">
+                <div class="election">
                     <h3>{{ districts[dist].title }} {{ districts[dist].elections[elec].title }}</h3>
                     <div class="cresults">
                         <div v-for="(result, cn) of sortVotes(districts[dist].elections[elec].results)" @click="if(subResultsLength(result.votes) > 1){subToggle($event.currentTarget, result.votes, 41)}" class="result">
@@ -70,6 +70,9 @@
                         </div>
                     </div>
                 </div>
+                <p v-if="elec < (districts[dist].elections.length - 1)" style="position: fixed; bottom: 2px; right: 2px;padding: 0;margin: 0;font-size: 10pt;">{{ districts[dist].elections[parseInt(elec) + 1].title.slice(0,100) }} ➡</p>
+                <p v-if="elec > 0" style="position: fixed; bottom: 2px; left: 2px;padding: 0;margin: 0;font-size: 10pt;">⬅ {{ districts[dist].elections[parseInt(elec) - 1].title.slice(0,100) }}</p>
+        </div>
         
     <script src="/__/firebase/7.4.0/firebase-app.js"></script>
     <script src="/__/firebase/7.4.0/firebase-database.js"></script>
