@@ -44,7 +44,10 @@ exports.updateDatabase = functions.https.onCall((data, context) => {
                 for (var r in districts[d].elections[e].results) {
                     for (var v in districts[d].elections[e].results[r].votes) {
                         a = alphaNum(districts[d].elections[e].results[r].votes[v].value)
+                        console.log(districts[d].elections[e].results[r].votes[v].value)
+                        console.log(a)
                         if (data[a[1]][a[0]]) {
+                            console.log(parseInt(data[a[1]][a[0]]))
                             districts[d].elections[e].results[r].votes[v].value = parseInt(data[a[1]][a[0]]);
                         } else {
                             districts[d].elections[e].results[r].votes[v] = 0;
