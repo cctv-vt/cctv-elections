@@ -152,7 +152,7 @@ var app = new Vue({
       // ],
       embed: {
         youtube: "NXDlJUivXyM",
-        twitter: "https://twitter.com/ch_17?ref_src=twsrc%5Etfw"
+        twitter: "https://twitter.com/TownMeetingTV?ref_src=twsrc%5Etfw"
       }
     },
     currentVue: d,
@@ -169,6 +169,11 @@ var app = new Vue({
           "#D6647F",
           "#79A8ED",
           "#78E381",
+          "#A76DA6",
+          "#FEE351",
+          "#D6647F",
+          "#79A8ED",
+          "#78E381"
         ]
       },
       tmd19: {
@@ -192,8 +197,18 @@ var app = new Vue({
           "#79A8ED",
           "#78E381",
         ]
+      },
+      tmtv: {
+        img: "img/localvotes.svg",
+        styles: "css/tmtv/styles.css",
+        color: [
+          "#FFB800",
+          "#AD00FF",
+          "#00E0FF",
+          "#FF003D",
+          "#00FF75",
+        ]
       }
-
     }
 
   },
