@@ -1,4 +1,4 @@
-$font-stack: "Lato", sans-serif;
+$font-stack: proxima-nova, sans-serif;
 $font-color: #000000;
 $background-c: #ffffff;
 $border-c: #e9e9e9;
@@ -6,6 +6,10 @@ $body-c: #f5f5f5;
 $border: 1px solid $border-c;
 
 //WATCH OUT FOR THEME SPECIFIC CSS THAT USES !IMPORTANT TO OVERRIDE THIS CSS
+html {
+  // overflow-x: hidden;
+  // width: 80%;
+}
 
 body {
   background: $body-c;
@@ -13,7 +17,11 @@ body {
   font-weight: normal;
   color: $font-color;
   margin: 0;
+  // overflow-y: hidden;
+  // height: 100vh;
 }
+
+
 
 h1,
 h2,
@@ -21,28 +29,50 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 400;
   font-family: $font-stack;
+  font-weight: normal;
   a {
     text-decoration: none;
     color: $font-color;
+    font-weight: normal;
     &:focused {
       outline-color: #a76da6;
     }
   }
 }
 
-h1 {
-  text-align: right;
-  font-weight: 600;
-  margin: 0.3em 2px 0.3em 2px;
+// h1 {
+//   text-align: right;
+//   font-weight: 600;
+//   margin: 0.3em 2px 0.3em 2px;
+// }
+
+#overlay, #background {
+  background-size: auto;
+  position: absolute;
+  width: 100%;
+  height: 65vh;
+  z-index: -2;
+  background-size: cover;
 }
+
+#background {
+  background: url(https://images.unsplash.com/photo-1603331651359-86dd9d0a92c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+  background-size: cover;
+  background-position: center;
+}
+
+#overlay {
+  background: linear-gradient(#0000 30%,#f5f5f5 95%);
+}
+
+
 
 #loading {
   position: fixed;
   z-index: 15;
   background: white;
-  width: 100vw;
+  width: 90vw;
   height: 100vh;
 }
 
@@ -55,7 +85,8 @@ h1 {
 
 #nav {
   position: sticky;
-  top: 0;
+  position: -webkit-sticky;
+  top: -5px;
 }
 
 .nav {
@@ -63,20 +94,23 @@ h1 {
   background: $background-c;
   max-width: 1000px;
   width: 100%;
+  height: 80px;
   z-index: 10;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: flex-end;
+  justify-content: center;
+  align-content: space-around;
   //padding-bottom: 0.25em;
   padding-top: 0.25em;
-  border-right: $border;
-  border-bottom: 2px solid $border-c;
-  border-radius: 0 0 5px 5px;
-  h2 {
+  // border-right: $border;
+  // border-bottom: 2px solid #00000022;
+  box-shadow: 0px 0px 5px 0px #00000050;
+  border-radius: 0.3em;
+  h2{
     margin: auto auto auto 10px;
     font-size: 27px;
-    font-weight: 600;
+    font-weight: bold;
+    text-decoration: none;
   }
   #hamburger {
     height: 40px;
@@ -88,44 +122,61 @@ h1 {
     border: 0;
   }
   #cmenu-items {
+    font-weight: normal;
     justify-self: center;
     display: flex;
-    width: auto;
+    width: 100%;
     height: auto;
-    //margin-bottom: 10px;
-    margin-right: 10px;
+    justify-content: center;
+    margin-bottom: 0.2em;
+    // margin-right: 0.2em;
+    // margin-left: 0.2em;
     border-bottom: 0;
-    transition: all 0.4s ease-in-out;
+    // box-shadow: 0px 0px 5px 0px #00000050;
+    .menu-item {
+      margin-left: 1em;
+      margin-right: 1em;
+      border-color: #399D5B;
+      &.active {
+        border-color: #2E3192;
+      }
+    }
   }
 }
 
+#iheader {
+  display: block;
+}
+#iheader-mobile {
+  display: none;
+}
+
 .menu-item {
-  background-color: $background-c;
+  background: transparent;
   cursor: pointer;
-  margin: 0 0 0.5em 0;
-  padding: 0.2em 0.5em 0.2em 0.5em;
+  margin: 0 0.2em 0.5em 0.2em;
+  padding: 0 0 0 0;
   // padding: 0.30em 0.65em 0.30em 0.65em;
-  border: 0 solid $border-c;
-  border-width: 1px 0 1px 1px;
+  border: solid;
+  border-width: 0 0 3px 0;
   // box-shadow: 0px 2px 0px 0px $border-c;
   &.active {
     //box-shadow: 0 0 0 0 #000;
-    background: #ffffff;
+    // background: #ffffff;
   }
   h3 {
+    font-weight: normal;
     margin: 0;
     font-size: 22px;
   }
   &.first {
-    border-width: 1px 0 1px 1px;
-    border-radius: 5px 0 0 5px;
+    // border-radius: 5px 0 0 5px;
   }
   &.last {
-    border-width: 1px;
-    border-radius: 0 5px 5px 0;
+    // border-radius: 0 5px 5px 0;
   }
   &:hover {
-    background: #f5f5f5;
+    // background: #f5f5f5;
   }
   &:focus {
     outline: 0;
@@ -138,57 +189,79 @@ h1 {
   position: sticky;
   top: 0;
 }
+.cheader {
+  width: 100%;
+  background: #00000060;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1000px;
+  height: 120px;
+  background: transparent;
+  img {
+    max-width: 30%;
+    height: 90%;
+    float: left;
+    &.desktop {
+      display: block;
+    }
+    &.mobile {
+      display: none;
+    }
+  }
+  h1 {
+    display: none;
+    margin: auto 0 0 0;
+  }
+}
+#clinks {
+  height: 30px;
+  .menu-item {
+    // height: 20px;
+    border-color: white;
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+  }
+}
+
+
 
 #election-coverage {
-  background: $background-c;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
   max-width: 1000px;
   height: 600px;
   margin: 0 auto;
   padding: 0;
-  border-right: $border;
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-content: space-around;
-    width: 100%;
-    margin: 1%;
-    img {
-      display: block;
-      max-width: 100%;
-      //margin: auto;
-      float: left;
-    }
-    h1 {
-      display: none;
-      margin: auto 0 0 0;
-    }
-  }
-  #clinks {
-    //width: 100%;
-    margin: 1%;
-    margin-left: auto;
-    //margin-right: auto;
-    margin-top: -50px;
-    padding: 0.234em;
-    a {
-      text-decoration: none;
-      font-size: 19px;
-      color: $font-color;
-      padding: 0.3em;
-    }
-  }
-  #cvideo {
-    width: 65%;
-    margin: 1%;
-  }
-  #csocial {
-    width: 30%;
-    margin: 1%;
-    height: 390px;
-  }
+  padding-top: 1em;
+}
+
+#election-results {
+  background: transparent;
+  max-width: 1000px;
+  width: 100%;
+  //max-width: 1000px;
+  min-height: calc(100vh - 3.9em);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  padding-top: 1em;
+}
+
+#cvideo {
+  width: 68%;
+  margin: 0;
+  padding: 0;
   #video {
     position: relative;
     padding-bottom: 56.25%;
@@ -196,10 +269,10 @@ h1 {
     height: 0;
     overflow: hidden;
   }
-
   #video iframe,
   #video object,
   #video embed {
+    border-radius: 0.2em;
     overflow: hidden;
     position: absolute;
     top: 0;
@@ -207,20 +280,11 @@ h1 {
     width: 100%;
     height: 95%;
   }
-
-  #election-results {
-    background: $body-c;
-    max-width: 1000px;
-    width: 100%;
-    //max-width: 1000px;
-    min-height: calc(100vh - 3.9em);
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: flex-start;
-    padding-top: 1em;
-  }
+}
+#csocial {
+  width: 30%;
+  margin: 0;
+  height: 390px;
 }
 
 .celections {
@@ -242,6 +306,13 @@ h1 {
     margin: 0.3em;
     font-size: 23px;
     text-align: center;
+    background: #f5f5f54d;
+    box-shadow: 0 0 20px 10px #f5f5f54d;
+    a {
+      font-weight: bold;
+      
+      border-radius: 20px;
+    }
   }
 }
 
@@ -249,10 +320,10 @@ h1 {
   background: white;
   margin: 1em;
   border-radius: 5px;
-  border: $border;
+  // border: $border;
   overflow: hidden;
   // padding: 0.5em;
-  box-shadow: 2px 2px 0px -1px $border-c;
+  box-shadow: 0px 0px 5px 0px #00000010;
   h4 {
     font-size: 16px;
     margin: 0em;
@@ -276,6 +347,7 @@ h1 {
   //border-bottom: 1px solid #D0D0D0;
   border-radius: 0;
   .cname {
+    font-weight: normal;
     width: 40%;
     padding: 0.6em 0 0.6em 0;
     white-space: nowrap;
@@ -355,16 +427,12 @@ h1 {
     }
   }
 }
-.desktop {
-  display: flex;
-}
-
-.mobile {
-  display: none;
-}
 //THIS IS FOR FEATURING AN ELECTION IF WE THINK IT NEEDS TO BE
 //FORGIVE ME FOR THE IMPORTANT FLAGS
 @media only screen and (min-width: 1000px) {
+  .mobile {
+    display: none;
+  }
   .featured {
     width: 1000px !important;
     h3 {
@@ -378,22 +446,40 @@ h1 {
   }
 }
 @media only screen and (max-width: 1000px) {
+  // #background, #overlay {
+  //   height: 100vh;
+  // }
+
+  header {
+    height: 20em;
+    margin: 0;
+    margin-bottom: 1em;
+    flex-direction: column !important;
+    img {
+      margin: auto;
+      max-width: 20em;
+      width: 45%;
+      margin-top: 1em;
+      &.desktop {
+        display: block;
+      }
+      &.mobile {
+        display: none;
+      }
+    }
+    h1 {
+      text-align: center;
+    }
+  }
+
   #election-coverage {
     flex-direction: column;
     flex-wrap: nowrap;
     min-height: 1000px;
     width: 100%;
     border-right: 0;
-    header {
-      margin: 0;
-      margin-bottom: 1em;
-      flex-direction: column;
-      img {
-        margin: auto;
-      }
-      h1 {
-        text-align: center;
-      }
+    .cheader {
+      height: unset;
     }
     #clinks {
       margin: 0;
@@ -415,6 +501,10 @@ h1 {
       display: none;
     }
   }
+  #nav {
+    top: 5px;
+    height: unset;
+  }
   .nav {
     background: transparent;
     border: 0;
@@ -425,63 +515,57 @@ h1 {
       margin-top: -4px;
       background: $background-c;
       display: flex;
-      border-bottom: 1px solid $border-c;
+      // border-bottom: 1px solid $border-c;
     }
     #hamburger {
       display: unset;
     }
     #cmenu-items {
-      background: transparent;
+      z-index: -1;
+      background: linear-gradient(90deg, #0000 20%, white 70%);
       justify-self: right;
+      position: absolute;
+      top: 4px;
+      // right: -6em;
+      right: 0;
       display: flex;
       flex-direction: column;
       width: 100%;
+      padding: 3em 1em 100vh 0;
       //max-width: 200px;
-      height: 0px;
+      // max-height: 20em;
       overflow: hidden;
       margin-top: -1px;
-      //border-bottom: 1px solid $border-c;
-      border-left: 1px solid $border-c;
       margin-right: 0;
-      border-bottom: $border;
       .menu-item {
-        background: linear-gradient(90deg, #ffffff00 0%, $background-c 50%);
+        // background: linear-gradient(90deg, #ffffff00 0%, $background-c 50%);
         cursor: pointer;
         margin: 0 0 0px 0px;
-        // padding: 0.4em 0.4em 0.4em 0.4em;
-        padding: 0.3em 0.1em 0.3em 0em;
+        width: unset;
+        padding: 0.3em;
+        mask-border-slice: 30%;
+        margin-right: 1em;
+        margin-bottom: 0.2em;
         border-radius: 0;
-        //border: 0;
-        border-bottom: 0px solid $border-c;
-        border-left: 0;
-        border-top: 0;
-        border-right: 0;
+        align-self: flex-end;
         h3 {
           text-align: right;
           margin: 0;
           font-size: 22px;
         }
-        &:hover {
-          background: $border-c;
-        }
       }
-    }
-    .menu-item {
-      &:hover {
-        background: $background-c;
+      transition: right 0.5s cubic-bezier(.63,-0.43,.32,1.16);
+      &.hidden {
+        display: none;
+        // max-height: 0px;
+        // padding: 0;
+        // right: calc( -100% - 12em);
       }
     }
   }
   #election-results {
     width: 100%;
     justify-content: space-around;
-  }
-  .desktop {
-    display: none;
-  }
-  
-  .mobile {
-    display: flex;
   }
 }
 
@@ -491,6 +575,15 @@ h1 {
       width: 100%;
       border-left: 0;
       max-width: 100%;
+    }
+  }
+
+  header img {
+    &.desktop {
+      display: none;
+    }
+    &.mobile {
+      display: block;
     }
   }
 

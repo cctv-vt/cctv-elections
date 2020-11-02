@@ -25,6 +25,14 @@ window.onload = function () {
 window.onresize = function () {
   coverageHeightFix();
 };
+// window.onscroll = function () {
+//   if (navOffset > 0 && window.scrollY > navOffset) {
+//     document.getElementById('nav').classList.add('fixed')
+//     console.log("scroll")
+//   } else {
+//     document.getElementById('nav').classList.remove('fixed')
+//   }
+// }
 window.addEventListener("keydown", (event) => {
   if (event.code == "ArrowLeft") {
     if (parseInt(app.elec) > 0) {
@@ -66,7 +74,9 @@ const coverageHeightFix = function () {
   to make sure that the background renders correctly */
   document.getElementById("nav").classList.remove("static");
   navOffset = document.getElementById("nav").offsetTop;
-  document.getElementById("election-coverage").style.height = navOffset + 'px';
+  // document.getElementById("election-coverage").style.height = navOffset + 'px';
+  document.getElementById("background").style.height = navOffset + 200 + 'px';
+  document.getElementById("overlay").style.height = navOffset + 200 + 'px';
   //navLock();
   if (window.innerWidth >= 1000) {
     var menuItems = document.getElementById("cmenu-items").style;
@@ -163,7 +173,13 @@ var app = new Vue({
     settings: {
       classic: {
         img: "img/logo.svg",
+        mobileImg: "img/mobileLogo.svg",
         color: [
+          "#A76DA6",
+          "#FEE351",
+          "#D6647F",
+          "#79A8ED",
+          "#78E381",
           "#A76DA6",
           "#FEE351",
           "#D6647F",
@@ -175,39 +191,6 @@ var app = new Vue({
           "#79A8ED",
           "#78E381"
         ]
-      },
-      tmd19: {
-        img: "img/newlogo.svg",
-        styles: "css/tmd19/styles.css",
-        color: [
-          "#FFB800",
-          "#AD00FF",
-          "#00E0FF",
-          "#FF003D",
-          "#00FF75",
-        ]
-      },
-      classicplus: {
-        img: "img/logo.svg",
-        styles: "css/classicplus/styles.css",
-        color: [
-          "#A76DA6",
-          "#FEE351",
-          "#D6647F",
-          "#79A8ED",
-          "#78E381",
-        ]
-      },
-      tmtv: {
-        img: "img/localvotes.svg",
-        styles: "css/tmtv/styles.css",
-        color: [
-          "#FFB800",
-          "#AD00FF",
-          "#00E0FF",
-          "#FF003D",
-          "#00FF75",
-        ]
       }
     }
 
@@ -215,6 +198,7 @@ var app = new Vue({
   mounted() {
     this.getResultsOnce();
     this.getEvSettingsOnce();
+    this.districtChange(this.dist)
   },
   methods: {
     //data retrieval functions
@@ -232,6 +216,7 @@ var app = new Vue({
       if (this.evSettings.live) {
         this.getResults();
       }
+      app.districtChange(app.dist)
       // document.body.style.display = "block";
     },
     getResultsOnce() {
@@ -245,12 +230,13 @@ var app = new Vue({
       districtsRef = database.ref('events/' + ev + '/districts');
       districtsRef.on('value', function(snapshot) {
         app.districts = snapshot.val()
+        console.log(snapshot.val())
       })
     },
     //math and sorting functions
     sortVotes(arr) {
       if (arr.length > 2) {
-        return arr.slice(0, 12).sort(function (a, b) {
+        return arr.slice(0, 20).sort(function (a, b) {
           return app.getSum(b.votes) - app.getSum(a.votes);
         });
       } else {
@@ -290,13 +276,13 @@ var app = new Vue({
       return len
     },
     //rendering and animation functions
-    districtChange(k, ev) {
+    districtChange(k) {
       if (window.scrollY > navOffset) {
         window.scrollTo(0, navOffset)
       };
-      if (window.innerWidth <= 1000) {
-        ev.currentTarget.parentElement.style = "0px";
-      }
+      // if (window.innerWidth <= 1000) {
+      //   ev.currentTarget.parentElement.style = "0px";
+      // }
       this.currentVue = k;
       var cm = document.getElementById('cmenu-items').childNodes;
       for (var i=0;i<cm.length; i++) {
@@ -312,6 +298,7 @@ var app = new Vue({
       //console.log(ael)
       //ev.currentTarget.classList.add("active");
       //dChangeAnim.reverse();
+      this.hamburgerMenuToggle()
 
     },
     subToggle(ev, v, eh) {
@@ -327,6 +314,9 @@ var app = new Vue({
         sr.style.height = '0px';
         sr.style.opacity = '0.0';
       };
+    },
+    hamburgerMenuToggle() {
+      document.getElementById('cmenu-items').classList.toggle('hidden')
     },
     themeToggle() {
 

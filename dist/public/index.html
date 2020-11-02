@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.typekit.net/gcu3ndi.css">
     <!-- load css compiled from sass -->
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="icon" href="img/fav.png" type="image/png" />
@@ -26,7 +27,7 @@
       crossorigin="anonymous"
     ></script>
     <!-- Load Vue -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134092550-1"></script>
 
@@ -40,276 +41,291 @@
       gtag("config", "UA-134092550-1");
     </script>
 
-    <title>Town Meeting Day 2019 Error</title>
+    <title>Election Results</title>
   </head>
 
   <body>
-    <div id="app">
-      <link rel="stylesheet" :href="settings[theme].styles" />
-      <div id="election-coverage">
-        <header>
-          <!-- Header: h1 element is hidden unless overridden by theme -->
-          <img
-            id="iheader"
-            :src="settings[theme].img"
-            alt="Channel 17 Town Meeting TV Logo"
-          />
-          <h1>{{ evSettings.title }}</h1>
-        </header>
-        <div id="clinks">
-          <!-- External Links: These need to be updated each time -->
-          <a class="menu-item first" href="https://cctv.org/welcome">CCTV Home</a>
-          <a class="menu-item" href="https://www.youtube.com/playlist?list=PLljLFn4BZd2OxupavBQ07B_w_ovyhyYB0">Election Forums</a>
-          <a class="menu-item last" href="https://www.cctv.org/civicrm/contribute/transact?reset=1&id=4">Donate</a>
-          <!-- <a
-            v-for="(link, key) of evSettings.links"
-            :class="{ 'first': key === 0, 'last': key === (evSettings.links.length -1) }"
-            class="menu-item"
-            :href="link.href"
-            >{{ link.title }}</a
-          > -->
+    <div id="wrapper">
+      <div id="background"></div>
+      <div id="overlay"></div>
+      <div id="app">
+        <link rel="stylesheet" :href="settings[theme].styles" />
+        <div class="cheader">
+          <header>
+            <!-- Header: h1 element is hidden unless overridden by theme -->
+            <!-- <div id="background"></div> -->
+            <!-- <div id="overlay"></div> -->
+            <img
+              class="desktop"
+              :src="settings[theme].img"
+              alt="Channel 17 Town Meeting TV Logo"
+            />
+            <img
+              class="mobile"
+              :src="settings[theme].mobileImg"
+              alt="Channel 17 Town Meeting TV Logo"
+            />
+            <h1>{{ evSettings.title }}</h1>
+              <nav id="clinks">
+                <!-- External Links: These need to be updated each time -->
+                <a class="menu-item first" href="https://cctv.org/watch-tv">Town Meeting TV Home</a>
+                <a class="menu-item" href="https://www.youtube.com/playlist?list=PLljLFn4BZd2OI-C3GSb34MUbVS4FZ-5rv">Election Forums</a>
+                <a class="menu-item last" href="https://cctv.z2systems.com/np/clients/cctv/donation.jsp?campaign=1&&test=true">Donate</a>
+                <!-- <a
+                  v-for="(link, key) of evSettings.links"
+                  :class="{ 'first': key === 0, 'last': key === (evSettings.links.length -1) }"
+                  class="menu-item"
+                  :href="link.href"
+                  >{{ link.title }}</a
+                > -->
+                
+              </nav>
+          </header>
+        </div>
+        
+        <div id="election-coverage">
           
-        </div>
-        <!-- cvideo and csocial are containers for the social media embeds these are controlled via the json template  -->
-        <div id="cvideo">
-          <div id="video"
-            ><iframe
-              :src="'https://www.youtube.com/embed/' + evSettings.embed.youtube + '/'"
-              frameborder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe
-          ></div>
-        </div>
-        <div id="csocial"
-          ><a
-            class="twitter-timeline"
-            data-height="390"
-            :href="evSettings.embed.twitter"
-            >Town Meeting TV</a
-          >
-          <script
-            async
-            src="https://platform.twitter.com/widgets.js"
-            charset="utf-8"
-          ></script>
-        </div>
-        <!-- the nav element is used to navigate between regions/municipalities -->
-        <div>
-          <nav id="nav" class="nav">
-            <div id="chead">
-              <h2>{{ districts[currentVue].title }} Results</h2>
-              <button
-                @click="subToggle($event.currentTarget.parentElement.parentElement, districts, 34)"
-                id="hamburger"
-                ><i class="fas fa-bars fa-2x"></i
-              ></button>
-            </div>
-            <div id="cmenu-items">
-              <button
-                @click="districtChange(key, $event)"
-                class="menu-item"
-                v-for="(district, key) of districts"
-                :class="{ 'first': key === 0, 'last': key === (districts.length -1) }"
-                :key="key"
-                tabindex="0"
-              >
-                <h3>{{ district.title }}</h3>
-              </button>
-            </div>
-          </nav>
-          <div v-if="districts.length" id="election-results">
-            <p
-              style="width: 100%; height: 10px; text-align: center; margin-top: 0; margin-bottom:1em"
-              ><span v-if="districts[currentVue].showSubResults">Click on the ballot items to see the contributing results.</spanv-if="districts[currentVue].showSubResults"></p
+          <!-- cvideo and csocial are containers for the social media embeds these are controlled via the json template  -->
+          <div id="cvideo">
+            <div id="video"
+              ><iframe
+                :src="'https://www.youtube.com/embed/' + evSettings.embed.youtube + '/'"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe
+            ></div>
+          </div>
+          <div id="csocial"
+            ><a
+              class="twitter-timeline"
+              data-height="393"
+              :href="evSettings.embed.twitter"
+              >Town Meeting TV</a
             >
-            <div class="celections desktop">
-              <div
-                v-for="(election, en) of districts[currentVue].elections"
-                v-if="isEven(en)"
-                :class="election.featured"
-                class="election"
-              >
-                <h3
-                  ><a
-                    alt="Show fullscreen version."
-                    :href="'/fullpage.html?ev='+event+'&d='+currentVue+'&e='+en+'&theme='+theme"
-                    >{{ election.title }}</a
-                  ></h3
-                >
-                <div class="cresults">
-                  <div
-                    v-for="(result, cn) of sortVotes(election.results)"
-                    @click="if(subResultsLength(result.votes) > 1 && election.results.length > 1){subToggle($event.currentTarget, result.votes, 42)}"
-                    :class="{ hresult: districts[currentVue].showSubResults && election.results.length > 1 }"
-                    class="result"
-                  >
-                    <div class="cname">
-                      <h4>{{ result.name }}</h4>
-                    </div>
-                    <div class="cvotes">
-                      <h4 v-if="election.results.length > 1"
-                        >{{ getSum(result.votes) }} ({{ getVotePerc(election,
-                        getSum(result.votes),true) }}%)</h4
-                      >
-                      <h4 v-if="election.results.length === 1 && getSum(result.votes) > 0"
-                        >{{ getSum(result.votes) }} Votes</h4
-                      >
-                    </div>
-                    <div v-if="election.results.length === 1" class="cbar">
-                      <h4 style="text-align: end;">(Uncontested)</h4>
-                    </div>
-                    <div v-if="election.results.length > 1" class="cbar">
-                      <div class="bgbar">
-                        <div
-                          :style="{ background: settings[theme].color[cn], width: getVotePerc(election, getSum(result.votes), false) + '%' }"
-                          class="fgbar"
-                        ></div>
-                      </div>
-                    </div>
-                    <table
-                      v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults"
-                      class="csubresults"
-                      style="height:0px;"
-                    >
-                      <tbody style="display: flex;">
-                        <tr
-                          v-for="(subresult) of result.votes"
-                          class="csubresult"
-                        >
-                          <th class="dsub">{{ subresult.title }}</th>
-                          <th class="vsub">{{ subresult.value }}</th>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+            <script
+              async
+              src="https://platform.twitter.com/widgets.js"
+              charset="utf-8"
+            ></script>
+          </div>
+          <!-- the nav element is used to navigate between regions/municipalities -->
+          <div style="display: flex;flex-direction: column;">
+            <nav id="nav" class="nav">
+              <div id="chead">
+                <h2>{{ districts[currentVue].title }} Results</h2>
+                <button
+                  @click="hamburgerMenuToggle()"
+                  id="hamburger"
+                  ><i class="fas fa-bars fa-2x"></i
+                ></button>
               </div>
-            </div>
-            <div class="celections desktop">
-              <div
-                v-for="(election, en) of districts[currentVue].elections"
-                v-if="isOdd(en)"
-                :class="election.featured"
-                class="election"
-              >
-                <h3
-                  ><a
-                    alt="Show fullscreen version."
-                    :href="'/fullpage.html?ev='+event+'&d='+currentVue+'&e='+en+'&theme='+theme"
-                    >{{ election.title }}</a
-                  ></h3
+              <div id="cmenu-items" class="hidden" @click="hamburgerMenuToggle()">
+                <button
+                  @click="[districtChange(key), hamburgerMenuToggle()]"
+                  class="menu-item"
+                  v-for="(district, key) of districts"
+                  :class="{ 'first': key === 0, 'last': key === (districts.length -1) }"
+                  :key="key"
+                  tabindex="0"
                 >
-                <div class="cresults">
-                  <div
-                    v-for="(result, cn) of sortVotes(election.results)"
-                    @click="if(subResultsLength(result.votes) > 1 && election.results.length > 1){subToggle($event.currentTarget, result.votes, 42)}"
-                    :class="{ hresult: districts[currentVue].showSubResults && election.results.length > 1 }"
-                    class="result"
+                  <h3>{{ district.title }}</h3>
+                </button>
+              </div>
+            </nav>
+            <div v-if="districts.length" id="election-results">
+              <p
+                style="width: 100%; height: 10px; text-align: center; margin-top: 0; margin-bottom:1em;"
+                ><span style="background: #f5f5f54d;box-shadow: 0 0 20px 10px #f5f5f54d;border-radius: 20px;" v-if="districts[currentVue].showSubResults">Click on the ballot items to see the contributing results.</spanv-if="districts[currentVue].showSubResults"></p
+              >
+              <div class="celections desktop">
+                <div
+                  v-for="(election, en) of districts[currentVue].elections"
+                  v-if="isEven(en)"
+                  :class="election.featured"
+                  class="election"
+                >
+                  <h3
+                    ><a
+                      alt="Show fullscreen version."
+                      :href="'/fullpage.html?ev='+event+'&d='+currentVue+'&e='+en+'&theme='+theme"
+                      >{{ election.title }}</a
+                    ></h3
                   >
-                    <div class="cname">
-                      <h4>{{ result.name }}</h4>
-                    </div>
-                    <div class="cvotes">
-                      <h4 v-if="election.results.length > 1"
-                        >{{ getSum(result.votes) }} ({{ getVotePerc(election,
-                        getSum(result.votes),true) }}%)</h4
-                      >
-                      <h4 v-if="election.results.length === 1 && getSum(result.votes) > 0"
-                        >{{ getSum(result.votes) }} Votes</h4
-                      >
-                    </div>
-                    <div v-if="election.results.length === 1" class="cbar">
-                      <h4 style="text-align: end;">(Uncontested)</h4>
-                    </div>
-                    <div v-if="election.results.length > 1" class="cbar">
-                      <div class="bgbar">
-                        <div
-                          :style="{ background: settings[theme].color[cn], width: getVotePerc(election, getSum(result.votes), false) + '%' }"
-                          class="fgbar"
-                        ></div>
-                      </div>
-                    </div>
+                  <div class="cresults">
                     <div
-                      v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults"
-                      class="csubresults"
-                      style="height:0px;"
+                      v-for="(result, cn) of sortVotes(election.results)"
+                      @click="if(subResultsLength(result.votes) > 1 && election.results.length > 1){subToggle($event.currentTarget, result.votes, 42)}"
+                      :class="{ hresult: districts[currentVue].showSubResults && election.results.length > 1 }"
+                      class="result"
                     >
-                      <table>
-                        <tr
-                          v-for="(subresult) of result.votes"
-                          class="csubresult"
+                      <div class="cname">
+                        <h4>{{ result.name }}</h4>
+                      </div>
+                      <div class="cvotes">
+                        <h4 v-if="election.results.length > 1"
+                          >{{ getSum(result.votes) }} ({{ getVotePerc(election,
+                          getSum(result.votes),true) }}%)</h4
                         >
-                          <th class="dsub">{{ subresult.title }}</th>
-                          <th class="vsub">{{ subresult.value }}</th>
-                        </tr>
+                        <h4 v-if="election.results.length === 1 && getSum(result.votes) > 0"
+                          >{{ getSum(result.votes) }} Votes</h4
+                        >
+                      </div>
+                      <div v-if="election.results.length === 1" class="cbar">
+                        <h4 style="text-align: end;">(Uncontested)</h4>
+                      </div>
+                      <div v-if="election.results.length > 1" class="cbar">
+                        <div class="bgbar">
+                          <div
+                            :style="{ background: settings[theme].color[cn], width: getVotePerc(election, getSum(result.votes), false) + '%' }"
+                            class="fgbar"
+                          ></div>
+                        </div>
+                      </div>
+                      <table
+                        v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults"
+                        class="csubresults"
+                        style="height:0px;"
+                      >
+                        <tbody style="display: flex;">
+                          <tr
+                            v-for="(subresult) of result.votes"
+                            class="csubresult"
+                          >
+                            <th class="dsub">{{ subresult.title }}</th>
+                            <th class="vsub">{{ subresult.value }}</th>
+                          </tr>
+                        </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="celections mobile">
-              <div
-                v-for="(election, en) of districts[currentVue].elections"
-                :class="election.featured"
-                class="election"
-              >
-                <h3
-                  ><a
-                    alt="Show fullscreen version."
-                    :href="'/fullpage.html?ev='+event+'&d='+currentVue+'&e='+en+'&theme='+theme"
-                    >{{ election.title }}</a
-                  ></h3
+              <div class="celections desktop">
+                <div
+                  v-for="(election, en) of districts[currentVue].elections"
+                  v-if="isOdd(en)"
+                  :class="election.featured"
+                  class="election"
                 >
-                <div class="cresults">
-                  <div
-                    v-for="(result, cn) of sortVotes(election.results)"
-                    @click="if(subResultsLength(result.votes) > 1 && election.results.length > 1){subToggle($event.currentTarget, result.votes, 42)}"
-                    :class="{ hresult: districts[currentVue].showSubResults && election.results.length > 1 }"
-                    class="result"
+                  <h3
+                    ><a
+                      alt="Show fullscreen version."
+                      :href="'/fullpage.html?ev='+event+'&d='+currentVue+'&e='+en+'&theme='+theme"
+                      >{{ election.title }}</a
+                    ></h3
                   >
-                    <div class="cname">
-                      <h4>{{ result.name }}</h4>
-                    </div>
-                    <div class="cvotes">
-                      <h4 v-if="election.results.length > 1"
-                        >{{ getSum(result.votes) }} ({{ getVotePerc(election,
-                        getSum(result.votes),true) }}%)</h4
-                      >
-                      <h4 v-if="election.results.length === 1 && getSum(result.votes) > 0"
-                        >{{ getSum(result.votes) }} Votes</h4
-                      >
-                    </div>
-                    <div v-if="election.results.length === 1" class="cbar">
-                      <h4 style="text-align: end;">(Uncontested)</h4>
-                    </div>
-                    <div v-if="election.results.length > 1" class="cbar">
-                      <div class="bgbar">
-                        <div
-                          :style="{ background: settings[theme].color[cn], width: getVotePerc(election, getSum(result.votes), false) + '%' }"
-                          class="fgbar"
-                        ></div>
-                      </div>
-                    </div>
+                  <div class="cresults">
                     <div
-                      v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults"
-                      class="csubresults"
-                      style="height:0px;"
+                      v-for="(result, cn) of sortVotes(election.results)"
+                      @click="if(subResultsLength(result.votes) > 1 && election.results.length > 1){subToggle($event.currentTarget, result.votes, 42)}"
+                      :class="{ hresult: districts[currentVue].showSubResults && election.results.length > 1 }"
+                      class="result"
                     >
-                      <table>
-                        <tr
-                          v-for="(subresult) of result.votes"
-                          class="csubresult"
+                      <div class="cname">
+                        <h4>{{ result.name }}</h4>
+                      </div>
+                      <div class="cvotes">
+                        <h4 v-if="election.results.length > 1"
+                          >{{ getSum(result.votes) }} ({{ getVotePerc(election,
+                          getSum(result.votes),true) }}%)</h4
                         >
-                          <th class="dsub">{{ subresult.title }}</th>
-                          <th class="vsub">{{ subresult.value }}</th>
-                        </tr>
-                      </table>
+                        <h4 v-if="election.results.length === 1 && getSum(result.votes) > 0"
+                          >{{ getSum(result.votes) }} Votes</h4
+                        >
+                      </div>
+                      <div v-if="election.results.length === 1" class="cbar">
+                        <h4 style="text-align: end;">(Uncontested)</h4>
+                      </div>
+                      <div v-if="election.results.length > 1" class="cbar">
+                        <div class="bgbar">
+                          <div
+                            :style="{ background: settings[theme].color[cn], width: getVotePerc(election, getSum(result.votes), false) + '%' }"
+                            class="fgbar"
+                          ></div>
+                        </div>
+                      </div>
+                      <div
+                        v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults"
+                        class="csubresults"
+                        style="height:0px;"
+                      >
+                        <table>
+                          <tr
+                            v-for="(subresult) of result.votes"
+                            class="csubresult"
+                          >
+                            <th class="dsub">{{ subresult.title }}</th>
+                            <th class="vsub">{{ subresult.value }}</th>
+                          </tr>
+                        </table>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <!-- <div class="celections mobile">
+                <div
+                  v-for="(election, en) of districts[currentVue].elections"
+                  :class="election.featured"
+                  class="election"
+                >
+                  <h3
+                    ><a
+                      alt="Show fullscreen version."
+                      :href="'/fullpage.html?ev='+event+'&d='+currentVue+'&e='+en+'&theme='+theme"
+                      >{{ election.title }}</a
+                    ></h3
+                  >
+                  <div class="cresults">
+                    <div
+                      v-for="(result, cn) of sortVotes(election.results)"
+                      @click="if(subResultsLength(result.votes) > 1 && election.results.length > 1){subToggle($event.currentTarget, result.votes, 42)}"
+                      :class="{ hresult: districts[currentVue].showSubResults && election.results.length > 1 }"
+                      class="result"
+                    >
+                      <div class="cname">
+                        <h4>{{ result.name }}</h4>
+                      </div>
+                      <div class="cvotes">
+                        <h4 v-if="election.results.length > 1"
+                          >{{ getSum(result.votes) }} ({{ getVotePerc(election,
+                          getSum(result.votes),true) }}%)</h4
+                        >
+                        <h4 v-if="election.results.length === 1 && getSum(result.votes) > 0"
+                          >{{ getSum(result.votes) }} Votes</h4
+                        >
+                      </div>
+                      <div v-if="election.results.length === 1" class="cbar">
+                        <h4 style="text-align: end;">(Uncontested)</h4>
+                      </div>
+                      <div v-if="election.results.length > 1" class="cbar">
+                        <div class="bgbar">
+                          <div
+                            :style="{ background: settings[theme].color[cn], width: getVotePerc(election, getSum(result.votes), false) + '%' }"
+                            class="fgbar"
+                          ></div>
+                        </div>
+                      </div>
+                      <div
+                        v-if="subResultsLength(result.votes) > 1 && districts[currentVue].showSubResults"
+                        class="csubresults"
+                        style="height:0px;"
+                      >
+                        <table>
+                          <tr
+                            v-for="(subresult) of result.votes"
+                            class="csubresult"
+                          >
+                            <th class="dsub">{{ subresult.title }}</th>
+                            <th class="vsub">{{ subresult.value }}</th>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
             </div>
           </div>
         </div>
