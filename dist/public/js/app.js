@@ -8,7 +8,7 @@ var url = new URLSearchParams(window.location.search);
 //assigns variables/handles defaults
 var d = url.get("d") || 0;
 var e = url.get("e") || 0;
-var ev = url.get("ev") || "tmd20";
+var ev = url.get("ev") || "ge20";
 var theme = url.get("theme") || "classic";
 var navOffset = 0;
 
@@ -236,7 +236,7 @@ var app = new Vue({
     //math and sorting functions
     sortVotes(arr) {
       if (arr.length > 2) {
-        return arr.slice(0, 20).sort(function (a, b) {
+        return arr.slice(0, 25).sort(function (a, b) {
           return app.getSum(b.votes) - app.getSum(a.votes);
         });
       } else {
