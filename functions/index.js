@@ -28,8 +28,11 @@ exports.updateDatabase = functions.https.onCall((data, context) => {
     
     
     const alphaNum = (s) => {
-        a = [s[0].toLowerCase().charCodeAt(0) - 97, parseInt(s[1]+s[2]+s[3]) - 1];
-        return a;
+        if (/^[A-z]\d{1,3}/.test(s)) {
+            return [s[0].toLowerCase().charCodeAt(0) - 97, parseInt(s[1]+s[2]+s[3]) - 1];
+        } else if (/^[A-z][A-z]\d{1,3}/.test(s)) {
+            return [(s[0].toLowerCase().charCodeAt(0) - 97 + 1) * 26 + s[1].toLowerCase().charCodeAt(0) - 97, parseInt(s[2]+s[3]+s[4]) - 1];
+        } else return [0,0];
     };
 
 
@@ -106,12 +109,13 @@ exports.updateDatabase = functions.https.onCall((data, context) => {
                 sheets.spreadsheets.values.get({
                     access_token: value[0],
                     spreadsheetId: settings.sheetId,
-                    range: settings.sheetsPageName + '!A1:Z400'
+                    range: settings.sheetsPageName
                 }, (err, res) => {
                     if (err) reject(err);
                     const rows = res.data.values;
                     var results = createResults(value[1], rows);
                     admin.database().ref('/events/' + event + '/districts').set(results)
+                    admin.database().ref('/events/' + event + '/evSettings').set(settings)
                     resolve({
                         status: "completed"
                     })

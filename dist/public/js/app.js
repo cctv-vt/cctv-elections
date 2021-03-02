@@ -8,7 +8,7 @@ var url = new URLSearchParams(window.location.search);
 //assigns variables/handles defaults
 var d = url.get("d") || 0;
 var e = url.get("e") || 0;
-var ev = url.get("ev") || "ge20";
+var ev = url.get("ev") || "tmd21";
 var theme = url.get("theme") || "classic";
 var navOffset = 0;
 
@@ -277,6 +277,7 @@ var app = new Vue({
     },
     //rendering and animation functions
     districtChange(k) {
+      console.log(k)
       if (window.scrollY > navOffset) {
         window.scrollTo(0, navOffset)
       };
@@ -284,6 +285,7 @@ var app = new Vue({
       //   ev.currentTarget.parentElement.style = "0px";
       // }
       this.currentVue = k;
+      console.log(this.currentVue)
       var cm = document.getElementById('cmenu-items').childNodes;
       for (var i=0;i<cm.length; i++) {
         if (i == k) {
